@@ -177,6 +177,13 @@
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
               </div>
             </div>
+
+            <div class="col-span-12">
+              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[12px] leading-relaxed text-slate-600">
+                <div>宛名印刷（データ）＝（データ＋紙媒体）の合計枚数 × 80円</div>
+                <div>紙媒体がある場合：宛名データ化（1〜10枚：68092801×1=1100円／11枚目以降：(枚数-10)×80円=68210304）</div>
+              </div>
+            </div>
           </div>
 
           <!-- 3行目：オプション枠（横一列 → 折返しグリッド） -->
@@ -365,8 +372,12 @@ function getCardBarcode(type){
 
       // --- 宛名/オプション 単価 ---
       const UNIT = {
-        addrData: 80,
-        addrPaper: 200,
+        // 宛名印刷（データ）: （データ+紙媒体）の合計枚数 × 80円
+        addrPrint: 80,
+        // 紙媒体データ化（1〜10枚）
+        addrPaperConvertBase: 1100,
+        // 紙媒体データ化（11枚目以降）
+        addrPaperConvertOver10: 80,
         addrFix: 50,
         scan: 600,
         omakase: 1500,
@@ -400,36 +411,44 @@ function getCardBarcode(type){
           };
         }
       const ADDR_BARCODE = '07019500';
-      const ADDR_COUPON_DISCOUNT = { data: 20, paper: 50 };
+      const ADDR_COUPON_DISCOUNT = { print: 20 };
       function getAddrLineMeta(state){
           const s = state || {};
           const dataQty = s.addrDataCount || 0;
           const paperQty = s.addrPaperCount || 0;
           const fixQty = s.addrFixCount || 0;
           const hasCoupon = !!(s.coupon > 0);
-          const dataUnit = Math.max(0, UNIT.addrData - (hasCoupon ? ADDR_COUPON_DISCOUNT.data : 0));
-          const paperUnit = Math.max(0, UNIT.addrPaper - (hasCoupon ? ADDR_COUPON_DISCOUNT.paper : 0));
+          const printQty = dataQty + paperQty;
+          const printUnit = Math.max(0, UNIT.addrPrint - (hasCoupon ? ADDR_COUPON_DISCOUNT.print : 0));
           const dataName = hasCoupon ? '宛名印刷（データ）' : '宛名印刷（データ）';
-          const paperName = hasCoupon ? '宛名印刷（紙媒体）' : '宛名印刷（紙媒体）';
+          const paperName = '宛名データ化(10枚以下)(-900)';
           // 宛名（データ）のバーコードは条件で切替
           // ・クーポン未指定: 68210304
           // ・クーポン指定あり: 68210403
           const dataCode = hasCoupon ? '68210403' : '68210304';
-          const paperCode = hasCoupon ? '68216900' : '68210502';
+          const paperCode = '68092801';
+          const paperExtraQty = Math.max(0, paperQty - 10);
           return {
             data: {
               name: dataName,
               code: dataCode,
-              unit: dataUnit,
-              qty: dataQty,
-              sum: dataUnit * dataQty
+              unit: printUnit,
+              qty: printQty,
+              sum: printUnit * printQty
             },
             paper: {
               name: paperName,
               code: paperCode,
-              unit: paperUnit,
-              qty: paperQty,
-              sum: paperUnit * paperQty
+              unit: UNIT.addrPaperConvertBase,
+              qty: paperQty > 0 ? 1 : 0,
+              sum: (paperQty > 0 ? UNIT.addrPaperConvertBase : 0)
+            },
+            paperExtra: {
+              name: '宛名データ化(11枚以上)',
+              code: '68210304',
+              unit: UNIT.addrPaperConvertOver10,
+              qty: paperExtraQty,
+              sum: UNIT.addrPaperConvertOver10 * paperExtraQty
             },
             fix: {
               name: '宛名修正・削除',
@@ -511,7 +530,11 @@ function getCardBarcode(type){
       // --- 宛名/オプションの計算 ---
         function calcOptions(state) {
           const addrMeta = getAddrLineMeta(state);
-          const addr = addrMeta.data.sum + addrMeta.paper.sum + addrMeta.fix.sum;
+          const addr =
+            addrMeta.data.sum +
+            addrMeta.paper.sum +
+            (addrMeta.paperExtra?.sum || 0) +
+            addrMeta.fix.sum;
 
           const checks =
             (state.optOmakaseOrder ? UNIT.omakase : 0) +
@@ -695,6 +718,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
 
           if (addrMeta.data.qty > 0)  items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.data.name),  code: addrMeta.data.code,  unit: addrMeta.data.unit,  qty: addrMeta.data.qty,  sum: addrMeta.data.sum });
           if (addrMeta.paper.qty > 0) items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.paper.name), code: addrMeta.paper.code, unit: addrMeta.paper.unit, qty: addrMeta.paper.qty, sum: addrMeta.paper.sum });
+          if (addrMeta.paperExtra.qty > 0) items.push({ cat: 'オプション', name: addrMeta.paperExtra.name, code: addrMeta.paperExtra.code, unit: addrMeta.paperExtra.unit, qty: addrMeta.paperExtra.qty, sum: addrMeta.paperExtra.sum });
           if (addrMeta.fix.qty > 0)   items.push({ cat: 'オプション', name: addrMeta.fix.name,   code: addrMeta.fix.code,   unit: addrMeta.fix.unit,   qty: addrMeta.fix.qty,   sum: addrMeta.fix.sum  });
 
           // 宛名（データ）あり + DMクーポン指定時は情報行を追加（0円）
