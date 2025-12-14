@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>パレットプラザ　年賀状 見積</title>
+    <!-- TailwindCSS CDN: ビルド不要でGitHub Pages向け -->
+    <script id="TAILWIND_CDN_WARNING_FILTER">(function(){try{var o=console.warn;console.warn=function(){if(arguments&&arguments[0]&&typeof arguments[0]==='string'&&arguments[0].indexOf('cdn.tailwindcss.com should not be used in production')>-1){return;}return o.apply(console,arguments);};}catch(_){}})();</script>
+<script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            boxShadow: {
+              soft: "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)",
+            },
+            borderRadius: {
+              '2xl': '1rem'
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      .thin-scroll::-webkit-scrollbar { height: 8px; }
+      .thin-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+      .thin-scroll::-webkit-scrollbar-track { background: transparent; }
+      .pill { display:inline-flex; align-items:center; gap:.5rem; border-radius:9999px; background:#f1f5f9; padding:.25rem .75rem; font-size:12px; color:#475569; }
+      /* Hide 'コメントのみおまかせ' option */
+      label:has(#optCommentOnly) { display: none !important; }
+      /* Active state for 合計ボタン: 明細表示中のものを強調 */
+      #dueAmount button.due-active { background-color:#2563eb !important; border-color:#2563eb !important; color:#ffffff !important; }
+      #dueAmount button.due-active * { color:#ffffff !important; }
+    </style>
+  </head>
+  <body class="min-h-screen w-full bg-gradient-to-br from-slate-50 to-slate-100 text-slate-800">
+    <main class="mx-auto max-w-[1024px] px-5 py-8">
+      <section class="rounded-2xl border border-slate-200 bg-white/70 shadow-soft backdrop-blur">
+
+        <div class="p-5">
+          <!-- 1行目 -->
+          <div class="grid grid-cols-12 gap-4">
+            <!-- 絵柄（コード） -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">絵柄</label>
+              <select id="artwork" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
+                <option value="">選択してください</option>
+                <option disabled>---イラスト年賀状---</option>
+                <option value="PHG">PHG</option>
+                <option value="PPR">PPR</option>
+                <option value="PSD">PSD</option>
+                <option value="PLT">PLT</option>
+                <option value="BO">BO</option>
+                <option value="DO">DO(ディズニー)</option>
+                <option value="ZO">ZO(ちいかわ)</option>
+                <option value="UO">UO(スヌーピー)</option>
+                <option disabled>---写真入り年賀状---</option>
+                <option value="DN">DN(ディズニー)</option>
+                <option value="ZN">ZN(ちいかわ)</option>
+                <option value="RN">RN(サンエックス)</option>
+                <option value="UN">UN(スヌーピー)</option>
+                <option value="SN">SN(ロディ)</option>
+                <option value="LN">LN</option>
+                <option value="BN">BN</option>
+                <option value="MY">MYデザイン</option>
+                <option disabled>---喪中寒中---</option>
+                <option value="BM">BM</option>
+                <option value="BMP">BM(写真入り)</option>
+                <option value="BW">BW</option>
+                <option value="BWP">BW(写真入り)</option>
+                <option value="DW">DW</option>
+                <option value="DWP">DW(写真入り)</option>
+                <option value="UW">UW</option>
+                <option value="UWP">UW(写真入り)</option>
+</select>
+            </div>
+
+            <!-- 仕上がり -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">仕上がり</label>
+              <select id="finish" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
+                <option value="">選択してください</option>
+                <option value="print">印刷仕上げ</option>
+                <option value="photo">写真キレイ仕上げ</option>
+              </select>
+            </div>
+
+            <!-- はがき種 -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">はがき種</label>
+              <select id="cardType" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
+                <option value="">選択してください</option>
+                <option>お年玉付き年賀はがき</option>
+                <option>通常郵便はがき</option>
+                <option>私製はがき(一般)</option>
+                <option>私製はがき(喪中用)</option>
+                <option>私製はがき(年賀印つき)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 2行目 -->
+            <div class="mt-4 grid grid-cols-12 gap-4">
+              <!-- 注文枚数 -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-2">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">注文枚数</label>
+              <div class="relative">
+                <input id="orderQty" inputmode="numeric" placeholder="例: 30" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
+                <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
+              </div>
+            </div>
+
+            <!-- 持込はがき -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-2">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">持込はがき</label>
+              <div class="relative">
+                <input id="bringInQty" inputmode="numeric" placeholder="例: 10" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
+                <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
+              </div>
+            </div>
+
+            <!-- クーポン -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-5">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">クーポン</label>
+              <select id="coupon" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
+                <option value="">選択してください</option>
+                <option value="300" data-barcode="07012105">DMクーポン300(昨年)</option>
+                <option value="500" data-barcode="07012105">DMクーポン500(昨年)</option>
+                <option value="300" data-barcode="07016806">DMクーポン300(一昨年)</option>
+                <option value="500" data-barcode="07016806">DMクーポン500(一昨年)</option>
+                <option value="300" data-barcode="07012204">DMクーポン300(閉店)</option>
+                <option value="500" data-barcode="07012204">DMクーポン500(閉店)</option>
+              </select>
+            </div>
+
+            <!-- 割引（クーポンの右） -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-3">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">割引</label>
+              <div class="flex flex-wrap items-center gap-6 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <label class="inline-flex items-center gap-2 select-none">
+                  <input id="superEarly" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                  <span class="text-[15px]">超早割（×0.8）</span>
+                </label>
+                <label class="inline-flex items-center gap-2 select-none">
+                  <input id="early" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                  <span class="text-[15px]">早割（×0.9）</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 宛名行（注文枚数の行の下） -->
+          <div class="mt-3 grid grid-cols-12 gap-4">
+            <!-- 宛名印刷（データ） -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（データ）</label>
+              <div class="relative">
+                <input id="addrDataCount" inputmode="numeric" placeholder="例: 20" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
+                <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
+              </div>
+            </div>
+
+            <!-- 宛名印刷（紙媒体） -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（紙媒体）</label>
+              <div class="relative">
+                <input id="addrPaperCount" inputmode="numeric" placeholder="例: 15" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
+                <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
+              </div>
+            </div>
+
+            <!-- 宛名修正 -->
+            <div class="col-span-12 sm:col-span-6 md:col-span-4">
+              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名修正・削除</label>
+              <div class="relative">
+                <input id="addrFixCount" inputmode="numeric" placeholder="例: 5" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
+                <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3行目：オプション枠（横一列 → 折返しグリッド） -->
+          <div class="mt-6 rounded-2xl border border-slate-200 bg-white/60 p-4">
+            <div class="mb-2 text-[15px] font-semibold tracking-wide text-slate-700">オプション</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                  <input id="optOmakaseOrder" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                  <span class="text-[15px]">おまかせ注文サービス</span>
+                </label>
+              <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                <input id="optCommentOnly" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                <span class="text-[15px]">コメントのみおまかせ</span>
+              </label>
+                <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                  <input id="optProof" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                  <span class="text-[15px]">校正サービス</span>
+              </label>
+                <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                  <input id="optLogoCut" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                  <span class="text-[15px]">ロゴ切り抜き</span>
+                </label>
+              <div class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+                <label for="optScanCount" class="text-[15px]">スキャンサービス</label>
+                <input id="optScanCount" inputmode="numeric" placeholder="枚数" class="w-24 rounded-lg border border-slate-300 bg-white px-2 py-1 outline-none focus:border-slate-400" />
+              </div>
+            </div>
+
+            <!-- 計算ボタン -->
+            <div class="mt-4 flex justify-end">
+              <button id="btnCalc" type="button" class="inline-flex items-center justify-center rounded-xl bg-slate-800 px-4 py-2 text-white shadow-sm transition hover:bg-slate-700">
+                計算する
+              </button>
+            </div>
+
+            <!-- エラー表示 -->
+            <div id="error" class="mt-4 hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"></div>
+          </div>
+
+          <!-- 合計グリッド（2行6列） -->
+          <div id="result" class="mt-6 hidden rounded-2xl border border-slate-200 bg-white/70 p-4">
+            <div class="mb-2 text-[15px] font-semibold tracking-wide text-slate-700">合計</div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse text-[15px]">
+                <thead>
+                  <tr id="dueHead" class="border-b border-slate-200"></tr>
+                </thead>
+                <tbody>
+                  <tr id="dueAmount" class=""></tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="breakdown" class="mt-3 text-xs text-slate-600"></div>
+
+            <!-- 料金明細（クリックで表示） -->
+            <div id="invoice" class="mt-6 hidden rounded-xl border border-slate-200 bg-white p-4">
+              <div class="mb-3 text-left text-[15px] font-semibold tracking-wide text-slate-700">料金明細表</div>
+              <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse text-[14px]">
+                  <thead>
+                    <tr class="border-b border-slate-200 bg-slate-50 text-slate-700">
+                      <th class="px-3 py-2 text-left">項目</th>
+                      <th class="px-3 py-2 text-left">品名</th>
+                      <th class="px-3 py-2 text-left">バーコード</th>
+                      <th class="px-3 py-2 text-right">単価</th>
+                      <th class="px-3 py-2 text-right">数量</th>
+                      <th class="px-3 py-2 text-right">合計</th>
+                    </tr>
+                  </thead>
+                  <tbody id="invBody"></tbody>
+                </table>
+              </div>
+              <!-- サマリー（表の下） -->
+              <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div></div>
+                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-[14px]">
+                      <tbody>
+                        <tr>
+                          <td class="px-3 py-2 text-left">印刷料金</td>
+                          <td class="px-3 py-2 text-right"><span id="sumPrintDue" class="font-semibold"></span></td>
+                        </tr>
+                        <tr>
+                          <td class="px-3 py-2 text-left">オプション代</td>
+                          <td class="px-3 py-2 text-right"><span id="sumOptions" class="font-semibold"></span></td>
+                        </tr>
+                        <tr>
+                          <td class="px-3 py-2 text-left">クーポン値引き</td>
+                          <td class="px-3 py-2 text-right"><span id="sumCoupon" class="font-semibold"></span></td>
+                        </tr>
+                        <tr class="border-t border-slate-300">
+                          <td class="px-3 py-2 text-left">合計（はがき除く）</td>
+                          <td class="px-3 py-2 text-right"><span id="sumExclCard" class="font-semibold"></span></td>
+                        </tr>
+                        <tr class="border-t border-slate-300">
+                          <td class="px-3 py-2 text-left">はがき代</td>
+                          <td class="px-3 py-2 text-right"><span id="sumCardCost" class="font-semibold"></span></td>
+                        </tr>
+                        <tr class="border-t border-slate-300">
+                          <td class="px-3 py-2 text-left">総計（はがき含む）</td>
+                          <td class="px-3 py-2 text-right"><span id="sumInclCard" class="font-semibold"></span></td>
+                        </tr>
+                      </tbody>                    </table>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // --- 入力サニタイズ（半角数字のみ） ---
+      const numOnly = (el) => el && el.addEventListener('input', () => el.value = (el.value || '').replace(/[^0-9]/g, ''));
+      ['orderQty','bringInQty','addrDataCount','addrPaperCount','addrFixCount','optScanCount'].forEach(id => numOnly(document.getElementById(id)));
+
+      // --- はがき単価 ---
+      const CARD_UNIT_PRICE = {
+        "お年玉付き年賀はがき": 85,
+        "通常郵便はがき": 85,
+        "私製はがき(一般)": 0,
+        "私製はがき(喪中用)": 0,
+        "私製はがき(年賀印つき)": 0,
+      };
+// はがき代バーコード（年賀/通常のみ 19802404、私製は '-'）
+function getCardBarcode(type){
+  const s = String(type || '').trim();
+  if (s === 'お年玉付き年賀はがき' || s === '通常郵便はがき') return '19802404';
+  return '-';
+}
+
+
+      // --- 絵柄コード→グレード ---
+                  const CODE_TO_GRADE = (() => {
+        const map = {};
+        ["PHG","DN","ZN","RN","UN","SN","LN","DWP","UWP"].forEach(c => map[c] = "HIGH");
+        ["PPR","DO","ZO","UO","BN","DW","UW","BMP","BWP"].forEach(c => map[c] = "PREMIUM");
+        ["PSD","BO","BM","BW"].forEach(c => map[c] = "STANDARD");
+        ["PLT"].forEach(c => map[c] = "LIGHT");
+        ["MY"].forEach(c => map[c] = "MY");
+        return map;
+      })();
+
+      // --- 印刷代 基本10枚価格 ---
+      const BASE10_PRICE = {
+        HIGH:     { print: 5500, photo: 5700 },
+        PREMIUM:  { print: 5000, photo: 5200 },
+        STANDARD: { print: 4500, photo: 4700 },
+        LIGHT:    { print: 3500, photo: 3700 },
+        MY:       { print: 2500, photo: 2700 },
+      };
+
+      // --- 仕上がり別の加算 ---
+      const STEP_PRINT = { first50: 650, next50: 600, over100: 550 }; // 印刷仕上げ
+      const STEP_PHOTO = 660; // 写真キレイ仕上げ（10枚ごと一定）
+
+      // --- 納期加算 ---
+      const DUE_ADD = [1480, 1180, 880, 580, 300, 0]; // 当日〜5日後
+      const DUE_ADD_DEC = [1480, 1180, 880, 580, 300, 0];
+      const DUE_ADD_NOV = [ 980,  780, 580, 380, 200, 0];
+      function isBeforeNovEnd(date){
+        const d = date || new Date();
+        const month = d.getMonth(); // 0-based
+        if (month < 10) return true;
+        if (month > 10) return false;
+        return d.getDate() <= 30;
+      }
+      function getDueAdds(now){ return isBeforeNovEnd(now) ? DUE_ADD_NOV : DUE_ADD_DEC; }
+      function getDueBarcode(now){
+        return isBeforeNovEnd(now) ? '68217006' : '68210908';
+      }
+      // 宛名用 納期バーコード: 11月末まで 68217105、それ以降 68211103
+      function getAddrDueBarcode(now){
+        return isBeforeNovEnd(now) ? '68217105' : '68211103';
+      }
+      const DUE_LABELS = [
+        { name: "当日仕上げ", offset: 0 },
+        { name: "翌日仕上げ", offset: 1 },
+        { name: "2日後仕上げ", offset: 2 },
+        { name: "3日後仕上げ", offset: 3 },
+        { name: "4日後仕上げ", offset: 4 },
+        { name: "5日後仕上げ", offset: 5 },
+      ];
+
+      // --- 宛名/オプション 単価 ---
+      const UNIT = {
+        addrData: 80,
+        addrPaper: 200,
+        addrFix: 50,
+        scan: 600,
+        omakase: 1500,
+        proof: 1200,
+        logoCut: 1200,
+      };
+
+      // --- util ---
+      const yen = (n) => (Math.round(n || 0)).toLocaleString('ja-JP');
+      const toInt = (s) => {
+        const v = parseInt(String(s || '').replace(/[^0-9]/g, ''), 10);
+        return Number.isFinite(v) ? v : 0;
+      };
+      function resolveCouponInfo(){
+          const el = document.getElementById('coupon');
+          if (!el) return { amount: 0, barcode: '', label: '' };
+          let selected = null;
+          if (el.selectedOptions && el.selectedOptions.length > 0) {
+            selected = el.selectedOptions[0];
+          } else if (typeof el.selectedIndex === 'number' && el.selectedIndex >= 0) {
+            selected = el.options[el.selectedIndex];
+          }
+          if (!selected || !selected.value) {
+            return { amount: 0, barcode: '', label: '' };
+          }
+          const barcode = (selected.dataset && selected.dataset.barcode) ? selected.dataset.barcode : '';
+          return {
+            amount: toInt(selected.value),
+            barcode,
+            label: (selected.textContent || '').trim()
+          };
+        }
+      const ADDR_BARCODE = '07019500';
+      const ADDR_COUPON_DISCOUNT = { data: 20, paper: 50 };
+      function getAddrLineMeta(state){
+          const s = state || {};
+          const dataQty = s.addrDataCount || 0;
+          const paperQty = s.addrPaperCount || 0;
+          const fixQty = s.addrFixCount || 0;
+          const hasCoupon = !!(s.coupon > 0);
+          const dataUnit = Math.max(0, UNIT.addrData - (hasCoupon ? ADDR_COUPON_DISCOUNT.data : 0));
+          const paperUnit = Math.max(0, UNIT.addrPaper - (hasCoupon ? ADDR_COUPON_DISCOUNT.paper : 0));
+          const dataName = hasCoupon ? '宛名印刷（データ）' : '宛名印刷（データ）';
+          const paperName = hasCoupon ? '宛名印刷（紙媒体）' : '宛名印刷（紙媒体）';
+          // 宛名（データ）のバーコードは条件で切替
+          // ・クーポン未指定: 68210304
+          // ・クーポン指定あり: 68210403
+          const dataCode = hasCoupon ? '68210403' : '68210304';
+          const paperCode = hasCoupon ? '68216900' : '68210502';
+          return {
+            data: {
+              name: dataName,
+              code: dataCode,
+              unit: dataUnit,
+              qty: dataQty,
+              sum: dataUnit * dataQty
+            },
+            paper: {
+              name: paperName,
+              code: paperCode,
+              unit: paperUnit,
+              qty: paperQty,
+              sum: paperUnit * paperQty
+            },
+            fix: {
+              name: '宛名修正・削除',
+              code: '68210700',
+              unit: UNIT.addrFix,
+              qty: fixQty,
+              sum: UNIT.addrFix * fixQty
+            }
+          };
+        }
+      const ceil10 = (n) => Math.max(10, Math.ceil((n || 0)/10) * 10);
+      const addDays = (date, days) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
+      const fmtMD = (date) => date.toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric' });
+      const fmtWeekdayJa = (date) => ['日','月','火','水','木','金','土'][date.getDay()];
+
+     // 合計セルからも使い回す入力状態リーダー
+       function readState() {
+         const toInt = (s) => {
+           const v = parseInt(String(s || '').replace(/[^0-9]/g, ''), 10);
+           return Number.isFinite(v) ? v : 0;
+         };
+         const couponInfo = resolveCouponInfo();
+         return {
+           artwork: document.getElementById('artwork').value,
+           finish: document.getElementById('finish').value,
+           cardType: document.getElementById('cardType').value,
+           orderQty: toInt(document.getElementById('orderQty').value),
+           bringInQty: toInt(document.getElementById('bringInQty').value),
+           coupon: couponInfo.amount,
+           couponCode: couponInfo.barcode,
+           couponLabel: couponInfo.label,
+           superEarly: document.getElementById('superEarly').checked,
+           early: document.getElementById('early').checked,
+           addrDataCount: toInt(document.getElementById('addrDataCount').value),
+           addrPaperCount: toInt(document.getElementById('addrPaperCount').value),
+           addrFixCount: toInt(document.getElementById('addrFixCount').value),
+          optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
+          optProof: document.getElementById('optProof').checked,
+          optLogoCut: document.getElementById('optLogoCut').checked,
+         optScanCount: toInt(document.getElementById('optScanCount').value),
+       };
+     }
+
+      // --- 印刷代の計算 ---
+      function calcPrintPrice(code, finish, qtyRaw, isSuperEarly, isEarly) {
+        const grade = CODE_TO_GRADE[code];
+        if (!grade || !finish) return 0;
+        const base = BASE10_PRICE[grade][finish];
+        const qty10 = ceil10(qtyRaw);                // 10枚単位に切り上げ
+        const cappedQty = Math.min(qty10, 200);      // 200枚までは通常計算、それ以上は別行で計上
+        const blocks = Math.max(1, cappedQty/10);    // 10枚=1ブロック
+
+        let price = base;
+        if (blocks > 1) {
+          if (finish === 'photo') {
+            price += (blocks - 1) * STEP_PHOTO;
+          } else {
+            // 印刷仕上げ: 20〜50まで650, 60〜100まで600, 110〜は550
+            const b = blocks;
+            const c650 = Math.max(0, Math.min(b, 5) - 1);   // blocks 2..5 -> 4段階
+            const c600 = Math.max(0, Math.min(b, 10) - 5);  // blocks 6..10
+            const c550 = Math.max(0, b - 10);               // blocks 11..
+            price += c650 * STEP_PRINT.first50 + c600 * STEP_PRINT.next50 + c550 * STEP_PRINT.over100;
+          }
+        }
+
+        // 割引（印刷代にのみ適用）。両方チェック時はよりお得な係数(0.8)を優先。
+        const factor = isSuperEarly ? 0.8 : (isEarly ? 0.9 : 1.0);
+        return Math.round(price * factor);
+      }
+
+      // --- はがき代の計算 ---
+      function calcCardCost(type, orderQty, bringInQty) {
+        const unit = CARD_UNIT_PRICE[type] ?? 0;
+        const required = Math.max(0, toInt(orderQty) - toInt(bringInQty));
+        return required * unit;
+      }
+
+      // --- 宛名/オプションの計算 ---
+        function calcOptions(state) {
+          const addrMeta = getAddrLineMeta(state);
+          const addr = addrMeta.data.sum + addrMeta.paper.sum + addrMeta.fix.sum;
+
+          const checks =
+            (state.optOmakaseOrder ? UNIT.omakase : 0) +
+            (state.optProof ? UNIT.proof : 0) +
+            (state.optLogoCut ? UNIT.logoCut : 0);
+
+          const scans = state.optScanCount * UNIT.scan;
+
+          return { addr, checks, scans, optionsTotal: addr + checks + scans };
+        }
+
+      
+      
+      // === Barcode sizing config ===
+      const QC_SCALE = 2;        // QuickChart module scale(小さいほど細い)
+      const BARCODE_HEIGHT = 64;        // px (縦)
+      const BARCODE_WIDTH_PX = 300;     // px (横) 画像に指定（QuickChartにも効く）
+      const BWIP_SCALE_X = 3;           // bwip-js 横方向スケール
+      const BWIP_SCALE_Y = 3;           // bwip-js 縦方向スケール
+      let JSB_MODULE_WIDTH = 2.0;     // JsBarcode 1モジュールの太さ(px)
+      // ==============================
+
+      
+      // === JAN/EAN 1.0倍率 設定 (JIS X0507) ===
+      const JAN_SCALE = 1.0;
+      const TARGET_DPI = 300;            // QuickChartに投げる画像解像度
+      const PX_PER_MM_RENDER = TARGET_DPI / 25.4;
+      const CSS_PX_PER_MM = 96 / 25.4;   // ブラウザ表示の実寸換算
+      const JAN_X_MM = 0.33 * JAN_SCALE;
+      const JAN_H_MM = 19.86 * JAN_SCALE;
+      const JAN_L_MM = 37.29 * JAN_SCALE;
+      const JAN_Q_MM = 3.63 * JAN_SCALE;
+      const JAN_TOTAL_W_MM = JAN_L_MM + 2*JAN_Q_MM;
+      const JAN_TOTAL_W_PX = Math.round(JAN_TOTAL_W_MM * PX_PER_MM_RENDER);
+      const JAN_H_PX       = Math.round(JAN_H_MM       * PX_PER_MM_RENDER);
+      const JAN_H_CSS_PX   = +(JAN_H_MM * CSS_PX_PER_MM).toFixed(1);
+      JSB_MODULE_WIDTH = +(JAN_X_MM * CSS_PX_PER_MM).toFixed(2);
+      function computeEanCheckDigit(numstr){
+        const s = String(numstr||'').replace(/[^0-9]/g,'');
+        const arr = s.split('').map(d=>+d);
+        const len = arr.length;
+        if (len!==7 && len!==12) return null;
+        let sum = 0;
+        for (let i=0;i<len;i++){
+          const n = arr[len-1-i];
+          sum += n * ((i%2===0)?3:1);
+        }
+        return (10 - (sum % 10)) % 10;
+      }
+      function normalizeEan(code){
+        let s = String(code||'').trim();
+        if (!/^\\d+$/.test(s)) return s;
+        if (s.length===12){ const cd = computeEanCheckDigit(s); if (cd!=null) s = s + cd; }
+        if (s.length===7){  const cd = computeEanCheckDigit(s); if (cd!=null) s = s + cd; }
+        return s;
+      }
+
+      // --- バーコード描画ユーティリティ ---
+      
+      function barcodeImgUrl(code){
+        const raw = String(code||'').trim();
+        const ean = normalizeEan(raw);
+        const isNum = /^\d+$/.test(ean);
+        if(!isNum) return null;
+
+        let type = 'code128';
+        if (/^\d{13}$/.test(ean)) type = 'ean13';
+        else if (/^\d{8}$/.test(ean)) type = 'ean8';
+
+        const base = 'https://quickchart.io/barcode';
+        const qs = new URLSearchParams({
+          type, text: ean, format: 'svg', label: ean,
+          background: 'fff',
+          width: String(JAN_TOTAL_W_PX),
+          height: String(JAN_H_PX)
+        }).toString();
+        return `${base}?${qs}`;
+      }
+        function renderCodeCell(code){
+        const url = barcodeImgUrl(code);
+        const s = String(code || '').trim();
+        if(!url) return s; // 数値でなければ従来通り文字列表示
+        // QuickChart が失敗した場合は bwip-js API をフォールバック
+        const fallback = 'https://bwipjs-api.metafloor.com/?' + new URLSearchParams({
+          bcid: 'code128',
+          text: s,
+          includetext: 'y',
+          scale: '2'
+        }).toString();
+        // バーコード本体 + 下にヒューマンリーダブル（数字）を表示
+        return `<div class="flex flex-col items-center gap-1">
+                  <img alt="barcode ${s}" src="${url}" onerror="this.onerror=null;this.src='${fallback}'" style="height:${JAN_H_MM}mm; width:${JAN_TOTAL_W_MM}mm; object-fit:contain; image-rendering:pixelated" />
+                  <div class="font-mono text-[11px] text-slate-600 select-none">${s}</div>
+                </div>`;
+      }
+// --- 明細テーブル描画 ---
+      
+      // --- ローカルfallback: JsBarcodeが読み込まれていれば <svg data-barcode> を描画 ---
+      function activateLocalBarcodes(){
+        try{
+          if (!window.JsBarcode) return;
+          document.querySelectorAll('svg[data-barcode]').forEach(svg => {
+            const v = svg.getAttribute('data-barcode') || '';
+            if (/^\d+$/.test(v)) {
+              try{ JsBarcode(svg, v, {format:(svg.getAttribute('data-type')||'CODE128'), displayValue:true, fontSize:12, width: JSB_MODULE_WIDTH, height: JAN_H_CSS_PX}); }catch(_){}
+            }
+          });
+        }catch(_){}
+      }
+      // --- 合計ボタンのアクティブ表示切替 ---
+      function setActiveDueButton(idx){
+        try{
+          const target = String(idx);
+          document.querySelectorAll('#dueAmount button[data-due-index]')
+            .forEach(b => {
+              const isActive = (String(b.getAttribute('data-due-index')) === target);
+              if (isActive) {
+                b.classList.add('due-active');
+                b.setAttribute('aria-pressed', 'true');
+              } else {
+                b.classList.remove('due-active');
+                b.setAttribute('aria-pressed', 'false');
+              }
+            });
+        }catch(_){}
+      }
+function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
+        // アクティブボタンをハイライト
+        setActiveDueButton(selectedIdx);
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const extraPrint = calcExtraPrint(state);
+        const cardCost   = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
+        const opt        = calcOptions(state);
+        const __dueAdds  = Array.isArray(dueAdds) ? dueAdds : DUE_ADD_DEC;
+        const dueAdd     = (__dueAdds[selectedIdx] || 0);
+        const dueCode    = dueBarcode || getDueBarcode();
+        const baseDue    = (__dueAdds && __dueAdds.length > 0) ? __dueAdds[0] : 0;
+        const dueDiscount = Math.max(0, baseDue - dueAdd);
+        const dueLabel   = (state.finish === 'photo' && selectedIdx === 5)
+                           ? '7日後仕上げ'
+                           : (DUE_LABELS[selectedIdx]?.name || '-');
+
+        const items = [];
+          const finLabel = state.finish === 'photo' ? '写真キレイ仕上げ' : '印刷仕上げ';
+          const __pbc = computePrintBarcodes(state);
+          const addrMeta = getAddrLineMeta(state);
+          // クーポン選択かつ宛名印刷がある場合、宛名印刷系品名の先頭に「ㇰ）」を付与
+          const __useMarkForAddr = (state.coupon > 0) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0));
+          const __markNameIfAddr = (name) => {
+            try{
+              const t = String(name || '');
+              return (__useMarkForAddr && t.indexOf('宛名印刷') >= 0) ? ('ㇰ）' + t) : t;
+            }catch(_){ return name; }
+          };
+          items.push({ cat: '印刷', name: `${finLabel}`, code: (__pbc.main || '-'), unit: printPrice, qty: 1, sum: printPrice });
+        if (extraPrint.extraQty > 0){
+          // 200枚超過分は追加コードで計上する
+          items.push({ cat: '印刷（200枚以降）', name: `${finLabel} / 追加コード`, code: __pbc.extraCode || '-', unit: extraPrint.unit, qty: extraPrint.extraQty, sum: extraPrint.extraSum });
+        }
+
+        let dueName = dueLabel;
+
+        if (dueDiscount > 0) {
+          dueName = `${dueLabel}（-${dueDiscount}）`;
+        } else {
+          // dueAdd が 0 のときはカッコ表示なし or （-0）どちらでも可
+          // 必要なら↓のコメントを外す
+          // dueName = `${dueLabel}（-0）`;
+        }
+        items.push({ cat: '納期', name: dueName, code: dueCode, unit: dueAdd, qty: 1, sum: dueAdd });
+
+        // 宛名印刷が入力されている場合、選択された納期名・単価で (宛名) 行を追加
+        try{
+          if (((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0)) && (dueAdd > 0)) {
+            const addrDueCode = getAddrDueBarcode(new Date());
+            const addrDueAdd  = dueAdd; // 選択中の納期と同額
+            const addrDueName = `${dueName}(宛名)`; // 当日/翌日/2日後... に追従（割引表記も同様）
+            items.push({ cat: '納期', name: addrDueName, code: addrDueCode, unit: addrDueAdd, qty: 1, sum: addrDueAdd });
+          }
+        }catch(_){/* no-op */}
+
+          if (addrMeta.data.qty > 0)  items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.data.name),  code: addrMeta.data.code,  unit: addrMeta.data.unit,  qty: addrMeta.data.qty,  sum: addrMeta.data.sum });
+          if (addrMeta.paper.qty > 0) items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.paper.name), code: addrMeta.paper.code, unit: addrMeta.paper.unit, qty: addrMeta.paper.qty, sum: addrMeta.paper.sum });
+          if (addrMeta.fix.qty > 0)   items.push({ cat: 'オプション', name: addrMeta.fix.name,   code: addrMeta.fix.code,   unit: addrMeta.fix.unit,   qty: addrMeta.fix.qty,   sum: addrMeta.fix.sum  });
+
+          // 宛名（データ）あり + DMクーポン指定時は情報行を追加（0円）
+          if ((state.coupon > 0) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0))) {
+            items.push({ cat: 'クーポン', name: 'DMクーポン（宛名印刷）', code: ADDR_BARCODE, unit: 0, qty: 1, sum: 0 });
+          }
+
+        if (state.optOmakaseOrder) items.push({ cat: 'オプション', name: 'おまかせ注文サービス',     code: '68211202', unit: UNIT.omakase,    qty: 1, sum: UNIT.omakase });
+        if (state.optCommentOnly)  items.push({ cat: 'オプション', name: 'コメントのみおまかせ', code: 'BC-CMT',     unit: UNIT.commentOnly, qty: 1, sum: UNIT.commentOnly });
+        if (state.optProof)        items.push({ cat: 'オプション', name: '校正サービス',     code: '68211400',   unit: UNIT.proof,      qty: 1, sum: UNIT.proof });
+        if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
+        if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
+
+        if (state.coupon>0) {
+          const couponName = state.couponLabel || 'DMクーポン';
+          const couponCode = state.couponCode || 'BC-COUPON';
+          items.push({ cat: 'クーポン', name: couponName, code: couponCode, unit: -state.coupon, qty: 1, sum: -state.coupon });
+        }
+
+        
+  // --- はがき代（上表に統合） ---
+        (function(){
+          const t = String(state.cardType||'').trim();
+          const net = Math.max(0, toInt(state.orderQty) - toInt(state.bringInQty));
+          const isJP = (t === 'お年玉付き年賀はがき' || t === '通常郵便はがき');
+          const unit = isJP ? 85 : 0;
+          const code = isJP ? '19802404' : '-';
+          items.push({ cat:'はがき代', name:(t||'-'), code: code, unit: unit, qty: net, sum: unit*net });
+        })();
+        if (dueAdd === 0) {
+          for (let i = items.length - 1; i >= 0; i--) {
+            try { if (items[i] && items[i].code === dueCode) { items.splice(i, 1); } } catch(_) {}
+          }
+        }
+        const tbody = document.getElementById('invBody');
+        tbody.innerHTML = '';
+        // 並び替え: 印刷 → 納期 → 宛名 → オプション → クーポン（値引含む）
+        // クーポン内では DMクーポン（宛名印刷/07019500）を最後に配置
+        const sorted = items.slice();
+        sorted.forEach((it, i) => it.__idx = i);
+        const CAT_ORDER = { '印刷':1, '納期':2, '宛名':3, 'オプション':4, '値引':5, 'クーポン':5 };
+        sorted.sort((a,b) => {
+          const ra = ((a.cat === '印刷')?1 : (a.cat === '納期')?2 : (a.cat === 'オプション' || a.cat === '宛名')?3 : (a.cat === 'OP')?4 : ((a.cat === '値引' || a.cat === 'クーポン')?5 : 99));
+          const rb = ((b.cat === '印刷')?1 : (b.cat === '納期')?2 : (b.cat === 'オプション' || b.cat === '宛名')?3 : (b.cat === 'OP')?4 : ((b.cat === '値引' || b.cat === 'クーポン')?5 : 99));
+          if (ra !== rb) return ra - rb;
+          const aIsCoupon = (a.cat === 'クーポン' || a.cat === '値引');
+          const bIsCoupon = (b.cat === 'クーポン' || b.cat === '値引');
+          if (aIsCoupon && bIsCoupon) {
+            const aSub = (a.cat === 'クーポン' && String(a.code||'').trim() === ADDR_BARCODE) ? 1 : 0;
+            const bSub = (b.cat === 'クーポン' && String(b.code||'').trim() === ADDR_BARCODE) ? 1 : 0;
+            if (aSub !== bSub) return aSub - bSub; // DM宛名クーポンを最後に
+          }
+          return (a.__idx - b.__idx); // 安定ソート
+        });
+        
+        sorted.forEach(it => {
+          const tr = document.createElement('tr');
+          tr.className = 'border-b border-slate-100';
+          tr.innerHTML =`
+            <td class="px-3 py-2">${it.cat}</td>
+            <td class="px-3 py-2">${it.name}</td>
+            <td class="px-3 py-2">${renderCodeCell(it.code)}</td>
+            <td class="px-3 py-2 text-right">¥${yen(it.unit)}</td>
+            <td class="px-3 py-2 text-right">${it.qty}</td>
+            <td class="px-3 py-2 text-right">¥${yen(it.sum)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        const sumExcl = printPrice + extraPrint.extraSum + opt.optionsTotal - state.coupon + dueAdd; // はがき代を除く
+        
+// --- added totals ---
+const printTotal = printPrice + extraPrint.extraSum + dueAdd;
+const optionTotal = opt.optionsTotal;
+const couponTotal = -state.coupon;
+const cardTotal  = items.filter(it => it.cat === 'はがき代').reduce((s,it)=>s+(it.sum||0),0);
+
+(function(){
+  const el = document.getElementById('sumPrintDue');
+  if (el) el.textContent = `¥${yen(printTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumOptions');
+  if (el) el.textContent = `¥${yen(optionTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumCoupon');
+  if (el) el.textContent = `¥${yen(couponTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumCardCost');
+  if (el) el.textContent = `¥${yen(cardTotal)}`;
+})();
+
+// original:
+document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it => it.cat !== 'はがき代').reduce((s,it)=>s+(it.sum||0),0))}`;
+        // 合計金額（はがき代を含む）
+        try{
+          const sumIncl = items.reduce((s,it)=>s+(it.sum||0),0);
+          const inclEl = document.getElementById('sumInclCard');
+          if (inclEl) inclEl.textContent = `¥${yen(sumIncl)}`;
+        }catch(_){/* no-op */}
+
+        // 強調表示: 合計（はがき代除く）/ 総計（はがき代含む）
+        (function(){
+          function emphasize(id, px){
+            try{
+              const el = document.getElementById(id);
+              if (!el) return;
+              el.classList.add('font-bold','tabular-nums');
+              try { el.style.fontSize = px; } catch(_){}
+              try { el.style.fontWeight = '700'; } catch(_){}
+              const row = el.closest('tr');
+              const labelCell = row && row.querySelector('td:first-child');
+              if (labelCell) {
+                labelCell.classList.add('font-bold');
+                try { labelCell.style.fontSize = px; } catch(_){}
+                try { labelCell.style.fontWeight = '700'; } catch(_){}
+              }
+            }catch(_){/* no-op */}
+          }
+          emphasize('sumExclCard','17px');
+          emphasize('sumInclCard','17px');
+        })();
+
+        const invoice = document.getElementById('invoice');
+        invoice.classList.remove('hidden');
+        // スクロールして見せる
+        invoice.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // --- 計算ボタン ---
+      document.getElementById('btnCalc').addEventListener('click', () => {
+        const err = document.getElementById('error');
+        err.classList.add('hidden');
+        err.textContent = '';
+
+        const couponInfo = resolveCouponInfo();
+        const state = {
+          artwork: document.getElementById('artwork').value,
+          finish: document.getElementById('finish').value,
+          cardType: document.getElementById('cardType').value,
+          orderQty: toInt(document.getElementById('orderQty').value),
+          bringInQty: toInt(document.getElementById('bringInQty').value),
+          coupon: couponInfo.amount,
+          couponCode: couponInfo.barcode,
+          couponLabel: couponInfo.label,
+          superEarly: document.getElementById('superEarly').checked,
+          early: document.getElementById('early').checked,
+          addrDataCount: toInt(document.getElementById('addrDataCount').value),
+          addrPaperCount: toInt(document.getElementById('addrPaperCount').value),
+          addrFixCount: toInt(document.getElementById('addrFixCount').value),
+          optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
+          optProof: document.getElementById('optProof').checked,
+          optLogoCut: document.getElementById('optLogoCut').checked,
+          optScanCount: toInt(document.getElementById('optScanCount').value),
+        };
+
+        if (state.orderQty <= 0) {
+          err.textContent = "注文枚数を入力してください。";
+          err.classList.remove('hidden');
+          document.getElementById('result').classList.add('hidden');
+          return;
+        }
+        if (state.bringInQty > state.orderQty) {
+          err.textContent = "持込はがきは、注文枚数以下にしてください。";
+          err.classList.remove('hidden');
+          document.getElementById('result').classList.add('hidden');
+          return;
+        }
+
+        // 計算
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const extraPrint = calcExtraPrint(state);
+        const cardCost = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
+        const opt = calcOptions(state);
+        const coupon = state.coupon;
+
+        // 合計（納期加算を除く）
+        const baseTotal = Math.max(0, printPrice + extraPrint.extraSum + cardCost + opt.optionsTotal - coupon);
+
+        // テーブル構築
+        const head = document.getElementById('dueHead');
+        const amt = document.getElementById('dueAmount');
+        head.innerHTML = "";
+        amt.innerHTML = "";
+
+        const today = new Date();
+        const rawAdds = getDueAdds(today);
+        const labels = DUE_LABELS.slice();
+        if (state.finish === 'photo' && labels.length >= 6) {
+          labels[5] = { name: '7日後仕上げ', offset: 7 };
+        }
+        const dueAdds = rawAdds; // 計算は従来の配列（5日後相当）を使用
+        // 宛名印刷の有無を事前判定（明細票と同じ条件に合わせる）
+        let hasAddrPrinting = false;
+        try {
+          const addrMetaForTotal = getAddrLineMeta(state);
+          hasAddrPrinting = !!((addrMetaForTotal && (addrMetaForTotal.data?.qty || 0) > 0) || (addrMetaForTotal && (addrMetaForTotal.paper?.qty || 0) > 0));
+        } catch(_) { hasAddrPrinting = false; }
+        const dueBarcode = getDueBarcode(today);
+        labels.forEach((l, idx) => {
+          const d = addDays(today, l.offset);
+          const th = document.createElement('th');
+          th.className = (labels.length === 1)
+            ? "px-3 py-2 text-left align-bottom"
+            : "px-3 py-2 text-center align-bottom";
+          th.innerHTML = `<div class="text-[14px] font-medium text-slate-700">${l.name}</div>
+                          <div class="mt-0.5 text-sm font-medium text-slate-600">${fmtMD(d)}(${fmtWeekdayJa(d)})</div>`;
+          head.appendChild(th);
+
+          const td = document.createElement('td');
+          td.className = (labels.length === 1)
+            ? "px-2 py-2 align-middle text-left"
+            : "px-2 py-2 align-middle";
+
+          // ボタン本体（セル全面クリック可能＆視認性UP）
+          const btn = document.createElement('button');
+          btn.type = "button";
+          btn.setAttribute('data-due-index', String(idx));
+          btn.setAttribute('aria-pressed', 'false');
+          btn.className = [
+            "group w-full rounded-xl border border-slate-300 bg-white",
+            "px-4 py-3 text-center text-[16px] font-semibold text-slate-800",
+            "shadow-soft transition",
+            "hover:-translate-y-[1px] hover:shadow-md hover:bg-slate-50",
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
+            "active:translate-y-[1px]"
+          ].join(" ");
+
+          const dueAddSel = (dueAdds[idx] || 0);
+          // 明細票では、宛名印刷がある場合は納期加算を宛名分でも1回加える。
+          // ボタン側の合計もこれに合わせて、印刷分 + 宛名分の納期加算を反映する。
+          const addrDue = (hasAddrPrinting && dueAddSel > 0) ? dueAddSel : 0;
+          const totalWithDue = baseTotal + dueAddSel + addrDue;
+          btn.setAttribute("aria-label", `${l.name} の合計 ¥${yen(totalWithDue)} の明細を表示`);
+          btn.title = "クリックで料金明細を表示";
+          btn.innerHTML = `
+            <div>¥${yen(totalWithDue)}</div>
+            <div class="mt-0.5 text-[11px] font-normal text-slate-500">明細を見る</div>
+          `;
+
+          // 写真キレイ仕上げ時は、5日後(=7日後に表示)以外のボタンを非活性化し、表示は「ー」のみ
+          if (state.finish === 'photo' && idx !== (labels.length - 1)) {
+            try {
+              btn.disabled = true;
+              btn.setAttribute('aria-disabled', 'true');
+              btn.classList.add('opacity-50','cursor-not-allowed');
+              btn.innerHTML = `<div class="leading-none">ー</div>`;
+            } catch(_) {}
+          }
+
+          // クリック & キーボード操作
+            btn.addEventListener('click', () => {
+              const st = readState();
+              renderInvoice(idx, st, dueAdds, dueBarcode);
+            });
+            btn.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const st = readState();
+                renderInvoice(idx, st, dueAdds, dueBarcode);
+              }
+            });
+
+          td.appendChild(btn);
+          amt.appendChild(td);
+
+        });
+        activateLocalBarcodes();
+
+
+        // 内訳（軽く表示）
+        const breakdown = document.getElementById('breakdown');
+        breakdown.innerHTML = `
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
+            <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
+            <span class="pill">オプション: <b>¥${yen((opt.addr||0) + (opt.checks||0) + (opt.scans||0))}</b></span>
+            <span class="pill">その他オプション: <b>¥${yen(opt.checks + opt.scans)}</b></span>
+            <span class="pill">クーポン: <b>−¥${yen(coupon)}</b></span>
+            <span class="pill">小計(納期加算前): <b>¥${yen(baseTotal)}</b></span>
+          </div>
+        `;
+        // 旧「その他オプション」ピルが残っている場合は削除して「オプション」に統合表示
+        try{
+          document.querySelectorAll('#breakdown .pill').forEach(el=>{
+            const t = (el.textContent||'').trim();
+            if (t.indexOf('その他オプション') >= 0) { el.remove(); }
+          });
+        }catch(_){}
+
+        const invoiceEl = document.getElementById('invoice'); if (invoiceEl) invoiceEl.classList.add('hidden');
+        document.getElementById('result').classList.remove('hidden');
+      });
+
+      // --- 開発用ミニ自己テスト（コンソール出力）---
+      (function runSelfTests(){
+        try {
+          console.group("SelfTests");
+          console.assert(ceil10(12) === 20, 'ceil10(12) should be 20');
+          console.assert(ceil10(39) === 40, 'ceil10(39) should be 40');
+
+          // HIGH / print / 10枚 -> 5500
+          console.assert(calcPrintPrice('PHG','print',10,false,false) === 5500, 'HIGH/print/10 should be 5500');
+          // HIGH / print / 60枚 -> 5500 + 650*4 + 600*1 = 8700
+          console.assert(calcPrintPrice('PHG','print',60,false,false) === 8700, 'HIGH/print/60 should be 8700');
+          // HIGH / photo / 30枚 -> 5700 + 660*(3-1) = 7020
+          console.assert(calcPrintPrice('PHG','photo',30,false,false) === 7020, 'HIGH/photo/30 should be 7020');
+          console.log('All tests passed.');
+          console.groupEnd();
+        } catch(e){
+          console.error('SelfTests failed:', e);
+        }
+      })();
+
+      // 外部から状態を取得（デバッグ用途）
+      window.getFormState = () => ({
+        artwork: document.getElementById('artwork').value,
+        finish: document.getElementById('finish').value,
+        cardType: document.getElementById('cardType').value,
+        orderQty: document.getElementById('orderQty').value,
+        bringInQty: document.getElementById('bringInQty').value,
+        coupon: document.getElementById('coupon').value,
+        superEarly: document.getElementById('superEarly').checked,
+        early: document.getElementById('early').checked,
+        addrDataCount: document.getElementById('addrDataCount').value,
+        addrPaperCount: document.getElementById('addrPaperCount').value,
+        addrFixCount: document.getElementById('addrFixCount').value,
+        optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
+        
+        optProof: document.getElementById('optProof').checked,
+        optLogoCut: document.getElementById('optLogoCut').checked,
+        optScanCount: document.getElementById('optScanCount').value,
+      });
+    
+      
+      function extraUnitPrice(state){
+        if (state.superEarly) return (state.finish === 'photo') ? 528 : 440;
+        if (state.early)      return (state.finish === 'photo') ? 594 : 495;
+        return (state.finish === 'photo') ? 660 : 550;
+      }
+      // 200枚超過分の印刷単価計算（10枚単位）
+      function calcExtraPrint(state){
+        const unit = extraUnitPrice(state);
+        const qty10 = ceil10(state.orderQty);
+        const extraBlocks = Math.max(0, Math.ceil(Math.max(0, qty10 - 200) / 10));
+        return { extraQty: extraBlocks, unit, extraSum: extraBlocks * unit };
+      }
+// 接頭辞→グレード判定（★マップ）
+// ■ハイグレード★★★★: PHG, DN, ZN, RN, UN, SN, LN
+// ■プレミアム★★★    : PPR, DO, ZO, UO, BN
+// ■スタンダード★★    : PSD, BO
+// ■ライト★           : PLT（ライトはPLTのみ）
+// ■自分でデザイン     : MYデザイン → MY
+function gradeFromArtwork(name){
+  const n = String(name||'').trim();
+  if (!n) return undefined;
+  if (n === 'MYデザイン' || /^MY\b/i.test(n)) return 'MY';
+  const up = n.toUpperCase();
+  if (/^(PHG|DN|ZN|RN|UN|SN|LN|DWP|UWP)\b/.test(up)) return 'HIGH';
+  if (/^(PPR|DO|ZO|UO|BN|DW|UW|BMP|BWP)\b/.test(up)) return 'PREMIUM';
+  if (/^(PSD|BO|BM|BW)\b/.test(up)) return 'STANDARD';
+  if (/^PLT\b/.test(up)) return 'LIGHT';
+  return undefined;
+}
+function ean8CheckDigit(s7){
+  s7 = String(s7);
+  if (!/^\d{7}$/.test(s7)) return null;
+  let sum=0;
+  for(let i=0;i<7;i++){ const d = s7.charCodeAt(i)-48; sum += (i%2===0)? d*3 : d; }
+  return (10 - (sum % 10)) % 10;
+}
+function makeEAN8(s7){
+  const cd = ean8CheckDigit(String(s7));
+  return cd===null ? "" : String(s7) + String(cd);
+}
+function computePrintBarcodes(state){
+        const base7 = (state.finish === 'photo') ? '5937320' : '6817880';
+        let off = 0;
+        if (state.superEarly) off += 0;
+        else if (state.early) off += 210;
+        else off += 420;
+        const g = gradeFromArtwork(state.artwork);
+        if (g === 'LIGHT') off += 630;
+        else if (g === 'STANDARD') off += 630*2;
+        else if (g === 'PREMIUM') off += 630*3;
+        else if (g === 'HIGH') off += 630*4;
+        const net = Math.max(0, state.orderQty);
+        const block = Math.max(1, Math.ceil(net/10));
+        const qtyOffset = (block - 1) * 10;
+        const main7 = String(Number(base7) + off + Math.min(qtyOffset, 190)).padStart(7,'0');
+        const main  = makeEAN8(main7);
+        let extraCode = null, extraQty = 0;
+        if (net > 200){
+          const ex7 = String(Number(base7) + off + 200).padStart(7,'0');
+          extraCode = makeEAN8(ex7);
+          extraQty  = Math.ceil((net - 200) / 10);
+        }
+        return { main, extraCode, extraQty };
+      }
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+</body>
+</html>
