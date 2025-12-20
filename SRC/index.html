@@ -143,7 +143,7 @@
                 </label>
                 <label class="inline-flex items-center gap-2 select-none">
                   <input id="early" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                  <span class="text-[15px]">早割（×0.9）</span>
+                  <span class="text-[15px]">早割・ネット（×0.9）</span>
                 </label>
               </div>
             </div>
@@ -199,6 +199,10 @@
                   <input id="optLogoCut" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                   <span class="text-[15px]">ロゴ切り抜き</span>
                 </label>
+              <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                <input id="optAddOrderDiscount" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                <span class="text-[15px]">追加注文割引</span>
+              </label>
               <div class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
                 <label for="optScanCount" class="text-[15px]">スキャンサービス</label>
                 <input id="optScanCount" inputmode="numeric" placeholder="枚数" class="w-24 rounded-lg border border-slate-300 bg-white px-2 py-1 outline-none focus:border-slate-400" />
@@ -377,6 +381,7 @@ function getCardBarcode(type){
         proof: 1200,
         logoCut: 1200,
       };
+      const ADD_ORDER_DISCOUNT = 1000;
 
       // --- util ---
       const yen = (n) => (Math.round(n || 0)).toLocaleString('ja-JP');
@@ -480,8 +485,9 @@ function getCardBarcode(type){
            addrFixCount: toInt(document.getElementById('addrFixCount').value),
           optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
           optProof: document.getElementById('optProof').checked,
-          optLogoCut: document.getElementById('optLogoCut').checked,
-         optScanCount: toInt(document.getElementById('optScanCount').value),
+           optLogoCut: document.getElementById('optLogoCut').checked,
+           optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
+          optScanCount: toInt(document.getElementById('optScanCount').value),
        };
      }
 
@@ -532,7 +538,8 @@ function getCardBarcode(type){
           const checks =
             (state.optOmakaseOrder ? UNIT.omakase : 0) +
             (state.optProof ? UNIT.proof : 0) +
-            (state.optLogoCut ? UNIT.logoCut : 0);
+            (state.optLogoCut ? UNIT.logoCut : 0) +
+            (state.optAddOrderDiscount ? -ADD_ORDER_DISCOUNT : 0);
 
           const scans = state.optScanCount * UNIT.scan;
 
@@ -725,6 +732,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
         if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
 
+        if (state.optAddOrderDiscount) items.push({ cat: '追加注文', name: `追加注文値引き(-${ADD_ORDER_DISCOUNT})`, code: '-', unit: -ADD_ORDER_DISCOUNT, qty: 1, sum: -ADD_ORDER_DISCOUNT });
         if (state.coupon>0) {
           const couponName = state.couponLabel || 'DMクーポン';
           const couponCode = state.couponCode || 'BC-COUPON';
@@ -867,6 +875,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
           optProof: document.getElementById('optProof').checked,
           optLogoCut: document.getElementById('optLogoCut').checked,
+          optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
           optScanCount: toInt(document.getElementById('optScanCount').value),
         };
 
@@ -1045,6 +1054,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         
         optProof: document.getElementById('optProof').checked,
         optLogoCut: document.getElementById('optLogoCut').checked,
+        optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
         optScanCount: document.getElementById('optScanCount').value,
       });
     
