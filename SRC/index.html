@@ -201,7 +201,7 @@
                 </label>
               <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
                 <input id="optAddOrderDiscount" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                <span class="text-[15px]">追加注文割引</span>
+                <span class="text-[15px]">追加注文値引き</span>
               </label>
               <div class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
                 <label for="optScanCount" class="text-[15px]">スキャンサービス</label>
@@ -739,7 +739,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
         if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
 
-        if (state.optAddOrderDiscount) items.push({ cat: 'クーポン', name: `DMクーポン（追加注文割引）(-${ADD_ORDER_DISCOUNT})`, code: '-', unit: -ADD_ORDER_DISCOUNT, qty: 1, sum: -ADD_ORDER_DISCOUNT });
+        if (state.optAddOrderDiscount) items.push({ cat: '追加注文', name: `追加注文値引き(-${ADD_ORDER_DISCOUNT}円)`, code: '-', unit: -ADD_ORDER_DISCOUNT, qty: 1, sum: -ADD_ORDER_DISCOUNT });
         if (state.coupon>0) {
           const couponName = state.couponLabel || 'DMクーポン';
           const couponCode = state.couponCode || 'BC-COUPON';
@@ -799,31 +799,31 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         const couponDiscount = dmCouponAmount(state);
         const sumExcl = printPrice + extraPrint.extraSum + opt.optionsTotal - couponDiscount + dueAdd; // はがき代を除く
         
-// --- added totals ---
-const printTotal = printPrice + extraPrint.extraSum + dueAdd;
-const optionTotal = opt.optionsTotal;
-const couponTotal = -couponDiscount;
-const cardTotal  = items.filter(it => it.cat === 'はがき代').reduce((s,it)=>s+(it.sum||0),0);
-
-(function(){
-  const el = document.getElementById('sumPrintDue');
-  if (el) el.textContent = `¥${yen(printTotal)}`;
-})();
-(function(){
-  const el = document.getElementById('sumOptions');
-  if (el) el.textContent = `¥${yen(optionTotal)}`;
-})();
-(function(){
-  const el = document.getElementById('sumCoupon');
-  if (el) el.textContent = `¥${yen(couponTotal)}`;
-})();
-(function(){
-  const el = document.getElementById('sumCardCost');
-  if (el) el.textContent = `¥${yen(cardTotal)}`;
-})();
-
-// original:
-document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it => it.cat !== 'はがき代').reduce((s,it)=>s+(it.sum||0),0))}`;
+        // --- added totals ---
+        const printTotal = printPrice + extraPrint.extraSum + dueAdd;
+        const optionTotal = opt.optionsTotal;
+        const couponTotal = -couponDiscount;
+        const cardTotal  = items.filter(it => it.cat === 'はがき代').reduce((s,it)=>s+(it.sum||0),0);
+        
+        (function(){
+          const el = document.getElementById('sumPrintDue');
+          if (el) el.textContent = `¥${yen(printTotal)}`;
+        })();
+        (function(){
+          const el = document.getElementById('sumOptions');
+          if (el) el.textContent = `¥${yen(optionTotal)}`;
+        })();
+        (function(){
+          const el = document.getElementById('sumCoupon');
+          if (el) el.textContent = `¥${yen(couponTotal)}`;
+        })();
+        (function(){
+          const el = document.getElementById('sumCardCost');
+          if (el) el.textContent = `¥${yen(cardTotal)}`;
+        })();
+        
+        // original:
+        document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it => it.cat !== 'はがき代').reduce((s,it)=>s+(it.sum||0),0))}`;
         // 合計金額（はがき代を含む）
         try{
           const sumIncl = items.reduce((s,it)=>s+(it.sum||0),0);
