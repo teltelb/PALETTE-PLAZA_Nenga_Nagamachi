@@ -343,12 +343,11 @@ function getCardBarcode(type){
       const DUE_ADD = [1480, 1180, 880, 580, 300, 0]; // 当日〜5日後
       const DUE_ADD_DEC = [1480, 1180, 880, 580, 300, 0];
       const DUE_ADD_NOV = [ 980,  780, 580, 380, 200, 0];
+      // 2025/12/01 以降は「11月末まで」扱いにしない（2026年1月に早割扱いへ戻るのを防ぐ）
+      const NOV_RATE_CUTOFF = new Date(2025, 11, 1); // 2025-12-01 (month is 0-based)
       function isBeforeNovEnd(date){
         const d = date || new Date();
-        const month = d.getMonth(); // 0-based
-        if (month < 10) return true;
-        if (month > 10) return false;
-        return d.getDate() <= 30;
+        return d < NOV_RATE_CUTOFF;
       }
       function getDueAdds(now){ return isBeforeNovEnd(now) ? DUE_ADD_NOV : DUE_ADD_DEC; }
       function getDueBarcode(now){
@@ -1032,6 +1031,9 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           console.group("SelfTests");
           console.assert(ceil10(12) === 20, 'ceil10(12) should be 20');
           console.assert(ceil10(39) === 40, 'ceil10(39) should be 40');
+          console.assert(isBeforeNovEnd(new Date(2025, 10, 30)) === true,  'isBeforeNovEnd(2025-11-30) should be true');
+          console.assert(isBeforeNovEnd(new Date(2025, 11, 1))  === false, 'isBeforeNovEnd(2025-12-01) should be false');
+          console.assert(isBeforeNovEnd(new Date(2026, 0, 1))   === false, 'isBeforeNovEnd(2026-01-01) should be false');
 
           // HIGH / print / 10枚 -> 5500
           console.assert(calcPrintPrice('PHG','print',10,false,false) === 5500, 'HIGH/print/10 should be 5500');
