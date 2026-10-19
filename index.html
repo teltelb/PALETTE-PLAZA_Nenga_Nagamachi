@@ -3,46 +3,145 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>パレットプラザ　年賀状 見積</title>
-    <!-- TailwindCSS CDN: ビルド不要でGitHub Pages向け -->
-    <script id="TAILWIND_CDN_WARNING_FILTER">(function(){try{var o=console.warn;console.warn=function(){if(arguments&&arguments[0]&&typeof arguments[0]==='string'&&arguments[0].indexOf('cdn.tailwindcss.com should not be used in production')>-1){return;}return o.apply(console,arguments);};}catch(_){}})();</script>
-<script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            boxShadow: {
-              soft: "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)",
-            },
-            borderRadius: {
-              '2xl': '1rem'
-            }
-          },
-        },
-      };
-    </script>
-    <style>
-      .thin-scroll::-webkit-scrollbar { height: 8px; }
-      .thin-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-      .thin-scroll::-webkit-scrollbar-track { background: transparent; }
-      .pill { display:inline-flex; align-items:center; gap:.5rem; border-radius:9999px; background:#f1f5f9; padding:.25rem .75rem; font-size:12px; color:#475569; }
-      /* Hide 'コメントのみおまかせ' option */
-      label:has(#optCommentOnly) { display: none !important; }
-      /* Active state for 合計ボタン: 明細表示中のものを強調 */
-      #dueAmount button.due-active { background-color:#2563eb !important; border-color:#2563eb !important; color:#ffffff !important; }
-      #dueAmount button.due-active * { color:#ffffff !important; }
+    <title>パレットプラザ｜2027年 年賀状 見積</title>
+    <style id="layout-utilities">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-y-0{top:0;bottom:0}.right-3{right:.75rem}.col-span-12{grid-column:span 12/span 12}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:.25rem}.mt-0\.5{margin-top:.125rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-4{height:1rem}.h-\[22px\]{height:22px}.min-h-screen{min-height:100vh}.w-24{width:6rem}.w-4{width:1rem}.w-full{width:100%}.min-w-full{min-width:100%}.max-w-\[1024px\]{max-width:1024px}.border-collapse{border-collapse:collapse}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.overflow-x-auto{overflow-x:auto}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/60{background-color:hsla(0,0%,100%,.6)}.bg-white\/70{background-color:hsla(0,0%,100%,.7)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-slate-50{--tw-gradient-from:#f8fafc var(--tw-gradient-from-position);--tw-gradient-to:rgba(248,250,252,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-slate-100{--tw-gradient-to:#f1f5f9 var(--tw-gradient-to-position)}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pr-10{padding-right:2.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.align-middle{vertical-align:middle}.align-bottom{vertical-align:bottom}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-\[11px\]{font-size:11px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[15px\]{font-size:15px}.text-\[16px\]{font-size:16px}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.leading-none{line-height:1}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-soft{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-soft{--tw-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.06);--tw-shadow-colored:0 1px 2px var(--tw-shadow-color),0 8px 24px var(--tw-shadow-color)}.outline-none{outline:2px solid transparent;outline-offset:2px}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\:-translate-y-\[1px\]:hover{--tw-translate-y:-1px;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:border-slate-400:focus{--tw-border-opacity:1;border-color:rgb(148 163 184/var(--tw-border-opacity,1))}.focus\:shadow-sm:focus{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus-visible\:ring-slate-400:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(148 163 184/var(--tw-ring-opacity,1))}.active\:translate-y-\[1px\]:active{--tw-translate-y:1px;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width:640px){.sm\:col-span-6{grid-column:span 6/span 6}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:col-span-3{grid-column:span 3/span 3}.md\:col-span-4{grid-column:span 4/span 4}.md\:col-span-5{grid-column:span 5/span 5}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}</style>
+    <style id="app-design">
+      :root { color-scheme: light; --ink:#24334a; --muted:#738097; --line:#dfe5ed; --blue:#3261d9; --blue-dark:#234bb6; --blue-soft:#eef3ff; }
+      html { background:#f3f5f8; }
+      body { background:#f3f5f8; color:var(--ink); font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif; -webkit-font-smoothing:antialiased; }
+      button, input, select { font:inherit; }
+      .app-shell { max-width:1064px; padding:32px 24px 52px; }
+      .app-header { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:22px; }
+      .app-brand { display:flex; align-items:center; gap:14px; }
+      .app-mark { width:44px; height:44px; display:grid; place-items:center; flex-shrink:0; background:var(--blue); border-radius:13px; color:#fff; }
+      .app-eyebrow { margin:0 0 4px; color:var(--muted); font-size:10px; letter-spacing:.16em; font-weight:700; }
+      .app-header h1 { margin:0; font-size:24px; font-weight:700; letter-spacing:.035em; line-height:1.4; }
+      .app-edition { display:flex; align-items:center; gap:8px; color:#4e648f; font-size:12px; white-space:nowrap; }
+      .app-edition strong { display:inline-flex; align-items:center; border:1px solid #cfdaef; background:#eaf0fd; border-radius:8px; padding:5px 11px; font-size:14px; letter-spacing:.05em; }
+      .estimate-panel { background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:0 4px 22px rgba(27,49,83,.035); backdrop-filter:none; }
+      .panel-content { padding:26px; }
+      .section-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 18px; }
+      .section-heading h2, .section-heading h3 { display:flex; align-items:center; gap:9px; margin:0; font-size:15px; font-weight:700; letter-spacing:.025em; }
+      .section-heading h2::before, .section-heading h3::before { content:""; width:3px; height:15px; background:var(--blue); border-radius:3px; }
+      .section-heading > span { color:var(--muted); font-size:11px; white-space:nowrap; }
+      .form-row { column-gap:18px; row-gap:18px; }
+      .form-row > div { min-width:0; }
+      .form-row > div > label { margin-bottom:7px; font-size:12px; font-weight:600; color:#596780; line-height:1.6; }
+      .estimate-panel input[inputmode="numeric"], .estimate-panel select { height:46px; border:1px solid #d9e0e9; border-radius:9px; background-color:#fff; color:var(--ink); font-size:14px; box-shadow:0 1px 2px rgba(31,51,80,.02); transition:border-color .15s,box-shadow .15s; }
+      .estimate-panel input[inputmode="numeric"] { padding:10px 34px 10px 13px; font-variant-numeric:tabular-nums; }
+      .estimate-panel input::placeholder { color:#a0a9b9; font-size:13px; }
+      .estimate-panel select { appearance:none; padding:10px 34px 10px 13px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23758094' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; cursor:pointer; }
+      .estimate-panel select:has(option[value=""]:checked) { color:#929eb0; }
+      .estimate-panel select option { color:var(--ink); }
+      .estimate-panel select option:disabled { color:#8d99aa; }
+      .estimate-panel input[inputmode="numeric"]:focus, .estimate-panel select:focus { outline:none; border-color:#6a8de6; box-shadow:0 0 0 3px #3261d914; }
+      .form-row .relative > span { color:#93a0b2; font-size:12px; right:13px; }
+      .estimate-panel input[type="checkbox"] { width:17px; height:17px; min-width:17px; accent-color:var(--blue); cursor:pointer; }
+      .estimate-panel input[type="checkbox"]:focus-visible { outline:2px solid #7397f0; outline-offset:3px; }
+      .discount-list { padding:0; gap:7px; border:0; border-radius:0; background:transparent; }
+      .discount-list > label { display:flex; width:100%; align-items:center; gap:8px; padding:9px 10px; border:1px solid #e1e6ee; border-radius:9px; background:#fafbfd; cursor:pointer; transition:background .15s,border-color .15s; }
+      .discount-list > label:has(input:checked) { border-color:#b9ccfa; background:var(--blue-soft); }
+      .discount-list > label > span { display:block; min-width:0; width:100%; }
+      .discount-title { display:flex; justify-content:space-between; align-items:center; gap:4px; font-size:12px; font-weight:700; line-height:1.25; }
+      .discount-title b { font-size:10px; font-weight:700; color:#6b7b92; white-space:nowrap; }
+      .discount-list > label:has(input:checked) .discount-title, .discount-list > label:has(input:checked) .discount-title b { color:var(--blue-dark); }
+      .discount-date { display:block; font-size:10px; color:#738097; margin-top:4px; line-height:1.3; white-space:nowrap; }
+      .address-row { margin-top:20px; padding-top:20px; border-top:1px solid #edf0f5; }
+      .options-panel { padding:20px; margin-top:24px; border:1px solid #e7ebf2; border-radius:12px; background:#f9fafc; }
+      .options-panel .section-heading { margin-bottom:14px; }
+      .option-grid { gap:10px; }
+      .option-grid > label, .option-grid > div { min-height:52px; padding:11px 12px; gap:9px; background:#fff; border:1px solid #dfe5ee; border-radius:9px; color:#526078; }
+      .option-grid > label:hover { background:#f5f8ff; border-color:#c0cfef; }
+      .option-grid > label:has(input:checked) { background:var(--blue-soft); border-color:#b9ccfa; color:var(--blue-dark); }
+      .option-grid > label > span, .option-grid > div > label { font-size:13px; line-height:1.65; font-weight:500; }
+      .option-grid > div { justify-content:space-between; }
+      .estimate-panel #optScanCount { width:56px; height:32px; flex-shrink:0; padding:4px 7px; font-size:13px; border-radius:6px; }
+      .estimate-panel #optScanCount::placeholder { font-size:11px; }
+      label:has(#optCommentOnly) { display:none !important; }
+      .calculate-action { margin-top:18px; }
+      #btnCalc { min-width:190px; min-height:46px; justify-content:space-between; gap:24px; padding:11px 18px; border:1px solid var(--blue); border-radius:9px; background:var(--blue); color:#fff; font-size:14px; font-weight:600; box-shadow:0 3px 7px #3261d920; }
+      #btnCalc:hover { background:var(--blue-dark); border-color:var(--blue-dark); box-shadow:0 4px 12px #3261d929; }
+      #btnCalc:focus-visible { outline:3px solid #b5cafa; outline-offset:3px; }
+      #btnCalc:active { transform:translateY(1px); }
+      #error { margin-top:16px; padding:11px 14px; font-size:13px; border-radius:8px; }
+      .results-panel { padding:24px 0 0; margin-top:26px; border:0; border-top:1px solid var(--line); border-radius:0; background:transparent; }
+      .results-heading { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+      .results-heading h2 { margin:0; font-size:16px; font-weight:700; letter-spacing:.03em; }
+      .results-heading p { margin:0; font-size:11px; color:var(--muted); }
+      .due-table-wrap { margin:0 -5px; padding-bottom:3px; }
+      .due-table-wrap > table { width:100%; min-width:760px; table-layout:fixed; }
+      #dueHead { border:0; }
+      #dueHead th { padding:8px 5px 9px; }
+      #dueHead th > div:first-child { font-size:12px; font-weight:600; color:#53617a; }
+      #dueHead th > div:nth-child(2) { margin-top:5px; color:#8b96a9; font-size:11px; font-weight:400; }
+      #dueAmount td { padding:0 5px 5px; }
+      #dueAmount button { padding:14px 5px 12px; min-height:76px; border:1px solid #dbe3f0; border-radius:10px; background:#fff; box-shadow:0 2px 4px rgba(38,58,89,.025); transition:background .15s,border-color .15s,box-shadow .15s; }
+      #dueAmount button > div:first-child { font-size:21px; font-weight:700; color:#284b89; letter-spacing:-.035em; font-variant-numeric:tabular-nums; white-space:nowrap; }
+      #dueAmount button > div:nth-child(2) { margin-top:5px; color:#8a97ae; font-size:10px; }
+      #dueAmount button:hover:not(:disabled) { background:#f5f8ff; border-color:#a6bdeb; transform:none; box-shadow:0 3px 8px #3261d912; }
+      #dueAmount button.due-active { background:var(--blue) !important; border-color:var(--blue) !important; box-shadow:0 3px 10px #3261d930; }
+      #dueAmount button.due-active * { color:#fff !important; }
+      #dueAmount button:disabled { opacity:1; background:#f4f6f9; border-color:#e7ebf1; box-shadow:none; transform:none; }
+      #dueAmount button:disabled > div { color:#b1bac8; }
+      #breakdown { margin-top:14px; color:#8591a3; }
+      #breakdown > div { gap:6px; }
+      .pill { display:inline-flex; align-items:center; gap:5px; padding:5px 9px; border-radius:5px; background:#f3f5f8; color:#8390a5; font-size:10px; line-height:1.5; }
+      .pill b { color:#566780; font-weight:600; font-size:11px; font-variant-numeric:tabular-nums; }
+      #breakdown p { margin-top:9px; font-size:10px; line-height:1.8; }
+      .invoice-panel { margin-top:25px; padding:20px; border:1px solid #dfe5ee; border-radius:12px; background:#fff; scroll-margin-top:20px; }
+      .invoice-panel .section-heading { margin-bottom:16px; }
+      .invoice-table { width:100%; min-width:700px; }
+      .invoice-table thead tr { background:#f5f7fa; border:0; }
+      .invoice-table th { padding:10px 12px; font-size:11px; font-weight:600; color:#738199; white-space:nowrap; }
+      .invoice-table th:first-child { border-radius:6px 0 0 6px; }
+      .invoice-table th:last-child { border-radius:0 6px 6px 0; }
+      #invBody tr { border-color:#edf0f5; }
+      #invBody td { padding:14px 12px; color:#526078; font-size:13px; vertical-align:middle; line-height:1.8; }
+      #invBody td:first-child { color:#8a97ab; font-size:11px; white-space:nowrap; }
+      #invBody td:nth-child(2) { min-width:135px; }
+      #invBody td:nth-child(3) { width:208px; }
+      #invBody td:nth-child(n+4) { white-space:nowrap; font-variant-numeric:tabular-nums; }
+      #invBody td:last-child { color:#34445e; font-weight:600; }
+      #invBody svg { flex-shrink:0; }
+      #invBody .font-mono { color:#68778f; letter-spacing:.035em; }
+      .invoice-summary { border:1px solid #e2e8f2; border-radius:10px; background:#f8faff; padding:10px; }
+      .invoice-summary table { width:100%; }
+      .invoice-summary td { padding:8px 10px; font-size:12px; color:#78869d; }
+      .invoice-summary td:last-child { color:#425572; font-variant-numeric:tabular-nums; }
+      .invoice-summary tr { border-color:#e2e8f2; }
+      .invoice-summary tr:has(#sumExclCard) td { font-size:12px !important; font-weight:600 !important; }
+      #sumExclCard { font-size:16px !important; font-weight:600 !important; }
+      .invoice-summary tr:has(#sumInclCard) td { padding-top:12px; padding-bottom:11px; color:var(--blue-dark); font-size:12px !important; font-weight:700 !important; }
+      #sumInclCard { color:var(--blue-dark); font-size:24px !important; font-weight:700 !important; letter-spacing:-.02em; }
+      .thin-scroll::-webkit-scrollbar, .overflow-x-auto::-webkit-scrollbar { height:6px; }
+      .thin-scroll::-webkit-scrollbar-thumb, .overflow-x-auto::-webkit-scrollbar-thumb { background:#d6deeb; border-radius:99px; }
+      .thin-scroll::-webkit-scrollbar-track, .overflow-x-auto::-webkit-scrollbar-track { background:transparent; }
+      @media (max-width:1023px) { .option-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+      @media (max-width:767px) { .app-shell { padding:22px 16px 36px; } .panel-content { padding:20px; } .form-row { gap:16px; } .discount-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; } .discount-date { font-size:10px; } .options-panel { padding:16px; } .app-header h1 { font-size:22px; } .invoice-panel { padding:16px; } }
+      @media (max-width:479px) { .app-shell { padding:18px 12px 28px; } .app-header { margin-bottom:17px; gap:8px; } .app-brand { gap:10px; } .app-mark { width:36px; height:36px; border-radius:11px; } .app-mark svg { width:20px; height:20px; } .app-header h1 { font-size:18px; } .app-eyebrow { font-size:8px; } .app-edition > span { display:none; } .app-edition strong { padding:4px 7px; font-size:12px; } .estimate-panel { border-radius:13px; } .panel-content { padding:17px 15px; } .section-heading > span { font-size:10px; } .option-grid { grid-template-columns:1fr; } .calculate-action { display:block; } #btnCalc { width:100%; } .results-heading p { font-size:10px; } .invoice-panel { padding:14px 12px; } }
+      @media (max-width:767px) { .due-table-wrap::after, .invoice-panel > .overflow-x-auto::after { content:"左右にスクロールして確認できます"; display:block; position:sticky; left:0; width:max-content; padding:9px 5px 2px; font-size:10px; color:#738097; } }
+      @media (max-width:359px) { .discount-list { grid-template-columns:1fr; } }
+      @media (prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition:none !important; } }
     </style>
   </head>
   <body class="min-h-screen w-full bg-gradient-to-br from-slate-50 to-slate-100 text-slate-800">
-    <main class="mx-auto max-w-[1024px] px-5 py-8">
-      <section class="rounded-2xl border border-slate-200 bg-white/70 shadow-soft backdrop-blur">
+    <main class="app-shell mx-auto max-w-[1024px] px-5 py-8">
+      <header class="app-header">
+        <div class="app-brand">
+          <div class="app-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div>
+          <div><p class="app-eyebrow">PALETTE PLAZA</p><h1>年賀状 お見積り</h1></div>
+        </div>
+        <div class="app-edition"><span>年賀状料金計算</span><strong>2027</strong></div>
+      </header>
+      <section class="estimate-panel rounded-2xl border border-slate-200 bg-white/70 shadow-soft backdrop-blur">
 
-        <div class="p-5">
+        <div class="panel-content p-5">
+          <div class="section-heading"><h2>ご注文内容</h2><span>金額は税込表示です</span></div>
           <!-- 1行目 -->
-          <div class="grid grid-cols-12 gap-4">
+          <div class="form-row grid grid-cols-12 gap-4">
             <!-- 絵柄（コード） -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">絵柄</label>
+              <label for="artwork" class="mb-1 block text-[13px] font-medium text-slate-600">絵柄</label>
               <select id="artwork" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
                 <option value="">選択してください</option>
                 <option disabled>---イラスト年賀状---</option>
@@ -77,7 +176,7 @@
 
             <!-- 仕上がり -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">仕上がり</label>
+              <label for="finish" class="mb-1 block text-[13px] font-medium text-slate-600">仕上がり</label>
               <select id="finish" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
                 <option value="">選択してください</option>
                 <option value="print">印刷仕上げ</option>
@@ -87,7 +186,7 @@
 
             <!-- はがき種 -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">はがき種</label>
+              <label for="cardType" class="mb-1 block text-[13px] font-medium text-slate-600">はがき種</label>
               <select id="cardType" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
                 <option value="">選択してください</option>
                 <option>お年玉付き年賀はがき</option>
@@ -100,10 +199,10 @@
           </div>
 
           <!-- 2行目 -->
-            <div class="mt-4 grid grid-cols-12 gap-4">
+            <div class="mt-4 form-row grid grid-cols-12 gap-4">
               <!-- 注文枚数 -->
             <div class="col-span-12 sm:col-span-6 md:col-span-2">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">注文枚数</label>
+              <label for="orderQty" class="mb-1 block text-[13px] font-medium text-slate-600">注文枚数</label>
               <div class="relative">
                 <input id="orderQty" inputmode="numeric" placeholder="例: 30" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
@@ -112,7 +211,7 @@
 
             <!-- 持込はがき -->
             <div class="col-span-12 sm:col-span-6 md:col-span-2">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">持込はがき</label>
+              <label for="bringInQty" class="mb-1 block text-[13px] font-medium text-slate-600">持込はがき</label>
               <div class="relative">
                 <input id="bringInQty" inputmode="numeric" placeholder="例: 10" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
@@ -121,39 +220,40 @@
 
             <!-- クーポン -->
             <div class="col-span-12 sm:col-span-6 md:col-span-5">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">クーポン</label>
+              <label for="coupon" class="mb-1 block text-[13px] font-medium text-slate-600">クーポン</label>
               <select id="coupon" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:border-slate-400 focus:shadow-sm">
                 <option value="">選択してください</option>
-                <option value="300" data-barcode="07012105">DMクーポン300(昨年)</option>
-                <option value="300" data-barcode="07016806">DMクーポン300(一昨年)</option>
-                <option value="300" data-barcode="07012204">DMクーポン300(閉店)</option>
+                <!-- 500円、300円の順に配置 -->
                 <option value="500" data-barcode="07012105">DMクーポン500(昨年)</option>
                 <option value="500" data-barcode="07016806">DMクーポン500(一昨年)</option>
                 <option value="500" data-barcode="07012204">DMクーポン500(閉店)</option>
+                <option value="300" data-barcode="07012105">DMクーポン300(昨年)</option>
+                <option value="300" data-barcode="07016806">DMクーポン300(一昨年)</option>
+                <option value="300" data-barcode="07012204">DMクーポン300(閉店)</option>
               </select>
             </div>
 
             <!-- 割引（クーポンの右） -->
             <div class="col-span-12 sm:col-span-6 md:col-span-3">
               <label class="mb-1 block text-[13px] font-medium text-slate-600">割引</label>
-              <div class="flex flex-wrap items-center gap-6 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <div class="discount-list flex flex-wrap items-center gap-6 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
                 <label class="inline-flex items-center gap-2 select-none">
                   <input id="superEarly" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                  <span class="text-[15px]">超早割（×0.8）</span>
+                  <span><span class="discount-title">超早割<b>20%OFF</b></span><span class="discount-date">2026/11/10注文分まで</span></span>
                 </label>
                 <label class="inline-flex items-center gap-2 select-none">
                   <input id="early" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                  <span class="text-[15px]">早割・ネット（×0.9）</span>
+                  <span><span class="discount-title">早割<b>10%OFF</b></span><span class="discount-date">2026/12/8注文分まで</span></span>
                 </label>
               </div>
             </div>
           </div>
 
           <!-- 宛名行（注文枚数の行の下） -->
-          <div class="mt-3 grid grid-cols-12 gap-4">
+          <div class="address-row mt-3 form-row grid grid-cols-12 gap-4">
             <!-- 宛名印刷（データ） -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（データ）</label>
+              <label for="addrDataCount" class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（データ）</label>
               <div class="relative">
                 <input id="addrDataCount" inputmode="numeric" placeholder="例: 20" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
@@ -162,7 +262,7 @@
 
             <!-- 宛名印刷（紙媒体） -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（紙媒体）</label>
+              <label for="addrPaperCount" class="mb-1 block text-[13px] font-medium text-slate-600">宛名印刷（紙媒体）</label>
               <div class="relative">
                 <input id="addrPaperCount" inputmode="numeric" placeholder="例: 15" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
@@ -171,7 +271,7 @@
 
             <!-- 宛名修正 -->
             <div class="col-span-12 sm:col-span-6 md:col-span-4">
-              <label class="mb-1 block text-[13px] font-medium text-slate-600">宛名修正・削除</label>
+              <label for="addrFixCount" class="mb-1 block text-[13px] font-medium text-slate-600">宛名修正・削除</label>
               <div class="relative">
                 <input id="addrFixCount" inputmode="numeric" placeholder="例: 5" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 pr-10 outline-none focus:border-slate-400 focus:shadow-sm" />
                 <span class="pointer-events-none absolute inset-y-0 right-3 my-auto inline-flex h-[22px] items-center text-sm text-slate-500">枚</span>
@@ -180,9 +280,9 @@
           </div>
 
           <!-- 3行目：オプション枠（横一列 → 折返しグリッド） -->
-          <div class="mt-6 rounded-2xl border border-slate-200 bg-white/60 p-4">
-            <div class="mb-2 text-[15px] font-semibold tracking-wide text-slate-700">オプション</div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div class="options-panel mt-6 rounded-2xl border border-slate-200 bg-white/60 p-4">
+            <div class="section-heading"><h2>オプション</h2></div>
+            <div class="option-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
                   <input id="optOmakaseOrder" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                   <span class="text-[15px]">おまかせ注文サービス</span>
@@ -199,10 +299,6 @@
                   <input id="optLogoCut" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                   <span class="text-[15px]">ロゴ切り抜き</span>
                 </label>
-              <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
-                <input id="optAddOrderDiscount" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                <span class="text-[15px]">追加注文値引き</span>
-              </label>
               <div class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
                 <label for="optScanCount" class="text-[15px]">スキャンサービス</label>
                 <input id="optScanCount" inputmode="numeric" placeholder="枚数" class="w-24 rounded-lg border border-slate-300 bg-white px-2 py-1 outline-none focus:border-slate-400" />
@@ -210,9 +306,9 @@
             </div>
 
             <!-- 計算ボタン -->
-            <div class="mt-4 flex justify-end">
+            <div class="calculate-action mt-4 flex justify-end">
               <button id="btnCalc" type="button" class="inline-flex items-center justify-center rounded-xl bg-slate-800 px-4 py-2 text-white shadow-sm transition hover:bg-slate-700">
-                計算する
+                料金を計算する <span aria-hidden="true">→</span>
               </button>
             </div>
 
@@ -221,9 +317,9 @@
           </div>
 
           <!-- 合計グリッド（2行6列） -->
-          <div id="result" class="mt-6 hidden rounded-2xl border border-slate-200 bg-white/70 p-4">
-            <div class="mb-2 text-[15px] font-semibold tracking-wide text-slate-700">合計</div>
-            <div class="overflow-x-auto">
+          <div id="result" class="results-panel mt-6 hidden rounded-2xl border border-slate-200 bg-white/70 p-4">
+            <div class="results-heading"><h2>納期別の合計</h2><p>納期を選ぶと料金明細を表示します</p></div>
+            <div class="due-table-wrap overflow-x-auto">
               <table class="min-w-full border-collapse text-[15px]">
                 <thead>
                   <tr id="dueHead" class="border-b border-slate-200"></tr>
@@ -236,10 +332,10 @@
             <div id="breakdown" class="mt-3 text-xs text-slate-600"></div>
 
             <!-- 料金明細（クリックで表示） -->
-            <div id="invoice" class="mt-6 hidden rounded-xl border border-slate-200 bg-white p-4">
-              <div class="mb-3 text-left text-[15px] font-semibold tracking-wide text-slate-700">料金明細表</div>
+            <div id="invoice" class="invoice-panel mt-6 hidden rounded-xl border border-slate-200 bg-white p-4">
+              <div class="section-heading"><h3>料金明細表</h3><span>税込</span></div>
               <div class="overflow-x-auto">
-                <table class="min-w-full border-collapse text-[14px]">
+                <table class="invoice-table min-w-full border-collapse text-[14px]">
                   <thead>
                     <tr class="border-b border-slate-200 bg-slate-50 text-slate-700">
                       <th class="px-3 py-2 text-left">項目</th>
@@ -256,7 +352,7 @@
               <!-- サマリー（表の下） -->
               <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div></div>
-                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <div class="invoice-summary rounded-lg border border-slate-200 bg-slate-50 p-3">
                   <div class="overflow-x-auto">
                     <table class="min-w-full border-collapse text-[14px]">
                       <tbody>
@@ -326,36 +422,64 @@ function getCardBarcode(type){
         return map;
       })();
 
-      // --- 印刷代 基本10枚価格 ---
+      // --- 2027年賀状 印刷代 基本10枚価格（税込定価） ---
+      // 出典: https://nenga.paletteplaza.jp/newyear/price.php （2026-10-10確認）
       const BASE10_PRICE = {
-        HIGH:     { print: 5500, photo: 5700 },
-        PREMIUM:  { print: 5000, photo: 5200 },
-        STANDARD: { print: 4500, photo: 4700 },
-        LIGHT:    { print: 3500, photo: 3700 },
-        MY:       { print: 2500, photo: 2700 },
+        HIGH:     { print: 6200, photo: 6400 },
+        PREMIUM:  { print: 5700, photo: 5900 },
+        STANDARD: { print: 5200, photo: 5400 },
+        LIGHT:    { print: 4200, photo: 4400 },
+        MY:       { print: 3700, photo: 3900 },
       };
 
       // --- 仕上がり別の加算 ---
-      const STEP_PRINT = { first50: 650, next50: 600, over100: 550 }; // 印刷仕上げ
-      const STEP_PHOTO = 660; // 写真キレイ仕上げ（10枚ごと一定）
+      const STEP_PRINT = { first30: 700, next70: 650, over100: 600 }; // 印刷仕上げ
+      const STEP_PHOTO = 700; // 写真キレイ仕上げ（10枚ごと一定）
 
-      // --- 納期加算 ---
-      const DUE_ADD = [1480, 1180, 880, 580, 300, 0]; // 当日〜5日後
-      const DUE_ADD_DEC = [1480, 1180, 880, 580, 300, 0];
-      const DUE_ADD_NOV = [ 980,  780, 580, 380, 200, 0];
-      // 2025/12/01 以降は「11月末まで」扱いにしない（2026年1月に早割扱いへ戻るのを防ぐ）
-      const NOV_RATE_CUTOFF = new Date(2025, 11, 1); // 2025-12-01 (month is 0-based)
-      function isBeforeNovEnd(date){
-        const d = date || new Date();
-        return d < NOV_RATE_CUTOFF;
+      // --- 2027年賀状の受付期間（注文日・日本時間、期限当日を含む） ---
+      const SUPER_EARLY_END = '2026-11-10';
+      const EARLY_END = '2026-12-08';
+      const ORDER_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
+      });
+      function getOrderDateParts(date = new Date()) {
+        const parts = {};
+        ORDER_DATE_FORMAT.formatToParts(date).forEach(part => { parts[part.type] = part.value; });
+        return parts;
       }
-      function getDueAdds(now){ return isBeforeNovEnd(now) ? DUE_ADD_NOV : DUE_ADD_DEC; }
-      function getDueBarcode(now){
-        return isBeforeNovEnd(now) ? '68217006' : '68210908';
+      function getOrderDateKey(date = new Date()) {
+        const p = getOrderDateParts(date);
+        return `${p.year}-${p.month}-${p.day}`;
       }
-      // 宛名用 納期バーコード: 11月末まで 68217105、それ以降 68211103
-      function getAddrDueBarcode(now){
-        return isBeforeNovEnd(now) ? '68217105' : '68211103';
+      function getCampaign(date = new Date()) {
+        const key = getOrderDateKey(date);
+        if (key <= SUPER_EARLY_END) return 'superEarly';
+        if (key <= EARLY_END) return 'early';
+        return 'regular';
+      }
+      function initializeDiscountControls(date = new Date()) {
+        const campaign = getCampaign(date);
+        const superEl = document.getElementById('superEarly');
+        const earlyEl = document.getElementById('early');
+        superEl.checked = campaign === 'superEarly';
+        earlyEl.checked = campaign === 'early';
+        // 日付は初期選択だけに使用し、期間外も自由に見積もれるようにする。
+        superEl.disabled = false;
+        earlyEl.disabled = false;
+      }
+
+      // --- 納期加算（当日〜5日後） ---
+      const DUE_ADD_REGULAR = [1480, 1180, 880, 580, 300, 0];
+      const DUE_ADD_EARLY =   [ 980,  780, 580, 380, 200, 0];
+      // 納期加算とバーコードは、日付ではなく見積もり時のチェック状態で決める。
+      function usesEarlyDueRates(state) { return !!(state && (state.superEarly || state.early)); }
+      function getDueAdds(state){ return usesEarlyDueRates(state) ? DUE_ADD_EARLY : DUE_ADD_REGULAR; }
+      function getDueBarcode(state){
+        return usesEarlyDueRates(state) ? '68217006' : '68210908';
+      }
+      // 宛名用も印刷用と同じチェック条件で切り替える。
+      function getAddrDueBarcode(state){
+        return usesEarlyDueRates(state) ? '68217105' : '68211103';
       }
       const DUE_LABELS = [
         { name: "当日仕上げ", offset: 0 },
@@ -366,21 +490,25 @@ function getCardBarcode(type){
         { name: "5日後仕上げ", offset: 5 },
       ];
 
+      // 表示する納期と料金判定に同じ日数を使う（写真仕上げは7日後）。
+      function getDueLabel(finish, selectedIdx) {
+        const due = DUE_LABELS[selectedIdx];
+        if (!due) return null;
+        return (finish === 'photo' && selectedIdx === 5)
+          ? { name: '7日後仕上げ', offset: 7 }
+          : due;
+      }
+
       // --- 宛名/オプション 単価 ---
       const UNIT = {
-        // 宛名印刷（データ）: （データ+紙媒体）の合計枚数 × 80円
-        addrPrint: 80,
-        // 紙媒体データ化（1〜10枚）
-        addrPaperConvertBase: 1100,
-        // 紙媒体データ化（11枚目以降）
-        addrPaperConvertOver10: 80,
+        addrData: 80,   // 通常単価：1枚80円（クーポン割引は別途）
+        addrPaper: 200, // 通常単価：1枚200円（クーポン割引は別途）
         addrFix: 50,
         scan: 600,
         omakase: 1500,
         proof: 1200,
         logoCut: 1200,
       };
-      const ADD_ORDER_DISCOUNT = 1000;
 
       // --- util ---
       const yen = (n) => (Math.round(n || 0)).toLocaleString('ja-JP');
@@ -388,15 +516,6 @@ function getCardBarcode(type){
         const v = parseInt(String(s || '').replace(/[^0-9]/g, ''), 10);
         return Number.isFinite(v) ? v : 0;
       };
-      function dmCouponAmount(state){
-        const s = state || {};
-        const base = toInt(s.coupon || 0);
-        const add  = s.optAddOrderDiscount ? ADD_ORDER_DISCOUNT : 0;
-        return base + add;
-      }
-      function hasDmCoupon(state){
-        return dmCouponAmount(state) > 0;
-      }
       function resolveCouponInfo(){
           const el = document.getElementById('coupon');
           if (!el) return { amount: 0, barcode: '', label: '' };
@@ -417,44 +536,36 @@ function getCardBarcode(type){
           };
         }
       const ADDR_BARCODE = '07019500';
-      const ADDR_COUPON_DISCOUNT = { print: 20 };
+      const ADDR_COUPON_DISCOUNT = { data: 20, paper: 50 };
       function getAddrLineMeta(state){
           const s = state || {};
           const dataQty = s.addrDataCount || 0;
           const paperQty = s.addrPaperCount || 0;
           const fixQty = s.addrFixCount || 0;
-          const hasCoupon = hasDmCoupon(s);
-          const printQty = dataQty + paperQty;
-          const printUnit = Math.max(0, UNIT.addrPrint - (hasCoupon ? ADDR_COUPON_DISCOUNT.print : 0));
+          const hasCoupon = !!(s.coupon > 0);
+          const dataUnit = Math.max(0, UNIT.addrData - (hasCoupon ? ADDR_COUPON_DISCOUNT.data : 0));
+          const paperUnit = Math.max(0, UNIT.addrPaper - (hasCoupon ? ADDR_COUPON_DISCOUNT.paper : 0));
           const dataName = hasCoupon ? '宛名印刷（データ）' : '宛名印刷（データ）';
-          const paperName = '宛名データ化(10枚以下)(-900)';
+          const paperName = hasCoupon ? '宛名印刷（紙媒体）' : '宛名印刷（紙媒体）';
           // 宛名（データ）のバーコードは条件で切替
           // ・クーポン未指定: 68210304
           // ・クーポン指定あり: 68210403
           const dataCode = hasCoupon ? '68210403' : '68210304';
-          const paperCode = '68092801';
-          const paperExtraQty = Math.max(0, paperQty - 10);
+          const paperCode = hasCoupon ? '68216900' : '68210502';
           return {
             data: {
               name: dataName,
               code: dataCode,
-              unit: printUnit,
-              qty: printQty,
-              sum: printUnit * printQty
+              unit: dataUnit,
+              qty: dataQty,
+              sum: dataUnit * dataQty
             },
             paper: {
               name: paperName,
               code: paperCode,
-              unit: UNIT.addrPaperConvertBase,
-              qty: paperQty > 0 ? 1 : 0,
-              sum: (paperQty > 0 ? UNIT.addrPaperConvertBase : 0)
-            },
-            paperExtra: {
-              name: '宛名データ化(11枚以上)',
-              code: '68210304',
-              unit: UNIT.addrPaperConvertOver10,
-              qty: paperExtraQty,
-              sum: UNIT.addrPaperConvertOver10 * paperExtraQty
+              unit: paperUnit,
+              qty: paperQty,
+              sum: paperUnit * paperQty
             },
             fix: {
               name: '宛名修正・削除',
@@ -466,18 +577,23 @@ function getCardBarcode(type){
           };
         }
       const ceil10 = (n) => Math.max(10, Math.ceil((n || 0)/10) * 10);
-      const addDays = (date, days) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
-      const fmtMD = (date) => date.toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric' });
-      const fmtWeekdayJa = (date) => ['日','月','火','水','木','金','土'][date.getDay()];
+      // 日本の注文日を起点とする表示用カレンダー日付。端末のタイムゾーンに依存しない。
+      const addDays = (date, days) => {
+        const p = getOrderDateParts(date);
+        return new Date(Date.UTC(Number(p.year), Number(p.month) - 1, Number(p.day) + days));
+      };
+      const fmtMD = (date) => date.toLocaleDateString('ja-JP', { timeZone: 'UTC', month: 'numeric', day: 'numeric' });
+      const fmtWeekdayJa = (date) => ['日','月','火','水','木','金','土'][date.getUTCDay()];
 
      // 合計セルからも使い回す入力状態リーダー
-       function readState() {
+       function readState(now = new Date()) {
          const toInt = (s) => {
            const v = parseInt(String(s || '').replace(/[^0-9]/g, ''), 10);
            return Number.isFinite(v) ? v : 0;
          };
          const couponInfo = resolveCouponInfo();
          return {
+           orderDate: now,
            artwork: document.getElementById('artwork').value,
            finish: document.getElementById('finish').value,
            cardType: document.getElementById('cardType').value,
@@ -493,9 +609,8 @@ function getCardBarcode(type){
            addrFixCount: toInt(document.getElementById('addrFixCount').value),
           optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
           optProof: document.getElementById('optProof').checked,
-           optLogoCut: document.getElementById('optLogoCut').checked,
-           optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
-          optScanCount: toInt(document.getElementById('optScanCount').value),
+          optLogoCut: document.getElementById('optLogoCut').checked,
+         optScanCount: toInt(document.getElementById('optScanCount').value),
        };
      }
 
@@ -513,12 +628,12 @@ function getCardBarcode(type){
           if (finish === 'photo') {
             price += (blocks - 1) * STEP_PHOTO;
           } else {
-            // 印刷仕上げ: 20〜50まで650, 60〜100まで600, 110〜は550
+            // 印刷仕上げ: 11〜30枚は10枚ごと700円、31〜100枚は650円、101枚〜は600円
             const b = blocks;
-            const c650 = Math.max(0, Math.min(b, 5) - 1);   // blocks 2..5 -> 4段階
-            const c600 = Math.max(0, Math.min(b, 10) - 5);  // blocks 6..10
-            const c550 = Math.max(0, b - 10);               // blocks 11..
-            price += c650 * STEP_PRINT.first50 + c600 * STEP_PRINT.next50 + c550 * STEP_PRINT.over100;
+            const c700 = Math.max(0, Math.min(b, 3) - 1);   // blocks 2..3
+            const c650 = Math.max(0, Math.min(b, 10) - 3);  // blocks 4..10
+            const c600 = Math.max(0, b - 10);              // blocks 11..
+            price += c700 * STEP_PRINT.first30 + c650 * STEP_PRINT.next70 + c600 * STEP_PRINT.over100;
           }
         }
 
@@ -535,121 +650,81 @@ function getCardBarcode(type){
       }
 
       // --- 宛名/オプションの計算 ---
-        function calcOptions(state) {
+        function calcOptions(state, selectedIdx) {
           const addrMeta = getAddrLineMeta(state);
-          const addr =
-            addrMeta.data.sum +
-            addrMeta.paper.sum +
-            (addrMeta.paperExtra?.sum || 0) +
-            addrMeta.fix.sum;
+          const addr = addrMeta.data.sum + addrMeta.paper.sum + addrMeta.fix.sum;
+          const due = getDueLabel(state.finish, selectedIdx);
+          const omakaseDiscount = (state.optOmakaseOrder && due && due.offset !== 5) ? 500 : 0;
+          const omakase = state.optOmakaseOrder ? Math.max(0, UNIT.omakase - omakaseDiscount) : 0;
 
           const checks =
-            (state.optOmakaseOrder ? UNIT.omakase : 0) +
+            omakase +
             (state.optProof ? UNIT.proof : 0) +
             (state.optLogoCut ? UNIT.logoCut : 0);
 
           const scans = state.optScanCount * UNIT.scan;
 
-          return { addr, checks, scans, optionsTotal: addr + checks + scans };
+          return { addr, checks, scans, omakase, omakaseDiscount, optionsTotal: addr + checks + scans };
         }
 
       
       
-      // === Barcode sizing config ===
-      const QC_SCALE = 2;        // QuickChart module scale(小さいほど細い)
-      const BARCODE_HEIGHT = 64;        // px (縦)
-      const BARCODE_WIDTH_PX = 300;     // px (横) 画像に指定（QuickChartにも効く）
-      const BWIP_SCALE_X = 3;           // bwip-js 横方向スケール
-      const BWIP_SCALE_Y = 3;           // bwip-js 縦方向スケール
-      let JSB_MODULE_WIDTH = 2.0;     // JsBarcode 1モジュールの太さ(px)
-      // ==============================
+      // --- HTML内でバーコードを描画（外部画像サービスへの通信不要） ---
+      const CSS_PX_PER_MM = 96 / 25.4;
+      const JSB_MODULE_WIDTH = 2; // 画面表示でバーがにじまない整数ピクセル幅
+      const BARCODE_HEIGHT_PX = +(19.86 * CSS_PX_PER_MM).toFixed(1);
+      const BARCODE_MARGIN_PX = Math.max(10 * JSB_MODULE_WIDTH, Math.ceil(3.63 * CSS_PX_PER_MM));
 
-      
-      // === JAN/EAN 1.0倍率 設定 (JIS X0507) ===
-      const JAN_SCALE = 1.0;
-      const TARGET_DPI = 300;            // QuickChartに投げる画像解像度
-      const PX_PER_MM_RENDER = TARGET_DPI / 25.4;
-      const CSS_PX_PER_MM = 96 / 25.4;   // ブラウザ表示の実寸換算
-      const JAN_X_MM = 0.33 * JAN_SCALE;
-      const JAN_H_MM = 19.86 * JAN_SCALE;
-      const JAN_L_MM = 37.29 * JAN_SCALE;
-      const JAN_Q_MM = 3.63 * JAN_SCALE;
-      const JAN_TOTAL_W_MM = JAN_L_MM + 2*JAN_Q_MM;
-      const JAN_TOTAL_W_PX = Math.round(JAN_TOTAL_W_MM * PX_PER_MM_RENDER);
-      const JAN_H_PX       = Math.round(JAN_H_MM       * PX_PER_MM_RENDER);
-      const JAN_H_CSS_PX   = +(JAN_H_MM * CSS_PX_PER_MM).toFixed(1);
-      JSB_MODULE_WIDTH = +(JAN_X_MM * CSS_PX_PER_MM).toFixed(2);
       function computeEanCheckDigit(numstr){
-        const s = String(numstr||'').replace(/[^0-9]/g,'');
-        const arr = s.split('').map(d=>+d);
-        const len = arr.length;
-        if (len!==7 && len!==12) return null;
+        const s = String(numstr || '').replace(/[^0-9]/g, '');
+        if (s.length !== 7 && s.length !== 12) return null;
         let sum = 0;
-        for (let i=0;i<len;i++){
-          const n = arr[len-1-i];
-          sum += n * ((i%2===0)?3:1);
+        for (let i = 0; i < s.length; i++) {
+          sum += Number(s[s.length - 1 - i]) * (i % 2 === 0 ? 3 : 1);
         }
         return (10 - (sum % 10)) % 10;
       }
       function normalizeEan(code){
-        let s = String(code||'').trim();
-        if (!/^\\d+$/.test(s)) return s;
-        if (s.length===12){ const cd = computeEanCheckDigit(s); if (cd!=null) s = s + cd; }
-        if (s.length===7){  const cd = computeEanCheckDigit(s); if (cd!=null) s = s + cd; }
+        let s = String(code || '').trim();
+        if (!/^\d+$/.test(s)) return s;
+        if (s.length === 7 || s.length === 12) s += computeEanCheckDigit(s);
         return s;
       }
-
-      // --- バーコード描画ユーティリティ ---
-      
-      function barcodeImgUrl(code){
-        const raw = String(code||'').trim();
-        const ean = normalizeEan(raw);
-        const isNum = /^\d+$/.test(ean);
-        if(!isNum) return null;
-
-        let type = 'code128';
-        if (/^\d{13}$/.test(ean)) type = 'ean13';
-        else if (/^\d{8}$/.test(ean)) type = 'ean8';
-
-        const base = 'https://quickchart.io/barcode';
-        const qs = new URLSearchParams({
-          type, text: ean, format: 'svg', label: ean,
-          background: 'fff',
-          width: String(JAN_TOTAL_W_PX),
-          height: String(JAN_H_PX)
-        }).toString();
-        return `${base}?${qs}`;
+      function getBarcodeFormat(code){
+        const s = String(code || '');
+        if ((s.length === 8 || s.length === 13) && /^\d+$/.test(s)
+            && computeEanCheckDigit(s.slice(0, -1)) === Number(s.slice(-1))) {
+          return s.length === 8 ? 'EAN8' : 'EAN13';
+        }
+        // JANのチェック数字が合わない登録コードも、番号を変えず従来同様CODE128で表示する。
+        return 'CODE128';
       }
-        function renderCodeCell(code){
-        const url = barcodeImgUrl(code);
-        const s = String(code || '').trim();
-        if(!url) return s; // 数値でなければ従来通り文字列表示
-        // QuickChart が失敗した場合は bwip-js API をフォールバック
-        const fallback = 'https://bwipjs-api.metafloor.com/?' + new URLSearchParams({
-          bcid: 'code128',
-          text: s,
-          includetext: 'y',
-          scale: '2'
-        }).toString();
-        // バーコード本体 + 下にヒューマンリーダブル（数字）を表示
+      function renderCodeCell(code){
+        const s = normalizeEan(code);
+        if (!/^\d+$/.test(s)) return s;
         return `<div class="flex flex-col items-center gap-1">
-                  <img alt="barcode ${s}" src="${url}" onerror="this.onerror=null;this.src='${fallback}'" style="height:${JAN_H_MM}mm; width:${JAN_TOTAL_W_MM}mm; object-fit:contain; image-rendering:pixelated" />
+                  <svg xmlns="http://www.w3.org/2000/svg" data-barcode="${s}" data-type="${getBarcodeFormat(s)}" role="img" aria-label="バーコード ${s}" style="display:block;max-width:none;background:#fff"></svg>
                   <div class="font-mono text-[11px] text-slate-600 select-none">${s}</div>
                 </div>`;
       }
-// --- 明細テーブル描画 ---
-      
-      // --- ローカルfallback: JsBarcodeが読み込まれていれば <svg data-barcode> を描画 ---
       function activateLocalBarcodes(){
-        try{
-          if (!window.JsBarcode) return;
-          document.querySelectorAll('svg[data-barcode]').forEach(svg => {
-            const v = svg.getAttribute('data-barcode') || '';
-            if (/^\d+$/.test(v)) {
-              try{ JsBarcode(svg, v, {format:(svg.getAttribute('data-type')||'CODE128'), displayValue:true, fontSize:12, width: JSB_MODULE_WIDTH, height: JAN_H_CSS_PX}); }catch(_){}
-            }
-          });
-        }catch(_){}
+        document.querySelectorAll('#invBody svg[data-barcode]').forEach(svg => {
+          const value = svg.getAttribute('data-barcode');
+          try {
+            JsBarcode(svg, value, {
+              format: svg.getAttribute('data-type'), displayValue: false,
+              width: JSB_MODULE_WIDTH, height: BARCODE_HEIGHT_PX,
+              margin: BARCODE_MARGIN_PX, background: '#ffffff', lineColor: '#000000'
+            });
+            svg.setAttribute('data-rendered', 'true');
+          } catch (error) {
+            const notice = document.createElement('span');
+            notice.className = 'text-xs text-red-700';
+            notice.textContent = 'バーコードを表示できません';
+            svg.replaceWith(notice);
+            console.error('Barcode rendering failed:', value, error);
+          }
+        });
       }
       // --- 合計ボタンのアクティブ表示切替 ---
       function setActiveDueButton(idx){
@@ -674,22 +749,20 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
         const extraPrint = calcExtraPrint(state);
         const cardCost   = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
-        const opt        = calcOptions(state);
-        const __dueAdds  = Array.isArray(dueAdds) ? dueAdds : DUE_ADD_DEC;
+        const opt        = calcOptions(state, selectedIdx);
+        const __dueAdds  = Array.isArray(dueAdds) ? dueAdds : getDueAdds(state);
         const dueAdd     = (__dueAdds[selectedIdx] || 0);
-        const dueCode    = dueBarcode || getDueBarcode();
+        const dueCode    = dueBarcode || getDueBarcode(state);
         const baseDue    = (__dueAdds && __dueAdds.length > 0) ? __dueAdds[0] : 0;
         const dueDiscount = Math.max(0, baseDue - dueAdd);
-        const dueLabel   = (state.finish === 'photo' && selectedIdx === 5)
-                           ? '7日後仕上げ'
-                           : (DUE_LABELS[selectedIdx]?.name || '-');
+        const dueLabel   = getDueLabel(state.finish, selectedIdx)?.name || '-';
 
         const items = [];
           const finLabel = state.finish === 'photo' ? '写真キレイ仕上げ' : '印刷仕上げ';
           const __pbc = computePrintBarcodes(state);
           const addrMeta = getAddrLineMeta(state);
           // クーポン選択かつ宛名印刷がある場合、宛名印刷系品名の先頭に「ㇰ）」を付与
-          const __useMarkForAddr = hasDmCoupon(state) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0));
+          const __useMarkForAddr = (state.coupon > 0) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0));
           const __markNameIfAddr = (name) => {
             try{
               const t = String(name || '');
@@ -716,7 +789,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         // 宛名印刷が入力されている場合、選択された納期名・単価で (宛名) 行を追加
         try{
           if (((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0)) && (dueAdd > 0)) {
-            const addrDueCode = getAddrDueBarcode(new Date());
+            const addrDueCode = getAddrDueBarcode(state);
             const addrDueAdd  = dueAdd; // 選択中の納期と同額
             const addrDueName = `${dueName}(宛名)`; // 当日/翌日/2日後... に追従（割引表記も同様）
             items.push({ cat: '納期', name: addrDueName, code: addrDueCode, unit: addrDueAdd, qty: 1, sum: addrDueAdd });
@@ -725,21 +798,19 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
 
           if (addrMeta.data.qty > 0)  items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.data.name),  code: addrMeta.data.code,  unit: addrMeta.data.unit,  qty: addrMeta.data.qty,  sum: addrMeta.data.sum });
           if (addrMeta.paper.qty > 0) items.push({ cat: 'オプション', name: __markNameIfAddr(addrMeta.paper.name), code: addrMeta.paper.code, unit: addrMeta.paper.unit, qty: addrMeta.paper.qty, sum: addrMeta.paper.sum });
-          if (addrMeta.paperExtra.qty > 0) items.push({ cat: 'オプション', name: addrMeta.paperExtra.name, code: addrMeta.paperExtra.code, unit: addrMeta.paperExtra.unit, qty: addrMeta.paperExtra.qty, sum: addrMeta.paperExtra.sum });
           if (addrMeta.fix.qty > 0)   items.push({ cat: 'オプション', name: addrMeta.fix.name,   code: addrMeta.fix.code,   unit: addrMeta.fix.unit,   qty: addrMeta.fix.qty,   sum: addrMeta.fix.sum  });
 
           // 宛名（データ）あり + DMクーポン指定時は情報行を追加（0円）
-          if (hasDmCoupon(state) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0))) {
+          if ((state.coupon > 0) && ((addrMeta.data.qty > 0) || (addrMeta.paper.qty > 0))) {
             items.push({ cat: 'クーポン', name: 'DMクーポン（宛名印刷）', code: ADDR_BARCODE, unit: 0, qty: 1, sum: 0 });
           }
 
-        if (state.optOmakaseOrder) items.push({ cat: 'オプション', name: 'おまかせ注文サービス',     code: '68211202', unit: UNIT.omakase,    qty: 1, sum: UNIT.omakase });
+        if (state.optOmakaseOrder) items.push({ cat: 'オプション', name: 'おまかせ注文サービス' + (opt.omakaseDiscount ? '（500円引き）' : ''), code: '68211202', unit: opt.omakase, qty: 1, sum: opt.omakase });
         if (state.optCommentOnly)  items.push({ cat: 'オプション', name: 'コメントのみおまかせ', code: 'BC-CMT',     unit: UNIT.commentOnly, qty: 1, sum: UNIT.commentOnly });
         if (state.optProof)        items.push({ cat: 'オプション', name: '校正サービス',     code: '68211400',   unit: UNIT.proof,      qty: 1, sum: UNIT.proof });
         if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
         if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
 
-        if (state.optAddOrderDiscount) items.push({ cat: '追加注文', name: `追加注文値引き(-${ADD_ORDER_DISCOUNT}円)`, code: '-', unit: -ADD_ORDER_DISCOUNT, qty: 1, sum: -ADD_ORDER_DISCOUNT });
         if (state.coupon>0) {
           const couponName = state.couponLabel || 'DMクーポン';
           const couponCode = state.couponCode || 'BC-COUPON';
@@ -795,35 +866,35 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           `;
           tbody.appendChild(tr);
         });
+        activateLocalBarcodes();
 
-        const couponDiscount = dmCouponAmount(state);
-        const sumExcl = printPrice + extraPrint.extraSum + opt.optionsTotal - couponDiscount + dueAdd; // はがき代を除く
+        const sumExcl = printPrice + extraPrint.extraSum + opt.optionsTotal - state.coupon + dueAdd; // はがき代を除く
         
-        // --- added totals ---
-        const printTotal = printPrice + extraPrint.extraSum + dueAdd;
-        const optionTotal = opt.optionsTotal;
-        const couponTotal = -couponDiscount;
-        const cardTotal  = items.filter(it => it.cat === 'はがき代').reduce((s,it)=>s+(it.sum||0),0);
-        
-        (function(){
-          const el = document.getElementById('sumPrintDue');
-          if (el) el.textContent = `¥${yen(printTotal)}`;
-        })();
-        (function(){
-          const el = document.getElementById('sumOptions');
-          if (el) el.textContent = `¥${yen(optionTotal)}`;
-        })();
-        (function(){
-          const el = document.getElementById('sumCoupon');
-          if (el) el.textContent = `¥${yen(couponTotal)}`;
-        })();
-        (function(){
-          const el = document.getElementById('sumCardCost');
-          if (el) el.textContent = `¥${yen(cardTotal)}`;
-        })();
-        
-        // original:
-        document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it => it.cat !== 'はがき代').reduce((s,it)=>s+(it.sum||0),0))}`;
+// --- added totals ---
+const printTotal = printPrice + extraPrint.extraSum + dueAdd;
+const optionTotal = opt.optionsTotal + ((addrMeta.data.qty > 0 || addrMeta.paper.qty > 0) ? dueAdd : 0); // 宛名の納期加算もサマリーに含める
+const couponTotal = -state.coupon;
+const cardTotal  = items.filter(it => it.cat === 'はがき代').reduce((s,it)=>s+(it.sum||0),0);
+
+(function(){
+  const el = document.getElementById('sumPrintDue');
+  if (el) el.textContent = `¥${yen(printTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumOptions');
+  if (el) el.textContent = `¥${yen(optionTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumCoupon');
+  if (el) el.textContent = `¥${yen(couponTotal)}`;
+})();
+(function(){
+  const el = document.getElementById('sumCardCost');
+  if (el) el.textContent = `¥${yen(cardTotal)}`;
+})();
+
+// original:
+document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it => it.cat !== 'はがき代').reduce((s,it)=>s+(it.sum||0),0))}`;
         // 合計金額（はがき代を含む）
         try{
           const sumIncl = items.reduce((s,it)=>s+(it.sum||0),0);
@@ -853,10 +924,31 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           emphasize('sumInclCard','17px');
         })();
 
+        renderBreakdown(state, selectedIdx);
         const invoice = document.getElementById('invoice');
         invoice.classList.remove('hidden');
         // スクロールして見せる
         invoice.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // 納期選択後は内訳にもおまかせ注文の割引を反映する。
+      function renderBreakdown(state, selectedIdx) {
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const extraPrint = calcExtraPrint(state);
+        const cardCost = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
+        const opt = calcOptions(state, selectedIdx);
+        const baseTotal = Math.max(0, printPrice + extraPrint.extraSum + cardCost + opt.optionsTotal - state.coupon);
+        const pendingDue = state.optOmakaseOrder && !getDueLabel(state.finish, selectedIdx);
+        document.getElementById('breakdown').innerHTML = `
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
+            <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
+            <span class="pill">オプション${pendingDue ? '（納期選択前）' : ''}: <b>¥${yen(opt.optionsTotal)}</b></span>
+            <span class="pill">クーポン: <b>−¥${yen(state.coupon)}</b></span>
+            <span class="pill">小計(納期加算前${pendingDue ? '・おまかせ割引前' : ''}): <b>¥${yen(baseTotal)}</b></span>
+          </div>
+          ${pendingDue ? '<p class="mt-2">おまかせ注文の500円引きは、5日後以外の納期別合計に反映済みです。明細を選ぶと内訳にも反映します。</p>' : ''}
+        `;
       }
 
       // --- 計算ボタン ---
@@ -865,27 +957,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         err.classList.add('hidden');
         err.textContent = '';
 
-        const couponInfo = resolveCouponInfo();
-        const state = {
-          artwork: document.getElementById('artwork').value,
-          finish: document.getElementById('finish').value,
-          cardType: document.getElementById('cardType').value,
-          orderQty: toInt(document.getElementById('orderQty').value),
-          bringInQty: toInt(document.getElementById('bringInQty').value),
-          coupon: couponInfo.amount,
-          couponCode: couponInfo.barcode,
-          couponLabel: couponInfo.label,
-          superEarly: document.getElementById('superEarly').checked,
-          early: document.getElementById('early').checked,
-          addrDataCount: toInt(document.getElementById('addrDataCount').value),
-          addrPaperCount: toInt(document.getElementById('addrPaperCount').value),
-          addrFixCount: toInt(document.getElementById('addrFixCount').value),
-          optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
-          optProof: document.getElementById('optProof').checked,
-          optLogoCut: document.getElementById('optLogoCut').checked,
-          optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
-          optScanCount: toInt(document.getElementById('optScanCount').value),
-        };
+        const state = readState();
 
         if (state.orderQty <= 0) {
           err.textContent = "注文枚数を入力してください。";
@@ -905,10 +977,10 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         const extraPrint = calcExtraPrint(state);
         const cardCost = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
         const opt = calcOptions(state);
-        const couponDiscount = dmCouponAmount(state);
+        const coupon = state.coupon;
 
         // 合計（納期加算を除く）
-        const baseTotal = Math.max(0, printPrice + extraPrint.extraSum + cardCost + opt.optionsTotal - couponDiscount);
+        const baseTotal = Math.max(0, printPrice + extraPrint.extraSum + cardCost + opt.optionsTotal - coupon);
 
         // テーブル構築
         const head = document.getElementById('dueHead');
@@ -916,12 +988,9 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         head.innerHTML = "";
         amt.innerHTML = "";
 
-        const today = new Date();
-        const rawAdds = getDueAdds(today);
-        const labels = DUE_LABELS.slice();
-        if (state.finish === 'photo' && labels.length >= 6) {
-          labels[5] = { name: '7日後仕上げ', offset: 7 };
-        }
+        const today = state.orderDate;
+        const rawAdds = getDueAdds(state);
+        const labels = DUE_LABELS.map((_, idx) => getDueLabel(state.finish, idx));
         const dueAdds = rawAdds; // 計算は従来の配列（5日後相当）を使用
         // 宛名印刷の有無を事前判定（明細票と同じ条件に合わせる）
         let hasAddrPrinting = false;
@@ -929,7 +998,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           const addrMetaForTotal = getAddrLineMeta(state);
           hasAddrPrinting = !!((addrMetaForTotal && (addrMetaForTotal.data?.qty || 0) > 0) || (addrMetaForTotal && (addrMetaForTotal.paper?.qty || 0) > 0));
         } catch(_) { hasAddrPrinting = false; }
-        const dueBarcode = getDueBarcode(today);
+        const dueBarcode = getDueBarcode(state);
         labels.forEach((l, idx) => {
           const d = addDays(today, l.offset);
           const th = document.createElement('th');
@@ -963,12 +1032,14 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           // 明細票では、宛名印刷がある場合は納期加算を宛名分でも1回加える。
           // ボタン側の合計もこれに合わせて、印刷分 + 宛名分の納期加算を反映する。
           const addrDue = (hasAddrPrinting && dueAddSel > 0) ? dueAddSel : 0;
-          const totalWithDue = baseTotal + dueAddSel + addrDue;
+          const dueOptions = calcOptions(state, idx);
+          const dueBaseTotal = Math.max(0, printPrice + extraPrint.extraSum + cardCost + dueOptions.optionsTotal - coupon);
+          const totalWithDue = dueBaseTotal + dueAddSel + addrDue;
           btn.setAttribute("aria-label", `${l.name} の合計 ¥${yen(totalWithDue)} の明細を表示`);
           btn.title = "クリックで料金明細を表示";
           btn.innerHTML = `
             <div>¥${yen(totalWithDue)}</div>
-            <div class="mt-0.5 text-[11px] font-normal text-slate-500">明細を見る</div>
+            <div class="mt-0.5 text-[11px] font-normal text-slate-500">明細を表示する</div>
           `;
 
           // 写真キレイ仕上げ時は、5日後(=7日後に表示)以外のボタンを非活性化し、表示は「ー」のみ
@@ -983,14 +1054,12 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
 
           // クリック & キーボード操作
             btn.addEventListener('click', () => {
-              const st = readState();
-              renderInvoice(idx, st, dueAdds, dueBarcode);
+              renderInvoice(idx, state, dueAdds, dueBarcode);
             });
             btn.addEventListener('keydown', (e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const st = readState();
-                renderInvoice(idx, st, dueAdds, dueBarcode);
+                renderInvoice(idx, state, dueAdds, dueBarcode);
               }
             });
 
@@ -998,32 +1067,15 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           amt.appendChild(td);
 
         });
-        activateLocalBarcodes();
 
-
-        // 内訳（軽く表示）
-        const breakdown = document.getElementById('breakdown');
-        breakdown.innerHTML = `
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
-            <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
-            <span class="pill">オプション: <b>¥${yen((opt.addr||0) + (opt.checks||0) + (opt.scans||0))}</b></span>
-            <span class="pill">その他オプション: <b>¥${yen(opt.checks + opt.scans)}</b></span>
-            <span class="pill">クーポン: <b>−¥${yen(couponDiscount)}</b></span>
-            <span class="pill">小計(納期加算前): <b>¥${yen(baseTotal)}</b></span>
-          </div>
-        `;
-        // 旧「その他オプション」ピルが残っている場合は削除して「オプション」に統合表示
-        try{
-          document.querySelectorAll('#breakdown .pill').forEach(el=>{
-            const t = (el.textContent||'').trim();
-            if (t.indexOf('その他オプション') >= 0) { el.remove(); }
-          });
-        }catch(_){}
+        renderBreakdown(state);
 
         const invoiceEl = document.getElementById('invoice'); if (invoiceEl) invoiceEl.classList.add('hidden');
         document.getElementById('result').classList.remove('hidden');
       });
+
+      // 画面を開いた日の日本時間で初期選択。その後の手動変更を上書きしない。
+      initializeDiscountControls();
 
       // --- 開発用ミニ自己テスト（コンソール出力）---
       (function runSelfTests(){
@@ -1031,16 +1083,11 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           console.group("SelfTests");
           console.assert(ceil10(12) === 20, 'ceil10(12) should be 20');
           console.assert(ceil10(39) === 40, 'ceil10(39) should be 40');
-          console.assert(isBeforeNovEnd(new Date(2025, 10, 30)) === true,  'isBeforeNovEnd(2025-11-30) should be true');
-          console.assert(isBeforeNovEnd(new Date(2025, 11, 1))  === false, 'isBeforeNovEnd(2025-12-01) should be false');
-          console.assert(isBeforeNovEnd(new Date(2026, 0, 1))   === false, 'isBeforeNovEnd(2026-01-01) should be false');
 
-          // HIGH / print / 10枚 -> 5500
-          console.assert(calcPrintPrice('PHG','print',10,false,false) === 5500, 'HIGH/print/10 should be 5500');
-          // HIGH / print / 60枚 -> 5500 + 650*4 + 600*1 = 8700
-          console.assert(calcPrintPrice('PHG','print',60,false,false) === 8700, 'HIGH/print/60 should be 8700');
-          // HIGH / photo / 30枚 -> 5700 + 660*(3-1) = 7020
-          console.assert(calcPrintPrice('PHG','photo',30,false,false) === 7020, 'HIGH/photo/30 should be 7020');
+          // 2027年 定価表の代表値
+          console.assert(calcPrintPrice('PHG','print',10,false,false) === 6200, 'HIGH/print/10 should be 6200');
+          console.assert(calcPrintPrice('PHG','print',60,false,false) === 9550, 'HIGH/print/60 should be 9550');
+          console.assert(calcPrintPrice('PHG','photo',30,false,false) === 7800, 'HIGH/photo/30 should be 7800');
           console.log('All tests passed.');
           console.groupEnd();
         } catch(e){
@@ -1065,15 +1112,14 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         
         optProof: document.getElementById('optProof').checked,
         optLogoCut: document.getElementById('optLogoCut').checked,
-        optAddOrderDiscount: document.getElementById('optAddOrderDiscount').checked,
         optScanCount: document.getElementById('optScanCount').value,
       });
     
       
       function extraUnitPrice(state){
-        if (state.superEarly) return (state.finish === 'photo') ? 528 : 440;
-        if (state.early)      return (state.finish === 'photo') ? 594 : 495;
-        return (state.finish === 'photo') ? 660 : 550;
+        const unit = (state.finish === 'photo') ? STEP_PHOTO : STEP_PRINT.over100;
+        const factor = state.superEarly ? 0.8 : (state.early ? 0.9 : 1.0);
+        return Math.round(unit * factor);
       }
       // 200枚超過分の印刷単価計算（10枚単位）
       function calcExtraPrint(state){
@@ -1135,6 +1181,18 @@ function computePrintBarcodes(state){
         return { main, extraCode, extraQty };
       }
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  <!-- Bundled JsBarcode 3.11.6: https://github.com/lindell/JsBarcode
+Copyright (c) 2016 Johan Lindell (johan@lindell.me)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+  <script id="bundled-jsbarcode">
+/*! JsBarcode v3.11.6 | (c) Johan Lindell | MIT license */
+!function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=15)}([function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.default=function t(e,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.data=e,this.text=n.text||e,this.options=n}},function(t,e,n){"use strict";var r;function o(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}Object.defineProperty(e,"__esModule",{value:!0});var i=e.SET_A=0,a=e.SET_B=1,u=e.SET_C=2,f=(e.SHIFT=98,e.START_A=103),c=e.START_B=104,s=e.START_C=105;e.MODULO=103,e.STOP=106,e.FNC1=207,e.SET_BY_CODE=(o(r={},f,i),o(r,c,a),o(r,s,u),r),e.SWAP={101:i,100:a,99:u},e.A_START_CHAR=String.fromCharCode(208),e.B_START_CHAR=String.fromCharCode(209),e.C_START_CHAR=String.fromCharCode(210),e.A_CHARS="[\0-_È-Ï]",e.B_CHARS="[ -È-Ï]",e.C_CHARS="(Ï*[0-9]{2}Ï*)",e.BARS=[11011001100,11001101100,11001100110,10010011e3,10010001100,10001001100,10011001e3,10011000100,10001100100,11001001e3,11001000100,11000100100,10110011100,10011011100,10011001110,10111001100,10011101100,10011100110,11001110010,11001011100,11001001110,11011100100,11001110100,11101101110,11101001100,11100101100,11100100110,11101100100,11100110100,11100110010,11011011e3,11011000110,11000110110,10100011e3,10001011e3,10001000110,10110001e3,10001101e3,10001100010,11010001e3,11000101e3,11000100010,10110111e3,10110001110,10001101110,10111011e3,10111000110,10001110110,11101110110,11010001110,11000101110,11011101e3,11011100010,11011101110,11101011e3,11101000110,11100010110,11101101e3,11101100010,11100011010,11101111010,11001000010,11110001010,1010011e4,10100001100,1001011e4,10010000110,10000101100,10000100110,1011001e4,10110000100,1001101e4,10011000010,10000110100,10000110010,11000010010,1100101e4,11110111010,11000010100,10001111010,10100111100,10010111100,10010011110,10111100100,10011110100,10011110010,11110100100,11110010100,11110010010,11011011110,11011110110,11110110110,10101111e3,10100011110,10001011110,10111101e3,10111100010,11110101e3,11110100010,10111011110,10111101110,11101011110,11110101110,11010000100,1101001e4,11010011100,1100011101011]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.SIDE_BIN="101",e.MIDDLE_BIN="01010",e.BINARIES={L:["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"],G:["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"],R:["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"],O:["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"],E:["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"]},e.EAN2_STRUCTURE=["LL","LG","GL","GG"],e.EAN5_STRUCTURE=["GGLLL","GLGLL","GLLGL","GLLLG","LGGLL","LLGGL","LLLGG","LGLGL","LGLLG","LLGLG"],e.EAN13_STRUCTURE=["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(2);e.default=function(t,e,n){var o=t.split("").map((function(t,n){return r.BINARIES[e[n]]})).map((function(e,n){return e?e[t[n]]:""}));if(n){var i=t.length-1;o=o.map((function(t,e){return e<i?t+n:t}))}return o.join("")}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t="110",e=0;e<this.data.length;e++){var n=parseInt(this.data[e]).toString(2);n=u(n,4-n.length);for(var r=0;r<n.length;r++)t+="0"==n[r]?"100":"110"}return{data:t+="1001",text:this.text}}},{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]+$/)}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);function u(t,e){for(var n=0;n<e;n++)t="0"+t;return t}e.default=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t.substring(1),n));return r.bytes=t.split("").map((function(t){return t.charCodeAt(0)})),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return/^[\x00-\x7F\xC8-\xD3]+$/.test(this.data)}},{key:"encode",value:function(){var t=this.bytes,n=t.shift()-105,r=u.SET_BY_CODE[n];if(void 0===r)throw new RangeError("The encoding does not start with a start character.");!0===this.shouldEncodeAsEan128()&&t.unshift(u.FNC1);var o=e.next(t,1,r);return{text:this.text===this.data?this.text.replace(/[^\x20-\x7E]/g,""):this.text,data:e.getBar(n)+o.result+e.getBar((o.checksum+n)%u.MODULO)+e.getBar(u.STOP)}}},{key:"shouldEncodeAsEan128",value:function(){var t=this.options.ean128||!1;return"string"==typeof t&&(t="true"===t.toLowerCase()),t}}],[{key:"getBar",value:function(t){return u.BARS[t]?u.BARS[t].toString():""}},{key:"correctIndex",value:function(t,e){if(e===u.SET_A){var n=t.shift();return n<32?n+64:n-32}return e===u.SET_B?t.shift()-32:10*(t.shift()-48)+t.shift()-48}},{key:"next",value:function(t,n,r){if(!t.length)return{result:"",checksum:0};var o=void 0,i=void 0;if(t[0]>=200){i=t.shift()-105;var a=u.SWAP[i];void 0!==a?o=e.next(t,n+1,a):(r!==u.SET_A&&r!==u.SET_B||i!==u.SHIFT||(t[0]=r===u.SET_A?t[0]>95?t[0]-96:t[0]:t[0]<32?t[0]+96:t[0]),o=e.next(t,n+1,r))}else i=e.correctIndex(t,r),o=e.next(t,n+1,r);var f=i*n;return{result:e.getBar(i)+o.result,checksum:f+o.checksum}}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.mod10=function(t){for(var e=0,n=0;n<t.length;n++){var r=parseInt(t[n]);(n+t.length)%2==0?e+=r:e+=2*r%10+Math.floor(2*r/10)}return(10-e%10)%10},e.mod11=function(t){for(var e=0,n=[2,3,4,5,6,7],r=0;r<t.length;r++){var o=parseInt(t[t.length-1-r]);e+=n[r%n.length]*o}return(11-e%11)%11}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t};e.default=function(t,e){return r({},t,e)}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=a(n(3));function a(t){return t&&t.__esModule?t:{default:t}}var u=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.fontSize=!n.flat&&n.fontSize>10*n.width?10*n.width:n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"encode",value:function(){return this.options.flat?this.encodeFlat():this.encodeGuarded()}},{key:"leftText",value:function(t,e){return this.text.substr(t,e)}},{key:"leftEncode",value:function(t,e){return(0,i.default)(t,e)}},{key:"rightText",value:function(t,e){return this.text.substr(t,e)}},{key:"rightEncode",value:function(t,e){return(0,i.default)(t,e)}},{key:"encodeGuarded",value:function(){var t={fontSize:this.fontSize},e={height:this.guardHeight};return[{data:o.SIDE_BIN,options:e},{data:this.leftEncode(),text:this.leftText(),options:t},{data:o.MIDDLE_BIN,options:e},{data:this.rightEncode(),text:this.rightText(),options:t},{data:o.SIDE_BIN,options:e}]}},{key:"encodeFlat",value:function(){return{data:[o.SIDE_BIN,this.leftEncode(),o.MIDDLE_BIN,this.rightEncode(),o.SIDE_BIN].join(""),text:this.text}}}]),e}(a(n(0)).default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();e.checksum=u;var o=i(n(3));function i(t){return t&&t.__esModule?t:{default:t}}var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{11}$/)&&(t+=u(t));var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.displayValue=n.displayValue,n.fontSize>10*n.width?r.fontSize=10*n.width:r.fontSize=n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{12}$/)&&this.data[11]==u(this.data)}},{key:"encode",value:function(){return this.options.flat?this.flatEncoding():this.guardedEncoding()}},{key:"flatEncoding",value:function(){var t="";return t+="101",t+=(0,o.default)(this.data.substr(0,6),"LLLLLL"),t+="01010",t+=(0,o.default)(this.data.substr(6,6),"RRRRRR"),{data:t+="101",text:this.text}}},{key:"guardedEncoding",value:function(){var t=[];return this.displayValue&&t.push({data:"00000000",text:this.text.substr(0,1),options:{textAlign:"left",fontSize:this.fontSize}}),t.push({data:"101"+(0,o.default)(this.data[0],"L"),options:{height:this.guardHeight}}),t.push({data:(0,o.default)(this.data.substr(1,5),"LLLLL"),text:this.text.substr(1,5),options:{fontSize:this.fontSize}}),t.push({data:"01010",options:{height:this.guardHeight}}),t.push({data:(0,o.default)(this.data.substr(6,5),"RRRRR"),text:this.text.substr(6,5),options:{fontSize:this.fontSize}}),t.push({data:(0,o.default)(this.data[11],"R")+"101",options:{height:this.guardHeight}}),this.displayValue&&t.push({data:"00000000",text:this.text.substr(11,1),options:{textAlign:"right",fontSize:this.fontSize}}),t}}]),e}(i(n(0)).default);function u(t){var e,n=0;for(e=1;e<11;e+=2)n+=parseInt(t[e]);for(e=0;e<11;e+=2)n+=3*parseInt(t[e]);return(10-n%10)%10}e.default=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(31),a=n(0);function u(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function f(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var c=function(t){function e(){return u(this,e),f(this,(e.__proto__||Object.getPrototypeOf(e)).apply(this,arguments))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^([0-9]{2})+$/)}},{key:"encode",value:function(){var t=this,e=this.data.match(/.{2}/g).map((function(e){return t.encodePair(e)})).join("");return{data:i.START_BIN+e+i.END_BIN,text:this.text}}},{key:"encodePair",value:function(t){var e=i.BINARIES[t[1]];return i.BINARIES[t[0]].split("").map((function(t,n){return("1"===t?"111":"1")+("1"===e[n]?"000":"0")})).join("")}}]),e}(((r=a)&&r.__esModule?r:{default:r}).default);e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){var e=["width","height","textMargin","fontSize","margin","marginTop","marginBottom","marginLeft","marginRight"];for(var n in e)e.hasOwnProperty(n)&&(n=e[n],"string"==typeof t[n]&&(t[n]=parseInt(t[n],10)));"string"==typeof t.displayValue&&(t.displayValue="false"!=t.displayValue);return t}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r={width:2,height:100,format:"auto",displayValue:!0,fontOptions:"",font:"monospace",text:void 0,textAlign:"center",textPosition:"bottom",textMargin:2,fontSize:20,background:"#ffffff",lineColor:"#000000",margin:10,marginTop:void 0,marginBottom:void 0,marginLeft:void 0,marginRight:void 0,valid:function(){}};e.default=r},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.getTotalWidthOfEncodings=e.calculateEncodingAttributes=e.getBarcodePadding=e.getEncodingHeight=e.getMaximumHeightOfEncodings=void 0;var r,o=n(7),i=(r=o)&&r.__esModule?r:{default:r};function a(t,e){return e.height+(e.displayValue&&t.text.length>0?e.fontSize+e.textMargin:0)+e.marginTop+e.marginBottom}function u(t,e,n){if(n.displayValue&&e<t){if("center"==n.textAlign)return Math.floor((t-e)/2);if("left"==n.textAlign)return 0;if("right"==n.textAlign)return Math.floor(t-e)}return 0}function f(t,e,n){var r;if(n)r=n;else{if("undefined"==typeof document)return 0;r=document.createElement("canvas").getContext("2d")}r.font=e.fontOptions+" "+e.fontSize+"px "+e.font;var o=r.measureText(t);return o?o.width:0}e.getMaximumHeightOfEncodings=function(t){for(var e=0,n=0;n<t.length;n++)t[n].height>e&&(e=t[n].height);return e},e.getEncodingHeight=a,e.getBarcodePadding=u,e.calculateEncodingAttributes=function(t,e,n){for(var r=0;r<t.length;r++){var o,c=t[r],s=(0,i.default)(e,c.options);o=s.displayValue?f(c.text,s,n):0;var l=c.data.length*s.width;c.width=Math.ceil(Math.max(o,l)),c.height=a(c,s),c.barcodePadding=u(o,l,s)}},e.getTotalWidthOfEncodings=function(t){for(var e=0,n=0;n<t.length;n++)e+=t[n].width;return e}},function(t,e,n){"use strict";function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function o(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(t){function e(t,n){r(this,e);var i=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return i.name="InvalidInputException",i.symbology=t,i.input=n,i.message='"'+i.input+'" is not a valid input for '+i.symbology,i}return i(e,Error),e}(),u=function(t){function e(){r(this,e);var t=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return t.name="InvalidElementException",t.message="Not supported type to render on",t}return i(e,Error),e}(),f=function(t){function e(){r(this,e);var t=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return t.name="NoElementException",t.message="No element to render on.",t}return i(e,Error),e}();e.InvalidInputException=a,e.InvalidElementException=u,e.NoElementException=f},function(t,e,n){"use strict";var r=p(n(16)),o=p(n(7)),i=p(n(41)),a=p(n(42)),u=p(n(43)),f=p(n(11)),c=p(n(49)),s=n(14),l=p(n(12));function p(t){return t&&t.__esModule?t:{default:t}}var d=function(){},h=function(t,e,n){var r=new d;if(void 0===t)throw Error("No element to render on was provided.");return r._renderProperties=(0,u.default)(t),r._encodings=[],r._options=l.default,r._errorHandler=new c.default(r),void 0!==e&&((n=n||{}).format||(n.format=_()),r.options(n)[n.format](e,n).render()),r};for(var y in h.getModule=function(t){return r.default[t]},r.default)r.default.hasOwnProperty(y)&&b(r.default,y);function b(t,e){d.prototype[e]=d.prototype[e.toUpperCase()]=d.prototype[e.toLowerCase()]=function(n,r){var i=this;return i._errorHandler.wrapBarcodeCall((function(){r.text=void 0===r.text?void 0:""+r.text;var a=(0,o.default)(i._options,r);a=(0,f.default)(a);var u=t[e],c=v(n,u,a);return i._encodings.push(c),i}))}}function v(t,e,n){var r=new e(t=""+t,n);if(!r.valid())throw new s.InvalidInputException(r.constructor.name,t);var a=r.encode();a=(0,i.default)(a);for(var u=0;u<a.length;u++)a[u].options=(0,o.default)(n,a[u].options);return a}function _(){return r.default.CODE128?"CODE128":Object.keys(r.default)[0]}function g(t,e,n){e=(0,i.default)(e);for(var r=0;r<e.length;r++)e[r].options=(0,o.default)(n,e[r].options),(0,a.default)(e[r].options);(0,a.default)(n),new(0,t.renderer)(t.element,e,n).render(),t.afterRender&&t.afterRender()}d.prototype.options=function(t){return this._options=(0,o.default)(this._options,t),this},d.prototype.blank=function(t){var e=new Array(t+1).join("0");return this._encodings.push({data:e}),this},d.prototype.init=function(){var t;if(this._renderProperties)for(var e in Array.isArray(this._renderProperties)||(this._renderProperties=[this._renderProperties]),this._renderProperties){t=this._renderProperties[e];var n=(0,o.default)(this._options,t.options);"auto"==n.format&&(n.format=_()),this._errorHandler.wrapBarcodeCall((function(){var e=v(n.value,r.default[n.format.toUpperCase()],n);g(t,e,n)}))}},d.prototype.render=function(){if(!this._renderProperties)throw new s.NoElementException;if(Array.isArray(this._renderProperties))for(var t=0;t<this._renderProperties.length;t++)g(this._renderProperties[t],this._encodings,this._options);else g(this._renderProperties,this._encodings,this._options);return this},d.prototype._defaults=l.default,"undefined"!=typeof window&&(window.JsBarcode=h),"undefined"!=typeof jQuery&&(jQuery.fn.JsBarcode=function(t,e){var n=[];return jQuery(this).each((function(){n.push(this)})),h(n,t,e)}),t.exports=h},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(17),o=n(18),i=n(24),a=n(30),u=n(33),f=n(38),c=n(39),s=n(40);e.default={CODE39:r.CODE39,CODE128:o.CODE128,CODE128A:o.CODE128A,CODE128B:o.CODE128B,CODE128C:o.CODE128C,EAN13:i.EAN13,EAN8:i.EAN8,EAN5:i.EAN5,EAN2:i.EAN2,UPC:i.UPC,UPCE:i.UPCE,ITF14:a.ITF14,ITF:a.ITF,MSI:u.MSI,MSI10:u.MSI10,MSI11:u.MSI11,MSI1010:u.MSI1010,MSI1110:u.MSI1110,pharmacode:f.pharmacode,codabar:c.codabar,GenericBarcode:s.GenericBarcode}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.CODE39=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t=t.toUpperCase(),n.mod43&&(t+=function(t){return u[t]}(function(t){for(var e=0,n=0;n<t.length;n++)e+=s(t[n]);return e%=43}(t))),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t=c("*"),e=0;e<this.data.length;e++)t+=c(this.data[e])+"0";return{data:t+=c("*"),text:this.text}}},{key:"valid",value:function(){return-1!==this.data.search(/^[0-9A-Z\-\.\ \$\/\+\%]+$/)}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default),u=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","-","."," ","$","/","+","%","*"],f=[20957,29783,23639,30485,20951,29813,23669,20855,29789,23645,29975,23831,30533,22295,30149,24005,21623,29981,23837,22301,30023,23879,30545,22343,30161,24017,21959,30065,23921,22385,29015,18263,29141,17879,29045,18293,17783,29021,18269,17477,17489,17681,20753,35770];function c(t){return function(t){return f[t].toString(2)}(s(t))}function s(t){return u.indexOf(t)}e.CODE39=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.CODE128C=e.CODE128B=e.CODE128A=e.CODE128=void 0;var r=u(n(19)),o=u(n(21)),i=u(n(22)),a=u(n(23));function u(t){return t&&t.__esModule?t:{default:t}}e.CODE128=r.default,e.CODE128A=o.default,e.CODE128B=i.default,e.CODE128C=a.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=i(n(5)),o=i(n(20));function i(t){return t&&t.__esModule?t:{default:t}}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var u=function(t){function e(t,n){if(function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),/^[\x00-\x7F\xC8-\xD3]+$/.test(t))var r=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,(0,o.default)(t),n));else r=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return a(r)}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(r.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(1),o=function(t){return t.match(new RegExp("^"+r.A_CHARS+"*"))[0].length},i=function(t){return t.match(new RegExp("^"+r.B_CHARS+"*"))[0].length},a=function(t){return t.match(new RegExp("^"+r.C_CHARS+"*"))[0]};function u(t,e){var n=e?r.A_CHARS:r.B_CHARS,o=t.match(new RegExp("^("+n+"+?)(([0-9]{2}){2,})([^0-9]|$)"));if(o)return o[1]+String.fromCharCode(204)+f(t.substring(o[1].length));var i=t.match(new RegExp("^"+n+"+"))[0];return i.length===t.length?t:i+String.fromCharCode(e?205:206)+u(t.substring(i.length),!e)}function f(t){var e=a(t),n=e.length;if(n===t.length)return t;t=t.substring(n);var r=o(t)>=i(t);return e+String.fromCharCode(r?206:205)+u(t,r)}e.default=function(t){var e=void 0;if(a(t).length>=2)e=r.C_START_CHAR+f(t);else{var n=o(t)>i(t);e=(n?r.A_START_CHAR:r.B_START_CHAR)+u(t,n)}return e.replace(/[\xCD\xCE]([^])[\xCD\xCE]/,(function(t,e){return String.fromCharCode(203)+e}))}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.A_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.A_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.B_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.B_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.C_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.C_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.UPCE=e.UPC=e.EAN2=e.EAN5=e.EAN8=e.EAN13=void 0;var r=c(n(25)),o=c(n(26)),i=c(n(27)),a=c(n(28)),u=c(n(9)),f=c(n(29));function c(t){return t&&t.__esModule?t:{default:t}}e.EAN13=r.default,e.EAN8=o.default,e.EAN5=i.default,e.EAN2=a.default,e.UPC=u.default,e.UPCE=f.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=function t(e,n,r){null===e&&(e=Function.prototype);var o=Object.getOwnPropertyDescriptor(e,n);if(void 0===o){var i=Object.getPrototypeOf(e);return null===i?void 0:t(i,n,r)}if("value"in o)return o.value;var a=o.get;return void 0!==a?a.call(r):void 0},a=n(2),u=n(8),f=(r=u)&&r.__esModule?r:{default:r};var c=function(t){return(10-t.substr(0,12).split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+3*e:t+e}),0)%10)%10},s=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{12}$/)&&(t+=c(t));var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.lastChar=n.lastChar,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{13}$/)&&+this.data[12]===c(this.data)}},{key:"leftText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftText",this).call(this,1,6)}},{key:"leftEncode",value:function(){var t=this.data.substr(1,6),n=a.EAN13_STRUCTURE[this.data[0]];return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftEncode",this).call(this,t,n)}},{key:"rightText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightText",this).call(this,7,6)}},{key:"rightEncode",value:function(){var t=this.data.substr(7,6);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightEncode",this).call(this,t,"RRRRRR")}},{key:"encodeGuarded",value:function(){var t=i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"encodeGuarded",this).call(this);return this.options.displayValue&&(t.unshift({data:"000000000000",text:this.text.substr(0,1),options:{textAlign:"left",fontSize:this.fontSize}}),this.options.lastChar&&(t.push({data:"00"}),t.push({data:"00000",text:this.options.lastChar,options:{fontSize:this.fontSize}}))),t}}]),e}(f.default);e.default=s},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=function t(e,n,r){null===e&&(e=Function.prototype);var o=Object.getOwnPropertyDescriptor(e,n);if(void 0===o){var i=Object.getPrototypeOf(e);return null===i?void 0:t(i,n,r)}if("value"in o)return o.value;var a=o.get;return void 0!==a?a.call(r):void 0},a=n(8),u=(r=a)&&r.__esModule?r:{default:r};var f=function(t){return(10-t.substr(0,7).split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+e:t+3*e}),0)%10)%10},c=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{7}$/)&&(t+=f(t)),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{8}$/)&&+this.data[7]===f(this.data)}},{key:"leftText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftText",this).call(this,0,4)}},{key:"leftEncode",value:function(){var t=this.data.substr(0,4);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftEncode",this).call(this,t,"LLLL")}},{key:"rightText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightText",this).call(this,4,4)}},{key:"rightEncode",value:function(){var t=this.data.substr(4,4);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightEncode",this).call(this,t,"RRRR")}}]),e}(u.default);e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=u(n(3)),a=u(n(0));function u(t){return t&&t.__esModule?t:{default:t}}var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{5}$/)}},{key:"encode",value:function(){var t,e=o.EAN5_STRUCTURE[(t=this.data,t.split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+9*e:t+3*e}),0)%10)];return{data:"1011"+(0,i.default)(this.data,e,"01"),text:this.text}}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=a(n(3));function a(t){return t&&t.__esModule?t:{default:t}}var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{2}$/)}},{key:"encode",value:function(){var t=o.EAN2_STRUCTURE[parseInt(this.data)%4];return{data:"1011"+(0,i.default)(this.data,t,"01"),text:this.text}}}]),e}(a(n(0)).default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=u(n(3)),i=u(n(0)),a=n(9);function u(t){return t&&t.__esModule?t:{default:t}}function f(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var c=["XX00000XXX","XX10000XXX","XX20000XXX","XXX00000XX","XXXX00000X","XXXXX00005","XXXXX00006","XXXXX00007","XXXXX00008","XXXXX00009"],s=[["EEEOOO","OOOEEE"],["EEOEOO","OOEOEE"],["EEOOEO","OOEEOE"],["EEOOOE","OOEEEO"],["EOEEOO","OEOOEE"],["EOOEEO","OEEOOE"],["EOOOEE","OEEEOO"],["EOEOEO","OEOEOE"],["EOEOOE","OEOEEO"],["EOOEOE","OEEOEO"]],l=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=f(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));if(r.isValid=!1,-1!==t.search(/^[0-9]{6}$/))r.middleDigits=t,r.upcA=p(t,"0"),r.text=n.text||""+r.upcA[0]+t+r.upcA[r.upcA.length-1],r.isValid=!0;else{if(-1===t.search(/^[01][0-9]{7}$/))return f(r);if(r.middleDigits=t.substring(1,t.length-1),r.upcA=p(r.middleDigits,t[0]),r.upcA[r.upcA.length-1]!==t[t.length-1])return f(r);r.isValid=!0}return r.displayValue=n.displayValue,n.fontSize>10*n.width?r.fontSize=10*n.width:r.fontSize=n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return this.isValid}},{key:"encode",value:function(){return this.options.flat?this.flatEncoding():this.guardedEncoding()}},{key:"flatEncoding",value:function(){var t="";return t+="101",t+=this.encodeMiddleDigits(),{data:t+="010101",text:this.text}}},{key:"guardedEncoding",value:function(){var t=[];return this.displayValue&&t.push({data:"00000000",text:this.text[0],options:{textAlign:"left",fontSize:this.fontSize}}),t.push({data:"101",options:{height:this.guardHeight}}),t.push({data:this.encodeMiddleDigits(),text:this.text.substring(1,7),options:{fontSize:this.fontSize}}),t.push({data:"010101",options:{height:this.guardHeight}}),this.displayValue&&t.push({data:"00000000",text:this.text[7],options:{textAlign:"right",fontSize:this.fontSize}}),t}},{key:"encodeMiddleDigits",value:function(){var t=this.upcA[0],e=this.upcA[this.upcA.length-1],n=s[parseInt(e)][parseInt(t)];return(0,o.default)(this.middleDigits,n)}}]),e}(i.default);function p(t,e){for(var n=parseInt(t[t.length-1]),r=c[n],o="",i=0,u=0;u<r.length;u++){var f=r[u];o+="X"===f?t[i++]:f}return""+(o=""+e+o)+(0,a.checksum)(o)}e.default=l},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.ITF14=e.ITF=void 0;var r=i(n(10)),o=i(n(32));function i(t){return t&&t.__esModule?t:{default:t}}e.ITF=r.default,e.ITF14=o.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.START_BIN="1010",e.END_BIN="11101",e.BINARIES=["00110","10001","01001","11000","00101","10100","01100","00011","10010","01010"]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(10),a=(r=i)&&r.__esModule?r:{default:r};var u=function(t){var e=t.substr(0,13).split("").map((function(t){return parseInt(t,10)})).reduce((function(t,e,n){return t+e*(3-n%2*2)}),0);return 10*Math.ceil(e/10)-e},f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{13}$/)&&(t+=u(t)),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{14}$/)&&+this.data[13]===u(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.MSI1110=e.MSI1010=e.MSI11=e.MSI10=e.MSI=void 0;var r=f(n(4)),o=f(n(34)),i=f(n(35)),a=f(n(36)),u=f(n(37));function f(t){return t&&t.__esModule?t:{default:t}}e.MSI=r.default,e.MSI10=o.default,e.MSI11=i.default,e.MSI1010=a.default,e.MSI1110=u.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t+(0,a.mod10)(t),n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t+(0,a.mod11)(t),n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t+=(0,a.mod10)(t),t+=(0,a.mod10)(t),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t+=(0,a.mod11)(t),t+=(0,a.mod10)(t),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.pharmacode=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.number=parseInt(t,10),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t=this.number,e="";!isNaN(t)&&0!=t;)t%2==0?(e="11100"+e,t=(t-2)/2):(e="100"+e,t=(t-1)/2);return{data:e=e.slice(0,-2),text:this.text}}},{key:"valid",value:function(){return this.number>=3&&this.number<=131070}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.pharmacode=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.codabar=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),0===t.search(/^[0-9\-\$\:\.\+\/]+$/)&&(t="A"+t+"A");var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t.toUpperCase(),n));return r.text=r.options.text||r.text.replace(/[A-D]/g,""),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[A-D][0-9\-\$\:\.\+\/]+[A-D]$/)}},{key:"encode",value:function(){for(var t=[],e=this.getEncodings(),n=0;n<this.data.length;n++)t.push(e[this.data.charAt(n)]),n!==this.data.length-1&&t.push("0");return{text:this.text,data:t.join("")}}},{key:"getEncodings",value:function(){return{0:"101010011",1:"101011001",2:"101001011",3:"110010101",4:"101101001",5:"110101001",6:"100101011",7:"100101101",8:"100110101",9:"110100101","-":"101001101",$:"101100101",":":"1101011011","/":"1101101011",".":"1101101101","+":"1011011011",A:"1011001001",B:"1001001011",C:"1010010011",D:"1010011001"}}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.codabar=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.GenericBarcode=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){return{data:"10101010101010101010101010101010101010101",text:this.text}}},{key:"valid",value:function(){return!0}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.GenericBarcode=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){var e=[];return function t(n){if(Array.isArray(n))for(var r=0;r<n.length;r++)t(n[r]);else n.text=n.text||"",n.data=n.data||"",e.push(n)}(t),e}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){return t.marginTop=t.marginTop||t.margin,t.marginBottom=t.marginBottom||t.margin,t.marginRight=t.marginRight||t.margin,t.marginLeft=t.marginLeft||t.margin,t}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},o=u(n(44)),i=u(n(45)),a=n(14);function u(t){return t&&t.__esModule?t:{default:t}}function f(t){if("string"==typeof t)return function(t){var e=document.querySelectorAll(t);if(0===e.length)return;for(var n=[],r=0;r<e.length;r++)n.push(f(e[r]));return n}(t);if(Array.isArray(t)){for(var e=[],n=0;n<t.length;n++)e.push(f(t[n]));return e}if("undefined"!=typeof HTMLCanvasElement&&t instanceof HTMLImageElement)return u=t,{element:c=document.createElement("canvas"),options:(0,o.default)(u),renderer:i.default.CanvasRenderer,afterRender:function(){u.setAttribute("src",c.toDataURL())}};if(t&&t.nodeName&&"svg"===t.nodeName.toLowerCase()||"undefined"!=typeof SVGElement&&t instanceof SVGElement)return{element:t,options:(0,o.default)(t),renderer:i.default.SVGRenderer};if("undefined"!=typeof HTMLCanvasElement&&t instanceof HTMLCanvasElement)return{element:t,options:(0,o.default)(t),renderer:i.default.CanvasRenderer};if(t&&t.getContext)return{element:t,renderer:i.default.CanvasRenderer};if(t&&"object"===(void 0===t?"undefined":r(t))&&!t.nodeName)return{element:t,renderer:i.default.ObjectRenderer};throw new a.InvalidElementException;var u,c}e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=i(n(11)),o=i(n(12));function i(t){return t&&t.__esModule?t:{default:t}}e.default=function(t){var e={};for(var n in o.default)o.default.hasOwnProperty(n)&&(t.hasAttribute("jsbarcode-"+n.toLowerCase())&&(e[n]=t.getAttribute("jsbarcode-"+n.toLowerCase())),t.hasAttribute("data-"+n.toLowerCase())&&(e[n]=t.getAttribute("data-"+n.toLowerCase())));return e.value=t.getAttribute("jsbarcode-value")||t.getAttribute("data-value"),e=(0,r.default)(e)}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=a(n(46)),o=a(n(47)),i=a(n(48));function a(t){return t&&t.__esModule?t:{default:t}}e.default={CanvasRenderer:r.default,SVGRenderer:o.default,ObjectRenderer:i.default}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(7),a=(r=i)&&r.__esModule?r:{default:r},u=n(13);var f=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.canvas=e,this.encodings=n,this.options=r}return o(t,[{key:"render",value:function(){if(!this.canvas.getContext)throw new Error("The browser does not support canvas.");this.prepareCanvas();for(var t=0;t<this.encodings.length;t++){var e=(0,a.default)(this.options,this.encodings[t].options);this.drawCanvasBarcode(e,this.encodings[t]),this.drawCanvasText(e,this.encodings[t]),this.moveCanvasDrawing(this.encodings[t])}this.restoreCanvas()}},{key:"prepareCanvas",value:function(){var t=this.canvas.getContext("2d");t.save(),(0,u.calculateEncodingAttributes)(this.encodings,this.options,t);var e=(0,u.getTotalWidthOfEncodings)(this.encodings),n=(0,u.getMaximumHeightOfEncodings)(this.encodings);this.canvas.width=e+this.options.marginLeft+this.options.marginRight,this.canvas.height=n,t.clearRect(0,0,this.canvas.width,this.canvas.height),this.options.background&&(t.fillStyle=this.options.background,t.fillRect(0,0,this.canvas.width,this.canvas.height)),t.translate(this.options.marginLeft,0)}},{key:"drawCanvasBarcode",value:function(t,e){var n,r=this.canvas.getContext("2d"),o=e.data;n="top"==t.textPosition?t.marginTop+t.fontSize+t.textMargin:t.marginTop,r.fillStyle=t.lineColor;for(var i=0;i<o.length;i++){var a=i*t.width+e.barcodePadding;"1"===o[i]?r.fillRect(a,n,t.width,t.height):o[i]&&r.fillRect(a,n,t.width,t.height*o[i])}}},{key:"drawCanvasText",value:function(t,e){var n,r,o=this.canvas.getContext("2d"),i=t.fontOptions+" "+t.fontSize+"px "+t.font;t.displayValue&&(r="top"==t.textPosition?t.marginTop+t.fontSize-t.textMargin:t.height+t.textMargin+t.marginTop+t.fontSize,o.font=i,"left"==t.textAlign||e.barcodePadding>0?(n=0,o.textAlign="left"):"right"==t.textAlign?(n=e.width-1,o.textAlign="right"):(n=e.width/2,o.textAlign="center"),o.fillText(e.text,n,r))}},{key:"moveCanvasDrawing",value:function(t){this.canvas.getContext("2d").translate(t.width,0)}},{key:"restoreCanvas",value:function(){this.canvas.getContext("2d").restore()}}]),t}();e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(7),a=(r=i)&&r.__esModule?r:{default:r},u=n(13);var f="http://www.w3.org/2000/svg",c=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.svg=e,this.encodings=n,this.options=r,this.document=r.xmlDocument||document}return o(t,[{key:"render",value:function(){var t=this.options.marginLeft;this.prepareSVG();for(var e=0;e<this.encodings.length;e++){var n=this.encodings[e],r=(0,a.default)(this.options,n.options),o=this.createGroup(t,r.marginTop,this.svg);this.setGroupOptions(o,r),this.drawSvgBarcode(o,r,n),this.drawSVGText(o,r,n),t+=n.width}}},{key:"prepareSVG",value:function(){for(;this.svg.firstChild;)this.svg.removeChild(this.svg.firstChild);(0,u.calculateEncodingAttributes)(this.encodings,this.options);var t=(0,u.getTotalWidthOfEncodings)(this.encodings),e=(0,u.getMaximumHeightOfEncodings)(this.encodings),n=t+this.options.marginLeft+this.options.marginRight;this.setSvgAttributes(n,e),this.options.background&&this.drawRect(0,0,n,e,this.svg).setAttribute("style","fill:"+this.options.background+";")}},{key:"drawSvgBarcode",value:function(t,e,n){var r,o=n.data;r="top"==e.textPosition?e.fontSize+e.textMargin:0;for(var i=0,a=0,u=0;u<o.length;u++)a=u*e.width+n.barcodePadding,"1"===o[u]?i++:i>0&&(this.drawRect(a-e.width*i,r,e.width*i,e.height,t),i=0);i>0&&this.drawRect(a-e.width*(i-1),r,e.width*i,e.height,t)}},{key:"drawSVGText",value:function(t,e,n){var r,o,i=this.document.createElementNS(f,"text");e.displayValue&&(i.setAttribute("style","font:"+e.fontOptions+" "+e.fontSize+"px "+e.font),o="top"==e.textPosition?e.fontSize-e.textMargin:e.height+e.textMargin+e.fontSize,"left"==e.textAlign||n.barcodePadding>0?(r=0,i.setAttribute("text-anchor","start")):"right"==e.textAlign?(r=n.width-1,i.setAttribute("text-anchor","end")):(r=n.width/2,i.setAttribute("text-anchor","middle")),i.setAttribute("x",r),i.setAttribute("y",o),i.appendChild(this.document.createTextNode(n.text)),t.appendChild(i))}},{key:"setSvgAttributes",value:function(t,e){var n=this.svg;n.setAttribute("width",t+"px"),n.setAttribute("height",e+"px"),n.setAttribute("x","0px"),n.setAttribute("y","0px"),n.setAttribute("viewBox","0 0 "+t+" "+e),n.setAttribute("xmlns",f),n.setAttribute("version","1.1"),n.setAttribute("style","transform: translate(0,0)")}},{key:"createGroup",value:function(t,e,n){var r=this.document.createElementNS(f,"g");return r.setAttribute("transform","translate("+t+", "+e+")"),n.appendChild(r),r}},{key:"setGroupOptions",value:function(t,e){t.setAttribute("style","fill:"+e.lineColor+";")}},{key:"drawRect",value:function(t,e,n,r,o){var i=this.document.createElementNS(f,"rect");return i.setAttribute("x",t),i.setAttribute("y",e),i.setAttribute("width",n),i.setAttribute("height",r),o.appendChild(i),i}}]),t}();e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();var o=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.object=e,this.encodings=n,this.options=r}return r(t,[{key:"render",value:function(){this.object.encodings=this.encodings}}]),t}();e.default=o},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();var o=function(){function t(e){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.api=e}return r(t,[{key:"handleCatch",value:function(t){if("InvalidInputException"!==t.name)throw t;if(this.api._options.valid===this.api._defaults.valid)throw t.message;this.api._options.valid(!1),this.api.render=function(){}}},{key:"wrapBarcodeCall",value:function(t){try{var e=t.apply(void 0,arguments);return this.api._options.valid(!0),e}catch(t){return this.handleCatch(t),this.api}}}]),t}();e.default=o}]);
+  </script>
 </body>
 </html>
