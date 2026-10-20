@@ -119,50 +119,39 @@
       @media (max-width:1023px) { .option-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
       @media (max-width:767px) { .app-shell { padding:22px 16px 36px; } .panel-content { padding:20px; } .form-row { gap:16px; } .discount-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; } .discount-date { font-size:10px; } .options-panel { padding:16px; } .app-header h1 { font-size:22px; } .invoice-panel { padding:16px; } }
       @media (max-width:479px) { .app-shell { padding:18px 12px 28px; } .app-header { margin-bottom:17px; gap:8px; } .app-brand { gap:10px; } .app-mark { width:36px; height:36px; border-radius:11px; } .app-mark svg { width:20px; height:20px; } .app-header h1 { font-size:18px; } .app-eyebrow { font-size:8px; } .app-edition > span { display:none; } .app-edition strong { padding:4px 7px; font-size:12px; } .estimate-panel { border-radius:13px; } .panel-content { padding:17px 15px; } .section-heading > span { font-size:10px; } .option-grid { grid-template-columns:1fr; } .calculate-action { display:block; } #btnCalc { width:100%; } .results-heading p { font-size:10px; } .invoice-panel { padding:14px 12px; } }
-      /* Keep tablet forms comfortable without squeezing the discount controls. */
+      /* Fit the existing column layout to tablet widths. */
       .estimate-panel, .panel-content, .options-panel, .results-panel, .invoice-panel { min-width:0; }
       .estimate-panel select, .estimate-panel input { max-width:100%; min-width:0; }
       .option-grid > label, .option-grid > div { min-width:0; }
       .discount-title { flex-wrap:wrap; }
       .discount-date { white-space:normal; }
-      @media (min-width:768px) and (max-width:1023px) {
-        .app-shell { padding:24px 20px 40px; }
-        .panel-content { padding:22px; }
-        .form-row:not(.address-row) > div { grid-column:span 6 / span 6; }
-        .discount-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
-      }
-      /* Reflow six delivery choices into two rows, keeping each heading with its price. */
+      .due-table-wrap > table { min-width:0; }
       @media (max-width:1023px) {
+        .app-shell { padding:24px 16px 40px; }
+        .panel-content { padding:18px; }
+        .form-row { column-gap:12px; }
+        .discount-list > label { padding:8px 6px; gap:5px; }
         .due-table-wrap { margin:0; }
-        .due-table-wrap > table { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 10px; min-width:0; }
-        .due-table-wrap thead, .due-table-wrap tbody, #dueHead, #dueAmount { display:contents; }
-        #dueHead th, #dueAmount td { min-width:0; }
-        #dueHead th { grid-row:1; padding:10px 0 8px; }
-        #dueAmount td { grid-row:2; padding:0 0 10px; }
-        #dueHead th:nth-child(n+4) { grid-row:3; }
-        #dueAmount td:nth-child(n+4) { grid-row:4; }
-        #dueHead th:nth-child(3n+1), #dueAmount td:nth-child(3n+1) { grid-column:1; }
-        #dueHead th:nth-child(3n+2), #dueAmount td:nth-child(3n+2) { grid-column:2; }
-        #dueHead th:nth-child(3n), #dueAmount td:nth-child(3n) { grid-column:3; }
-        #dueAmount button > div:first-child { font-size:clamp(16px,2.7vw,21px); }
-        /* Item cards retain full-size barcodes, instead of shrinking them to fit a table. */
-        .invoice-table, .invoice-table tbody { display:block; min-width:0; width:100%; }
-        .invoice-table thead { display:none; }
-        #invBody { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-        #invBody tr { display:flex; flex-direction:column; min-width:0; padding:12px; border:1px solid #e2e8f2; border-radius:9px; }
-        #invBody td, #invBody td:first-child, #invBody td:nth-child(2), #invBody td:nth-child(3) { display:block; width:auto; min-width:0; padding:3px 0; white-space:normal; overflow-wrap:anywhere; }
-        #invBody td:nth-child(2) { font-weight:600; }
-        #invBody td:nth-child(3) { order:1; margin-top:8px; }
-        #invBody td:nth-child(n+4) { display:flex; justify-content:space-between; gap:8px; }
-        #invBody td:nth-child(4)::before { content:"単価"; }
-        #invBody td:nth-child(5)::before { content:"数量"; }
-        #invBody td:nth-child(6)::before { content:"合計"; }
-        .invoice-panel > .grid { grid-template-columns:1fr; }
-        .invoice-panel > .grid > div:empty { display:none; }
-      }
-      @media (max-width:639px) {
-        #invBody { grid-template-columns:1fr; }
-        .discount-list { grid-template-columns:1fr; }
+        #dueHead th { padding:8px 3px; }
+        #dueHead th > div:first-child { font-size:11px; }
+        #dueAmount td { padding:0 3px 5px; }
+        #dueAmount button { min-height:70px; padding:12px 2px; }
+        #dueAmount button > div:first-child { font-size:clamp(12px,2.1vw,19px); letter-spacing:-.04em; }
+        #dueAmount button > div:nth-child(2) { font-size:9px; }
+        /* Preserve invoice rows and a single vertical barcode column. */
+        .invoice-panel { padding:14px 10px; }
+        .invoice-table { min-width:0; table-layout:fixed; }
+        .invoice-table th, #invBody td { padding:10px 4px; }
+        .invoice-table th:nth-child(1) { width:10%; }
+        .invoice-table th:nth-child(2) { width:23%; }
+        .invoice-table th:nth-child(3) { width:29%; }
+        .invoice-table th:nth-child(4) { width:14%; }
+        .invoice-table th:nth-child(5) { width:8%; }
+        .invoice-table th:nth-child(6) { width:16%; }
+        #invBody td:first-child { white-space:normal; }
+        #invBody td:nth-child(2), #invBody td:nth-child(3) { min-width:0; width:auto; overflow-wrap:anywhere; }
+        #invBody td { font-size:12px; }
+        .invoice-summary td { padding:8px 4px; }
       }
       @media (max-width:359px) { .discount-list { grid-template-columns:1fr; } }
       @media (prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition:none !important; } }
