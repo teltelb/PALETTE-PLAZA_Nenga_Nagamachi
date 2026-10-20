@@ -13,7 +13,7 @@
       .app-shell { max-width:1064px; padding:32px 24px 52px; }
       .app-header { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:22px; }
       .app-brand { display:flex; align-items:center; gap:14px; }
-      .app-mark { width:44px; height:44px; display:grid; place-items:center; flex-shrink:0; background:var(--blue); border-radius:13px; color:#fff; }
+      .app-mark { width:44px; height:44px; display:grid; place-items:center; flex-shrink:0; background:#fff0f0; border-radius:13px; color:#d83b43; }
       .app-eyebrow { margin:0 0 4px; color:var(--muted); font-size:10px; letter-spacing:.16em; font-weight:700; }
       .app-header h1 { margin:0; font-size:24px; font-weight:700; letter-spacing:.035em; line-height:1.4; }
       .app-edition { display:flex; align-items:center; gap:8px; color:#4e648f; font-size:12px; white-space:nowrap; }
@@ -96,7 +96,7 @@
       .invoice-table th:first-child { border-radius:6px 0 0 6px; }
       .invoice-table th:last-child { border-radius:0 6px 6px 0; }
       #invBody tr { border-color:#edf0f5; }
-      #invBody td { padding:14px 12px; color:#526078; font-size:13px; vertical-align:middle; line-height:1.8; }
+      #invBody td { padding:8px 12px; color:#526078; font-size:13px; vertical-align:middle; line-height:1.8; }
       #invBody td:first-child { color:#8a97ab; font-size:11px; white-space:nowrap; }
       #invBody td:nth-child(2) { min-width:135px; }
       #invBody td:nth-child(3) { width:208px; }
@@ -141,7 +141,7 @@
         /* Preserve invoice rows and a single vertical barcode column. */
         .invoice-panel { padding:14px 10px; }
         .invoice-table { min-width:0; table-layout:fixed; }
-        .invoice-table th, #invBody td { padding:10px 4px; }
+        .invoice-table th, #invBody td { padding:6px 4px; }
         .invoice-table th:nth-child(1) { width:10%; }
         .invoice-table th:nth-child(2) { width:23%; }
         .invoice-table th:nth-child(3) { width:29%; }
@@ -161,7 +161,7 @@
     <main class="app-shell mx-auto max-w-[1024px] px-5 py-8">
       <header class="app-header">
         <div class="app-brand">
-          <div class="app-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div>
+          <div class="app-mark" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21a4 4 0 0 1-4-4 4 4 0 0 1 1.5-6A4 4 0 0 1 12 6a4.5 4.5 0 0 1 8 0 4 4 0 0 1 5.5 5A4 4 0 0 1 27 17a4 4 0 0 1-4 4" fill="#fff"/><path d="M11 16c-4-4-7-1-4 2l4 1m10-3c4-4 7-1 4 2l-4 1"/><path d="M11 14c0-3 10-3 10 0v6a5 6 0 0 1-10 0Z" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r="1" fill="#fff" stroke="none"/><circle cx="18" cy="18" r="1" fill="#fff" stroke="none"/><path d="M14.5 22h3" stroke="#fff" stroke-width="1.3"/><path d="M10 24v3m12-3v3"/></svg></div>
           <div><p class="app-eyebrow">PALETTE PLAZA</p><h1>年賀状 お見積り</h1></div>
         </div>
         <div class="app-edition"><span>年賀状料金計算</span><strong>2027</strong></div>
@@ -705,7 +705,8 @@ function getCardBarcode(type){
       // --- HTML内でバーコードを描画（外部画像サービスへの通信不要） ---
       const CSS_PX_PER_MM = 96 / 25.4;
       const JSB_MODULE_WIDTH = 2; // 画面表示でバーがにじまない整数ピクセル幅
-      const BARCODE_HEIGHT_PX = +(19.86 * CSS_PX_PER_MM).toFixed(1);
+      // Compact bars; preserve module width and horizontal quiet zones.
+      const BARCODE_HEIGHT_PX = 40;
       const BARCODE_MARGIN_PX = Math.max(10 * JSB_MODULE_WIDTH, Math.ceil(3.63 * CSS_PX_PER_MM));
 
       function computeEanCheckDigit(numstr){
@@ -747,7 +748,8 @@ function getCardBarcode(type){
             JsBarcode(svg, value, {
               format: svg.getAttribute('data-type'), displayValue: false,
               width: JSB_MODULE_WIDTH, height: BARCODE_HEIGHT_PX,
-              margin: BARCODE_MARGIN_PX, background: '#ffffff', lineColor: '#000000'
+              margin: BARCODE_MARGIN_PX, marginTop: 4, marginBottom: 4,
+              background: '#ffffff', lineColor: '#000000'
             });
             svg.setAttribute('data-rendered', 'true');
           } catch (error) {
