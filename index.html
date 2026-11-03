@@ -164,54 +164,55 @@
       #btnPrintInvoice { min-height:44px; padding:9px 14px; border:1px solid #b9c9e8; border-radius:8px; background:#eef3ff; color:var(--blue-dark); font-size:13px; font-weight:600; cursor:pointer; }
       #btnPrintInvoice:hover { background:#e0eaff; }
       #btnPrintInvoice:focus-visible { outline:3px solid #b5cafa; outline-offset:2px; }
-      .invoice-print-header { display:none; }
+      #printSheet { display:none; }
       .invoice-print-help { margin:-4px 0 14px; color:var(--muted); font-size:11px; line-height:1.7; }
-      @page { size:A4 portrait; margin:10mm; }
+      @page { size:A4 landscape; margin:8mm; }
       @media print {
         html, body { background:#fff !important; }
-        body.invoice-ready { min-height:0; color:#111; }
-        .invoice-ready .app-header, .invoice-ready .panel-content > :not(#result),
-        .invoice-ready #result > :not(#invoice), .invoice-ready .invoice-toolbar,
-        .invoice-ready .invoice-print-help { display:none !important; }
-        .invoice-ready .app-shell, .invoice-ready .estimate-panel, .invoice-ready .panel-content,
-        .invoice-ready #result, .invoice-ready #invoice { width:100%; max-width:none; min-width:0; margin:0; padding:0; border:0; border-radius:0; background:#fff; box-shadow:none; backdrop-filter:none; }
-        .invoice-print-header { display:block; margin-bottom:2mm; color:#111; }
-        .print-title-row { display:flex; align-items:flex-end; justify-content:space-between; gap:5mm; padding-bottom:2mm; border-bottom:1.5px solid #222; }
-        .print-brand { margin:0 0 .8mm; font-size:7pt; line-height:1.3; letter-spacing:.08em; }
-        .print-title-row h2 { font-size:16pt; line-height:1.2; font-weight:700; letter-spacing:.06em; }
-        .print-issued { font-size:8pt; text-align:right; white-space:nowrap; }
-        .print-order-details { display:grid; grid-template-columns:1fr 1fr; gap:.5mm 5mm; padding-top:1.5mm; font-size:8pt; line-height:1.3; }
-        .print-order-details p { overflow-wrap:anywhere; }
-        #invoice > .section-heading { margin:0 0 1.5mm; }
-        #invoice > .section-heading h3 { font-size:9pt; color:#111; }
-        #invoice > .section-heading h3::before { display:none; }
-        #invoice .overflow-x-auto { overflow:visible; }
-        .invoice-table { width:100%; min-width:0; table-layout:fixed; border-collapse:collapse; }
-        .invoice-table thead { display:table-header-group; }
-        .invoice-table th { padding:1.2mm 1mm; color:#111; font-size:8pt; border-top:1px solid #777; border-bottom:1px solid #777; border-radius:0 !important; }
-        .invoice-table th:nth-child(1) { width:10%; }
-        .invoice-table th:nth-child(2) { width:29%; }
-        .invoice-table th:nth-child(3) { width:25%; text-align:center; }
-        .invoice-table th:nth-child(4) { width:13%; }
-        .invoice-table th:nth-child(5) { width:7%; }
-        .invoice-table th:nth-child(6) { width:16%; }
-        #invBody tr { break-inside:avoid; page-break-inside:avoid; border-bottom:1px solid #ccc; }
-        #invBody td { padding:.3mm 1mm; color:#111; font-size:8pt; line-height:1.4; }
-        #invBody td:first-child { font-size:7pt; white-space:normal; color:#444; }
-        #invBody td:nth-child(2), #invBody td:nth-child(3) { min-width:0; width:auto; overflow-wrap:anywhere; }
-        #invBody td:last-child { color:#111; }
-        #invBody td:nth-child(3) > div { gap:0; }
-        #invBody svg { width:42mm; height:9mm; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
-        #invBody .font-mono { font-size:7pt; line-height:3mm; color:#111; letter-spacing:0; }
-        #invoice > .grid { display:flex; justify-content:flex-end; margin-top:3mm; break-inside:avoid; page-break-inside:avoid; }
-        #invoice > .grid > div:empty { display:none; }
-        .invoice-summary { width:52%; padding:1mm 2mm; border:1px solid #777; border-radius:0; background:#fff; }
-        .invoice-summary td { padding:.7mm 1mm; color:#111; font-size:8pt; line-height:1.3; }
-        .invoice-summary td:last-child { color:#111; }
-        .invoice-summary tr { border-color:#aaa; }
-        .invoice-summary tr:has(#sumExclCard) td, .invoice-summary tr:has(#sumInclCard) td { color:#111; font-size:8pt !important; padding:1.2mm 1mm; }
-        #sumExclCard { color:#111; font-size:10pt !important; }
-        #sumInclCard { color:#111; font-size:14pt !important; }
+        body.invoice-ready { min-height:0; margin:0; color:#111; }
+        body.invoice-ready > :not(#printSheet) { display:none !important; }
+        .invoice-ready #printSheet { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:minmax(0,1fr); position:relative; width:100%; height:193mm; margin:0; padding:0; color:#111; }
+        #printSheet::after { content:""; position:absolute; left:50%; top:0; bottom:0; border-left:.2mm dashed #888; }
+        .print-cut-label { position:absolute; z-index:1; left:50%; top:50%; transform:translate(-50%,-50%); padding:2mm 0; background:#fff; color:#666; writing-mode:vertical-rl; font-size:6pt; letter-spacing:.15em; }
+        .print-half { display:flex; flex-direction:column; min-width:0; min-height:0; height:100%; padding:0 5mm; break-inside:avoid; page-break-inside:avoid; }
+        .print-half-header { display:flex; justify-content:space-between; align-items:flex-end; gap:3mm; padding-bottom:1.7mm; border-bottom:.4mm solid #222; }
+        .print-half-brand { margin-bottom:.6mm; font-size:7pt; letter-spacing:.05em; }
+        .print-half-title { font-size:17pt; font-weight:700; line-height:1.2; letter-spacing:.06em; }
+        .print-half-date { font-size:7pt; line-height:1.5; text-align:right; white-space:nowrap; }
+        .print-half-details { display:grid; grid-template-columns:1fr 1fr; gap:.7mm 3mm; margin:2mm 0; font-size:7.5pt; line-height:1.35; }
+        .print-half-details p { min-width:0; overflow-wrap:anywhere; }
+        .print-line-items { width:100%; table-layout:fixed; border-collapse:collapse; font-size:8pt; line-height:1.3; }
+        .print-line-items th { padding:1mm .7mm; border-top:.2mm solid #777; border-bottom:.2mm solid #777; text-align:left; font-size:7.5pt; font-weight:600; }
+        .print-line-items th:first-child { width:15%; }
+        .print-line-items th:nth-child(2) { width:42%; }
+        .print-line-items th:nth-child(3) { width:16%; }
+        .print-line-items th:nth-child(4) { width:9%; }
+        .print-line-items th:nth-child(5) { width:18%; }
+        .print-line-items td { padding:.75mm .7mm; border-bottom:.15mm solid #ccc; vertical-align:middle; overflow-wrap:anywhere; }
+        .print-line-items td:first-child { font-size:7pt; }
+        .print-line-items th:nth-child(n+3), .print-line-items td:nth-child(n+3) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+        .print-line-items tr { break-inside:avoid; page-break-inside:avoid; }
+        .print-half-summary { align-self:flex-end; width:67%; margin-top:2mm; padding:1mm 1.5mm; border:.2mm solid #777; }
+        .print-half-summary table { width:100%; border-collapse:collapse; font-size:7.5pt; line-height:1.3; }
+        .print-half-summary th { padding:.65mm .5mm; text-align:left; font-weight:400; }
+        .print-half-summary td { padding:.65mm .5mm; text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+        .print-subtotal { border-top:.15mm solid #aaa; }
+        .print-grand-total { border-top:.2mm solid #555; }
+        .print-grand-total th { font-weight:700; }
+        .print-grand-total td { padding-top:1.2mm; font-size:15pt; font-weight:700; }
+        .print-dense .print-line-items td { padding:.35mm .7mm; line-height:1.25; }
+        .print-dense .print-half-summary th, .print-dense .print-half-summary td { padding:.35mm .5mm; }
+        .print-dense .print-grand-total td { font-size:14pt; }
+        .print-notices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3mm; margin-top:auto; padding-top:2.5mm; }
+        .print-notice { min-width:0; border-top:.3mm solid #444; padding-top:1.3mm; }
+        .print-notice h3 { margin-bottom:1mm; font-size:9pt; font-weight:700; }
+        .print-notice p { font-size:7.5pt; line-height:1.45; }
+        .print-notice .print-notice-terms { margin-top:.7mm; font-size:6.7pt; line-height:1.4; }
+        .print-notice .print-address-unit { margin-top:1mm; font-size:8pt; font-weight:600; }
+        .print-notice .print-address-price { margin:1mm 0; padding:1.2mm 1mm; border:.3mm solid #555; line-height:1.4; text-align:center; }
+        .print-address-price span { display:block; font-size:8pt; }
+        .print-address-price strong { display:block; font-size:11pt; }
+        .print-notice .print-address-ineligible { margin-top:.7mm; font-size:7.5pt; font-weight:700; }
       }
       .offline-panel { margin:-8px 0 18px; color:#66768d; font-size:12px; line-height:1.7; }
       .offline-summary { display:flex; align-items:center; flex-wrap:wrap; gap:6px 12px; }
@@ -460,19 +461,8 @@
 
             <!-- 料金明細（クリックで表示） -->
             <div id="invoice" class="invoice-panel mt-6 hidden rounded-xl border border-slate-200 bg-white p-4">
-              <div class="invoice-print-header">
-                <div class="print-title-row">
-                  <div><p class="print-brand">パレットプラザ｜2027年 年賀状</p><h2>お見積書</h2></div>
-                  <div class="print-issued"><p id="printEstimateDate"></p><p>金額は税込表示です</p></div>
-                </div>
-                <div class="print-order-details">
-                  <p id="printArtwork"></p><p id="printFinish"></p>
-                  <p id="printCardType"></p><p id="printQuantities"></p>
-                  <p id="printDelivery"></p><p id="printDiscount"></p>
-                </div>
-              </div>
-              <div class="section-heading"><h3>料金明細表</h3><div class="invoice-toolbar"><span>税込</span><button id="btnPrintInvoice" type="button">明細書を印刷</button></div></div>
-              <p class="invoice-print-help">A4・縦の専用書式で印刷します。iPadのChromeで印刷画面が開かない場合は、共有メニューの「印刷」をお使いください。</p>
+              <div class="section-heading"><h3>料金明細表</h3><div class="invoice-toolbar"><span>税込</span><button id="btnPrintInvoice" type="button">お見積書・明細書を印刷</button></div></div>
+              <p class="invoice-print-help">A4・横の1枚に、お見積書と明細書を左右に印刷します。中央で半分に切って使えます。iPadのChromeで印刷画面が開かない場合は、共有メニューの「印刷」をお使いください。</p>
               <div class="overflow-x-auto">
                 <table class="invoice-table min-w-full border-collapse text-[14px]">
                   <thead>
@@ -528,6 +518,52 @@
         </div>
       </section>
     </main>
+
+    <section id="printSheet" aria-label="印刷用のお見積書と明細書"></section>
+    <template id="printHalfTemplate">
+      <article class="print-half">
+        <header class="print-half-header">
+          <div><p class="print-half-brand">パレットプラザ｜2027年 年賀状</p><h2 class="print-half-title" data-print="title"></h2></div>
+          <div class="print-half-date"><p data-print="date"></p><p>金額は税込表示です</p></div>
+        </header>
+        <div class="print-half-details">
+          <p data-print="artwork"></p><p data-print="finish"></p>
+          <p data-print="cardType"></p><p data-print="quantities"></p>
+          <p data-print="delivery"></p><p data-print="discount"></p>
+        </div>
+        <table class="print-line-items">
+          <thead><tr><th scope="col">項目</th><th scope="col">品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">合計</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="print-half-summary">
+          <table><tbody>
+            <tr><th scope="row">印刷料金</th><td data-total="print"></td></tr>
+            <tr><th scope="row">オプション代</th><td data-total="options"></td></tr>
+            <tr><th scope="row">クーポン値引き</th><td data-total="coupon"></td></tr>
+            <tr class="print-subtotal"><th scope="row">合計（はがき除く）</th><td data-total="excludingCards"></td></tr>
+            <tr><th scope="row">はがき代</th><td data-total="cards"></td></tr>
+            <tr class="print-grand-total"><th scope="row">総計（はがき含む）</th><td data-total="grand"></td></tr>
+          </tbody></table>
+        </div>
+      </article>
+    </template>
+    <template id="printNoticesTemplate">
+      <footer class="print-notices">
+        <section class="print-notice">
+          <h3>追加注文のご案内</h3>
+          <p>追加注文時は商品お渡し時に発行する引換券をお持ちください。<strong>印刷料金より1,000円引き</strong>で承ります。</p>
+          <p class="print-notice-terms">※追加注文をお受けした日の印刷料金からのお値引きとなります。<br>※『写真キレイ仕上げ』の追加注文は値引き対象外です。<br>※『インターネットからのご注文』は値引き対象外です。<br>※注文内容の変更はできません。</p>
+        </section>
+        <section class="print-notice">
+          <h3>あとから宛名印刷のご案内</h3>
+          <p>お受け取り後でも宛名印刷承ります！お手元の住所がわかるはがきや住所録などをそのままお持ちください！</p>
+          <p class="print-address-unit">宛名データ化＋宛名印刷代　1枚220円</p>
+          <p class="print-address-price" data-print="addressPrice"><span data-print="addressQuantity"></span><strong data-print="addressAmount"></strong></p>
+          <p class="print-notice-terms">※パレットプラザでご注文いただいた『印刷仕上げ』のはがきのみ対象です。</p>
+          <p class="print-address-ineligible" data-print="addressEligibility" hidden>今回の『写真キレイ仕上げ』は対象外です。</p>
+        </section>
+      </footer>
+    </template>
 
     <script>
       // --- 入力サニタイズ（半角数字のみ） ---
@@ -1066,7 +1102,14 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         })();
 
         renderBreakdown(state, selectedIdx);
-        updatePrintDetails(state, selectedIdx);
+        renderPrintSheet(state, selectedIdx, sorted, {
+          print: printTotal,
+          options: optionTotal,
+          coupon: couponTotal,
+          excludingCards: items.filter(item => item.cat !== 'はがき代').reduce((sum, item) => sum + item.sum, 0),
+          cards: cardTotal,
+          grand: items.reduce((sum, item) => sum + item.sum, 0)
+        });
         const invoice = document.getElementById('invoice');
         invoice.classList.remove('hidden');
         document.body.classList.add('invoice-ready');
@@ -1094,21 +1137,68 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         `;
       }
 
-      // 印刷情報も表示中の明細と同じ計算時点の入力から作る。
-      function updatePrintDetails(state, selectedIdx) {
+      // Both printed copies use the selected invoice snapshot, never uncalculated form edits.
+      function renderPrintSheet(state, selectedIdx, items, totals) {
+        const sheet = document.getElementById('printSheet');
+        const template = document.getElementById('printHalfTemplate');
         const due = getDueLabel(state.finish, selectedIdx);
         const date = due ? addDays(state.orderDate, due.offset) : null;
         const campaign = state.superEarly ? '超早割（20%引き）' : state.early ? '早割（10%引き）' : 'なし';
         const details = {
-          printEstimateDate: `見積日：${getOrderDateKey(state.orderDate)}`,
-          printArtwork: `絵柄：${state.artwork || '未選択'}`,
-          printFinish: `仕上がり：${state.finish === 'photo' ? '写真キレイ仕上げ' : state.finish === 'print' ? '印刷仕上げ' : '未選択'}`,
-          printCardType: `はがき：${state.cardType || '未選択'}`,
-          printQuantities: `注文：${state.orderQty}枚　持込：${state.bringInQty}枚`,
-          printDelivery: `納期：${due ? due.name : '-'}${date ? `　${fmtMD(date)}（${fmtWeekdayJa(date)}）` : ''}`,
-          printDiscount: `割引：${campaign}`
+          date: `発行日：${getOrderDateKey(state.orderDate)}`,
+          artwork: `絵柄：${state.artwork || '未選択'}`,
+          finish: `仕上がり：${state.finish === 'photo' ? '写真キレイ仕上げ' : state.finish === 'print' ? '印刷仕上げ' : '未選択'}`,
+          cardType: `はがき：${state.cardType || '未選択'}`,
+          quantities: `注文：${state.orderQty}枚　持込：${state.bringInQty}枚`,
+          delivery: `納期：${due ? due.name : '-'}${date ? `　${fmtMD(date)}（${fmtWeekdayJa(date)}）` : ''}`,
+          discount: `割引：${campaign}`
         };
-        Object.entries(details).forEach(([id, text]) => { document.getElementById(id).textContent = text; });
+        const money = amount => `${amount < 0 ? '−' : ''}¥${yen(Math.abs(amount))}`;
+        sheet.replaceChildren();
+        sheet.classList.toggle('print-dense', items.length > 10);
+        ['お見積書', '明細書'].forEach((title, index) => {
+          const half = template.content.firstElementChild.cloneNode(true);
+          half.dataset.document = index === 0 ? 'estimate' : 'statement';
+          Object.entries({ ...details, title }).forEach(([key, value]) => {
+            half.querySelector(`[data-print="${key}"]`).textContent = value;
+          });
+          const tbody = half.querySelector('.print-line-items tbody');
+          items.forEach(item => {
+            const row = document.createElement('tr');
+            const name = item.cat === '印刷（200枚以降）'
+              ? `${state.finish === 'photo' ? '写真キレイ仕上げ' : '印刷仕上げ'}（200枚超過分・10枚単位）`
+              : item.name;
+            [item.cat, name, money(item.unit), String(item.qty), money(item.sum)].forEach(value => {
+              const cell = document.createElement('td');
+              cell.textContent = value;
+              row.appendChild(cell);
+            });
+            tbody.appendChild(row);
+          });
+          Object.entries(totals).forEach(([key, value]) => {
+            half.querySelector(`[data-total="${key}"]`).textContent = money(value);
+          });
+          if (index === 1) {
+            const notices = document.getElementById('printNoticesTemplate').content.firstElementChild.cloneNode(true);
+            // Promotional information only: do not add this price to the current invoice.
+            const addressTotal = state.orderQty * 220;
+            const eligible = state.finish === 'print';
+            notices.querySelector('[data-print="addressQuantity"]').textContent = eligible
+              ? `${yen(state.orderQty)}枚の場合`
+              : `印刷仕上げ・${yen(state.orderQty)}枚の場合`;
+            notices.querySelector('[data-print="addressAmount"]').textContent = `${yen(addressTotal)}円で承ります`;
+            const eligibility = notices.querySelector('[data-print="addressEligibility"]');
+            eligibility.hidden = eligible;
+            if (!eligible && state.finish !== 'photo') eligibility.textContent = '『印刷仕上げ』を選択したご注文のみ対象です。';
+            half.appendChild(notices);
+          }
+          sheet.appendChild(half);
+        });
+        const cutLabel = document.createElement('span');
+        cutLabel.className = 'print-cut-label';
+        cutLabel.setAttribute('aria-hidden', 'true');
+        cutLabel.textContent = '切り取り線';
+        sheet.appendChild(cutLabel);
       }
       document.getElementById('btnPrintInvoice').addEventListener('click', () => {
         if (document.body.classList.contains('invoice-ready')) window.print();

@@ -1,6 +1,6 @@
 // Bump this version when changing the worker, manifest, or home-screen icon.
 // HTML updates are fetched on navigation and saved for the next offline launch.
-const CACHE_VERSION = '2027-offline-v2';
+const CACHE_VERSION = '2027-offline-v4';
 const CACHE_PREFIX = `palette-nenga:${self.registration.scope}:`;
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 const APP_URL = new URL('index.html', self.registration.scope).href;
