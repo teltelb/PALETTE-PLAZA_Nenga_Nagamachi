@@ -213,8 +213,10 @@
         [data-document="checkout"] .print-line-items th:nth-child(6) { width:12%; }
         [data-document="checkout"] .print-line-items th:nth-child(3), [data-document="checkout"] .print-line-items td:nth-child(3) { text-align:center; white-space:normal; }
         .print-barcode { display:flex; flex-direction:column; align-items:center; gap:.2mm; }
-        .print-barcode svg { display:block; max-width:100%; height:6mm; flex-shrink:0; }
+        [data-document="checkout"] .print-line-items td { padding:1.25mm .7mm; }
+        .print-barcode svg { display:block; max-width:100%; height:7mm; flex-shrink:0; }
         .print-barcode-number { font:6pt/1.05 monospace; white-space:nowrap; }
+        .print-payment-note { margin-top:1mm; font-size:7pt; font-weight:600; line-height:1.3; overflow-wrap:anywhere; }
         .print-half-summary { align-self:flex-end; width:67%; margin-top:1.5mm; padding:1mm 1.5mm; border:.2mm solid #777; }
         .print-half-summary table { width:100%; border-collapse:collapse; font-size:7.5pt; line-height:1.3; }
         .print-half-summary th { padding:.65mm .5mm; text-align:left; font-weight:400; }
@@ -226,8 +228,18 @@
         .print-dense .print-line-items td { padding:.35mm .7mm; line-height:1.25; }
         .print-dense .print-half-summary th, .print-dense .print-half-summary td { padding:.35mm .5mm; }
         .print-dense .print-grand-total td { font-size:14pt; }
-        .print-dense [data-document="checkout"] .print-line-items td { padding:.2mm .7mm; line-height:1.2; }
-        .print-dense .print-barcode svg { height:5mm; }
+        .print-dense .print-half-brand { line-height:1.2; }
+        .print-dense .print-delivery { margin-top:1mm; padding:.75mm 2mm; }
+        .print-dense .print-half-details { gap:.3mm 3mm; margin:.75mm 0; font-size:7pt; line-height:1.25; }
+        .print-dense [data-document="checkout"] .print-line-items td { padding:.6mm .7mm; line-height:1.2; }
+        .print-dense .print-barcode svg { height:5.5mm; }
+        /* Keep larger, separated barcodes on one A5 half even with all options. */
+        .print-dense [data-document="checkout"] .print-half-summary { width:100%; margin-top:1mm; padding:.5mm 1.5mm; }
+        .print-dense [data-document="checkout"] .print-half-summary tbody { display:grid; grid-template-rows:repeat(3,auto); grid-auto-flow:column; grid-template-columns:1fr 1fr; column-gap:3mm; }
+        .print-dense [data-document="checkout"] .print-half-summary tr { display:flex; align-items:center; justify-content:space-between; gap:1mm; }
+        .print-dense [data-document="checkout"] .print-half-summary th,
+        .print-dense [data-document="checkout"] .print-half-summary td { padding:.25mm 0; font-size:7pt; line-height:1.2; }
+        .print-dense [data-document="checkout"] .print-grand-total td { font-size:12pt; }
         .print-notices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3mm; margin-top:auto; padding-top:2mm; }
         .print-notice { min-width:0; border-top:.3mm solid #444; padding-top:1.3mm; }
         .print-notice h3 { margin-bottom:1mm; font-size:9pt; font-weight:700; }
@@ -581,6 +593,7 @@
             <tr class="print-grand-total"><th scope="row">総計（はがき含む）</th><td data-total="grand"></td></tr>
           </tbody></table>
         </div>
+        <p class="print-payment-note" data-print="paymentNote"></p>
       </article>
     </template>
     <template id="printNoticesTemplate">
@@ -1283,7 +1296,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         };
         const money = amount => `${amount < 0 ? '−' : ''}¥${yen(Math.abs(amount))}`;
         sheet.replaceChildren();
-        sheet.classList.toggle('print-dense', items.length > 10);
+        sheet.classList.toggle('print-dense', items.length > 8);
         ['お会計用明細', '明細書'].forEach((title, index) => {
           const half = template.content.firstElementChild.cloneNode(true);
           half.dataset.document = index === 0 ? 'checkout' : 'statement';
@@ -1319,6 +1332,9 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           Object.entries(totals).forEach(([key, value]) => {
             half.querySelector(`[data-total="${key}"]`).textContent = money(value);
           });
+          const paymentNote = half.querySelector('[data-print="paymentNote"]');
+          paymentNote.textContent = `総計${yen(totals.grand)}円の内、はがき代${yen(totals.cards)}円は現金払いのみとなります。`;
+          paymentNote.hidden = totals.cards <= 0;
           if (index === 1) {
             const notices = document.getElementById('printNoticesTemplate').content.firstElementChild.cloneNode(true);
             // Promotional information only: do not add this price to the current invoice.
@@ -1362,7 +1378,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         const height = parseFloat(svg.getAttribute('height'));
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
         svg.setAttribute('preserveAspectRatio', 'none');
-        svg.style.width = `${width * .14}mm`;
+        svg.style.width = `${width * .175}mm`;
         const number = document.createElement('span');
         number.className = 'print-barcode-number';
         number.textContent = value;
@@ -1415,7 +1431,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           if (sheetBounds.width < 1000 || sheetBounds.height < 700) throw new Error('印刷レイアウトを読み込めませんでした。');
           for (const half of doc.querySelectorAll('.print-half')) {
             const bounds = half.getBoundingClientRect();
-            const children = Array.from(half.children);
+            const children = Array.from(half.children).filter(child => child.getClientRects().length > 0);
             if (bounds.bottom > sheetBounds.bottom + 1 || children.some((child, index) => {
               const childBounds = child.getBoundingClientRect();
               return childBounds.bottom > bounds.bottom + 1 ||
