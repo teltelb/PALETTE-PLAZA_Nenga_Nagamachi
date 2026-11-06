@@ -202,7 +202,6 @@
         .print-line-items td:first-child { font-size:7pt; }
         .print-line-items th:nth-child(n+3), .print-line-items td:nth-child(n+3) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
         .print-line-items tr { break-inside:avoid; page-break-inside:avoid; }
-        .print-cash-note { display:block; font-size:6.5pt; font-weight:600; line-height:1.2; }
         [data-document="checkout"] .print-line-items { font-size:7pt; }
         [data-document="checkout"] .print-line-items th { font-size:7pt; }
         [data-document="checkout"] .print-line-items th:nth-child(1) { width:12%; }
@@ -216,7 +215,7 @@
         [data-document="checkout"] .print-line-items td { padding:1.25mm .7mm; }
         .print-barcode svg { display:block; max-width:100%; height:7mm; flex-shrink:0; }
         .print-barcode-number { font:6pt/1.05 monospace; white-space:nowrap; }
-        .print-payment-note { margin-top:1mm; font-size:7pt; font-weight:600; line-height:1.3; overflow-wrap:anywhere; }
+        .print-payment-note { align-self:flex-end; width:100%; margin-top:1mm; font-size:9pt; font-weight:600; line-height:1.3; text-align:right; overflow-wrap:anywhere; }
         .print-half-summary { align-self:flex-end; width:67%; margin-top:1.5mm; padding:1mm 1.5mm; border:.2mm solid #777; }
         .print-half-summary table { width:100%; border-collapse:collapse; font-size:7.5pt; line-height:1.3; }
         .print-half-summary th { padding:.65mm .5mm; text-align:left; font-weight:400; }
@@ -1173,7 +1172,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           tr.className = 'border-b border-slate-100';
           tr.innerHTML =`
             <td class="px-3 py-2">${it.cat}</td>
-            <td class="px-3 py-2">${it.name}${it.cat === 'はがき代' ? '<span class="card-cash-note">現金払いのみ</span>' : ''}</td>
+            <td class="px-3 py-2">${it.name}</td>
             <td class="px-3 py-2">${renderCodeCell(it.code)}</td>
             <td class="px-3 py-2 text-right">¥${yen(it.unit)}</td>
             <td class="px-3 py-2 text-right">${it.qty}</td>
@@ -1266,7 +1265,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         document.getElementById('breakdown').innerHTML = `
           <div class="flex flex-wrap items-center gap-3">
             <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
-            <span class="pill">はがき代（現金払いのみ）: <b>¥${yen(cardCost)}</b></span>
+            <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
             <span class="pill">オプション${pendingDue ? '（納期選択前）' : ''}: <b>¥${yen(opt.optionsTotal)}</b></span>
             <span class="pill">クーポン: <b>−¥${yen(state.coupon)}</b></span>
             <span class="pill">小計(納期加算前${pendingDue ? '・おまかせ割引前' : ''}): <b>¥${yen(baseTotal)}</b></span>
@@ -1320,12 +1319,6 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
               cell.textContent = value;
               row.appendChild(cell);
             });
-            if (item.cat === 'はがき代') {
-              const note = document.createElement('span');
-              note.className = 'print-cash-note';
-              note.textContent = '現金払いのみ';
-              row.children[1].appendChild(note);
-            }
             if (index === 0) row.insertBefore(createPrintBarcodeCell(item.code), row.children[2]);
             tbody.appendChild(row);
           });
