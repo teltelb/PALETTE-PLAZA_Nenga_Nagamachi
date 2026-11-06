@@ -110,6 +110,7 @@
       #invBody td:last-child { color:#34445e; font-weight:600; }
       #invBody svg { flex-shrink:0; }
       #invBody .font-mono { color:#68778f; letter-spacing:.035em; }
+      .card-cash-note { display:block; font-size:11px; font-weight:600; line-height:1.4; }
       .invoice-summary { border:1px solid #e2e8f2; border-radius:10px; background:#f8faff; padding:10px; }
       .invoice-summary table { width:100%; }
       .invoice-summary td { padding:8px 10px; font-size:12px; color:#78869d; }
@@ -180,11 +181,15 @@
         #printSheet::after { content:""; position:absolute; left:50%; top:0; bottom:0; border-left:.2mm dashed #888; }
         .print-cut-label { position:absolute; z-index:1; left:50%; top:50%; transform:translate(-50%,-50%); padding:2mm 0; background:#fff; color:#666; writing-mode:vertical-rl; font-size:6pt; letter-spacing:.15em; }
         .print-half { display:flex; flex-direction:column; min-width:0; min-height:0; height:100%; padding:0 5mm; break-inside:avoid; page-break-inside:avoid; }
-        .print-half-header { display:flex; justify-content:space-between; align-items:flex-end; gap:3mm; padding-bottom:1.7mm; border-bottom:.4mm solid #222; }
+        .print-half-header { display:flex; justify-content:space-between; align-items:flex-end; gap:3mm; padding-bottom:1mm; border-bottom:.4mm solid #222; }
         .print-half-brand { margin-bottom:.6mm; font-size:7pt; letter-spacing:.05em; }
         .print-half-title { font-size:17pt; font-weight:700; line-height:1.2; letter-spacing:.06em; }
         .print-half-date { font-size:7pt; line-height:1.5; text-align:right; white-space:nowrap; }
-        .print-half-details { display:grid; grid-template-columns:1fr 1fr; gap:.7mm 3mm; margin:2mm 0; font-size:7.5pt; line-height:1.35; }
+        .print-delivery { display:flex; align-items:baseline; gap:2mm; margin:1.5mm 0 0; padding:1mm 2mm; border:.4mm solid #222; }
+        .print-delivery-label { font-size:9pt; font-weight:700; white-space:nowrap; }
+        .print-delivery-date { font-size:18pt; font-weight:700; line-height:1.2; white-space:nowrap; }
+        .print-delivery-service { margin-left:auto; font-size:7.5pt; white-space:nowrap; }
+        .print-half-details { display:grid; grid-template-columns:1fr 1fr; gap:.4mm 3mm; margin:1mm 0; font-size:7.5pt; line-height:1.3; }
         .print-half-details p { min-width:0; overflow-wrap:anywhere; }
         .print-line-items { width:100%; table-layout:fixed; border-collapse:collapse; font-size:8pt; line-height:1.3; }
         .print-line-items th { padding:1mm .7mm; border-top:.2mm solid #777; border-bottom:.2mm solid #777; text-align:left; font-size:7.5pt; font-weight:600; }
@@ -197,7 +202,20 @@
         .print-line-items td:first-child { font-size:7pt; }
         .print-line-items th:nth-child(n+3), .print-line-items td:nth-child(n+3) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
         .print-line-items tr { break-inside:avoid; page-break-inside:avoid; }
-        .print-half-summary { align-self:flex-end; width:67%; margin-top:2mm; padding:1mm 1.5mm; border:.2mm solid #777; }
+        .print-cash-note { display:block; font-size:6.5pt; font-weight:600; line-height:1.2; }
+        [data-document="checkout"] .print-line-items { font-size:7pt; }
+        [data-document="checkout"] .print-line-items th { font-size:7pt; }
+        [data-document="checkout"] .print-line-items th:nth-child(1) { width:12%; }
+        [data-document="checkout"] .print-line-items th:nth-child(2) { width:24%; }
+        [data-document="checkout"] .print-line-items th:nth-child(3) { width:35%; }
+        [data-document="checkout"] .print-line-items th:nth-child(4) { width:12%; }
+        [data-document="checkout"] .print-line-items th:nth-child(5) { width:5%; }
+        [data-document="checkout"] .print-line-items th:nth-child(6) { width:12%; }
+        [data-document="checkout"] .print-line-items th:nth-child(3), [data-document="checkout"] .print-line-items td:nth-child(3) { text-align:center; white-space:normal; }
+        .print-barcode { display:flex; flex-direction:column; align-items:center; gap:.2mm; }
+        .print-barcode svg { display:block; max-width:100%; height:6mm; flex-shrink:0; }
+        .print-barcode-number { font:6pt/1.05 monospace; white-space:nowrap; }
+        .print-half-summary { align-self:flex-end; width:67%; margin-top:1.5mm; padding:1mm 1.5mm; border:.2mm solid #777; }
         .print-half-summary table { width:100%; border-collapse:collapse; font-size:7.5pt; line-height:1.3; }
         .print-half-summary th { padding:.65mm .5mm; text-align:left; font-weight:400; }
         .print-half-summary td { padding:.65mm .5mm; text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
@@ -208,7 +226,9 @@
         .print-dense .print-line-items td { padding:.35mm .7mm; line-height:1.25; }
         .print-dense .print-half-summary th, .print-dense .print-half-summary td { padding:.35mm .5mm; }
         .print-dense .print-grand-total td { font-size:14pt; }
-        .print-notices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3mm; margin-top:auto; padding-top:2.5mm; }
+        .print-dense [data-document="checkout"] .print-line-items td { padding:.2mm .7mm; line-height:1.2; }
+        .print-dense .print-barcode svg { height:5mm; }
+        .print-notices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3mm; margin-top:auto; padding-top:2mm; }
         .print-notice { min-width:0; border-top:.3mm solid #444; padding-top:1.3mm; }
         .print-notice h3 { margin-bottom:1mm; font-size:9pt; font-weight:700; }
         .print-notice p { font-size:7.5pt; line-height:1.45; }
@@ -467,7 +487,7 @@
             <!-- 料金明細（クリックで表示） -->
             <div id="invoice" class="invoice-panel mt-6 hidden rounded-xl border border-slate-200 bg-white p-4">
               <div class="section-heading"><h3>料金明細表</h3><div class="invoice-toolbar"><span>税込</span><button id="btnPrintInvoice" type="button">印刷用PDFを開く（A4横）</button></div></div>
-              <p class="invoice-print-help">A4横・A5縦2枚のPDFを開きます（左：お見積書／右：明細書）。iPadではPDFを開いてから、共有メニューの「プリント」で印刷してください。用紙はA4、1ページ／枚を選びます。</p>
+              <p class="invoice-print-help">A4横・A5縦2枚のPDFを開きます（左：バーコード付きのお会計用明細／右：明細書）。iPadではPDFを開いてから、共有メニューの「プリント」で印刷してください。用紙はA4、1ページ／枚を選びます。</p>
               <p id="invoicePdfStatus" class="invoice-pdf-status" role="status" hidden></p>
               <div id="invoicePdfActions" class="invoice-pdf-actions" hidden>
                 <a id="invoicePdfOpen" target="_blank" rel="noopener">PDFを開く</a>
@@ -513,7 +533,7 @@
                           <td class="px-3 py-2 text-right"><span id="sumExclCard" class="font-semibold"></span></td>
                         </tr>
                         <tr class="border-t border-slate-300">
-                          <td class="px-3 py-2 text-left">はがき代</td>
+                          <td class="px-3 py-2 text-left">はがき代<span class="card-cash-note">現金払いのみ</span></td>
                           <td class="px-3 py-2 text-right"><span id="sumCardCost" class="font-semibold"></span></td>
                         </tr>
                         <tr class="border-t border-slate-300">
@@ -530,17 +550,22 @@
       </section>
     </main>
 
-    <section id="printSheet" aria-label="印刷用のお見積書と明細書"></section>
+    <section id="printSheet" aria-label="印刷用のお会計用明細と明細書"></section>
     <template id="printHalfTemplate">
       <article class="print-half">
         <header class="print-half-header">
           <div><p class="print-half-brand">パレットプラザ｜2027年 年賀状</p><h2 class="print-half-title" data-print="title"></h2></div>
           <div class="print-half-date"><p data-print="date"></p><p>金額は税込表示です</p></div>
         </header>
+        <div class="print-delivery">
+          <span class="print-delivery-label">仕上がり日</span>
+          <strong class="print-delivery-date" data-print="deliveryDate"></strong>
+          <span class="print-delivery-service" data-print="deliveryService"></span>
+        </div>
         <div class="print-half-details">
           <p data-print="artwork"></p><p data-print="finish"></p>
           <p data-print="cardType"></p><p data-print="quantities"></p>
-          <p data-print="delivery"></p><p data-print="discount"></p>
+          <p data-print="discount"></p>
         </div>
         <table class="print-line-items">
           <thead><tr><th scope="col">項目</th><th scope="col">品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">合計</th></tr></thead>
@@ -552,7 +577,7 @@
             <tr><th scope="row">オプション代</th><td data-total="options"></td></tr>
             <tr><th scope="row">クーポン値引き</th><td data-total="coupon"></td></tr>
             <tr class="print-subtotal"><th scope="row">合計（はがき除く）</th><td data-total="excludingCards"></td></tr>
-            <tr><th scope="row">はがき代</th><td data-total="cards"></td></tr>
+            <tr><th scope="row">はがき代（現金払いのみ）</th><td data-total="cards"></td></tr>
             <tr class="print-grand-total"><th scope="row">総計（はがき含む）</th><td data-total="grand"></td></tr>
           </tbody></table>
         </div>
@@ -1135,7 +1160,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
           tr.className = 'border-b border-slate-100';
           tr.innerHTML =`
             <td class="px-3 py-2">${it.cat}</td>
-            <td class="px-3 py-2">${it.name}</td>
+            <td class="px-3 py-2">${it.name}${it.cat === 'はがき代' ? '<span class="card-cash-note">現金払いのみ</span>' : ''}</td>
             <td class="px-3 py-2">${renderCodeCell(it.code)}</td>
             <td class="px-3 py-2 text-right">¥${yen(it.unit)}</td>
             <td class="px-3 py-2 text-right">${it.qty}</td>
@@ -1228,7 +1253,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         document.getElementById('breakdown').innerHTML = `
           <div class="flex flex-wrap items-center gap-3">
             <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
-            <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
+            <span class="pill">はがき代（現金払いのみ）: <b>¥${yen(cardCost)}</b></span>
             <span class="pill">オプション${pendingDue ? '（納期選択前）' : ''}: <b>¥${yen(opt.optionsTotal)}</b></span>
             <span class="pill">クーポン: <b>−¥${yen(state.coupon)}</b></span>
             <span class="pill">小計(納期加算前${pendingDue ? '・おまかせ割引前' : ''}): <b>¥${yen(baseTotal)}</b></span>
@@ -1241,7 +1266,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
       function renderPrintSheet(state, selectedIdx, items, totals) {
         resetInvoicePdf();
         const sheet = document.getElementById('printSheet');
-        sheet.dataset.pdfFilename = `年賀状_お見積書_明細書_${getOrderDateKey(state.orderDate)}.pdf`;
+        sheet.dataset.pdfFilename = `年賀状_お会計用明細_明細書_${getOrderDateKey(state.orderDate)}.pdf`;
         const template = document.getElementById('printHalfTemplate');
         const due = getDueLabel(state.finish, selectedIdx);
         const date = due ? addDays(state.orderDate, due.offset) : null;
@@ -1252,19 +1277,26 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           finish: `仕上がり：${state.finish === 'photo' ? '写真キレイ仕上げ' : state.finish === 'print' ? '印刷仕上げ' : '未選択'}`,
           cardType: `はがき：${state.cardType || '未選択'}`,
           quantities: `注文：${state.orderQty}枚　持込：${state.bringInQty}枚`,
-          delivery: `納期：${due ? due.name : '-'}${date ? `　${fmtMD(date)}（${fmtWeekdayJa(date)}）` : ''}`,
+          deliveryDate: date ? `${fmtMD(date)}（${fmtWeekdayJa(date)}）` : '未選択',
+          deliveryService: due ? due.name : '-',
           discount: `割引：${campaign}`
         };
         const money = amount => `${amount < 0 ? '−' : ''}¥${yen(Math.abs(amount))}`;
         sheet.replaceChildren();
         sheet.classList.toggle('print-dense', items.length > 10);
-        ['お見積書', '明細書'].forEach((title, index) => {
+        ['お会計用明細', '明細書'].forEach((title, index) => {
           const half = template.content.firstElementChild.cloneNode(true);
-          half.dataset.document = index === 0 ? 'estimate' : 'statement';
+          half.dataset.document = index === 0 ? 'checkout' : 'statement';
           Object.entries({ ...details, title }).forEach(([key, value]) => {
             half.querySelector(`[data-print="${key}"]`).textContent = value;
           });
           const tbody = half.querySelector('.print-line-items tbody');
+          if (index === 0) {
+            const barcodeHeading = document.createElement('th');
+            barcodeHeading.scope = 'col';
+            barcodeHeading.textContent = 'バーコード';
+            half.querySelector('.print-line-items thead tr').insertBefore(barcodeHeading, half.querySelectorAll('.print-line-items th')[2]);
+          }
           items.forEach(item => {
             const row = document.createElement('tr');
             const name = item.cat === '印刷（200枚以降）'
@@ -1275,6 +1307,13 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
               cell.textContent = value;
               row.appendChild(cell);
             });
+            if (item.cat === 'はがき代') {
+              const note = document.createElement('span');
+              note.className = 'print-cash-note';
+              note.textContent = '現金払いのみ';
+              row.children[1].appendChild(note);
+            }
+            if (index === 0) row.insertBefore(createPrintBarcodeCell(item.code), row.children[2]);
             tbody.appendChild(row);
           });
           Object.entries(totals).forEach(([key, value]) => {
@@ -1301,6 +1340,35 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         cutLabel.setAttribute('aria-hidden', 'true');
         cutLabel.textContent = '切り取り線';
         sheet.appendChild(cutLabel);
+      }
+      function createPrintBarcodeCell(code) {
+        const cell = document.createElement('td');
+        const value = normalizeEan(code);
+        if (!/^\d+$/.test(value)) {
+          cell.textContent = value || '-';
+          return cell;
+        }
+        const barcode = document.createElement('div');
+        barcode.className = 'print-barcode';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        JsBarcode(svg, value, {
+          format:getBarcodeFormat(value), displayValue:false, width:2, height:40,
+          margin:20, marginTop:2, marginBottom:2, background:'#ffffff', lineColor:'#000000'
+        });
+        svg.dataset.printBarcode = value;
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', `バーコード ${value}`);
+        const width = parseFloat(svg.getAttribute('width'));
+        const height = parseFloat(svg.getAttribute('height'));
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.setAttribute('preserveAspectRatio', 'none');
+        svg.style.width = `${width * .14}mm`;
+        const number = document.createElement('span');
+        number.className = 'print-barcode-number';
+        number.textContent = value;
+        barcode.append(svg, number);
+        cell.appendChild(barcode);
+        return cell;
       }
       // PDF page dimensions are fixed independently of the iPad HTML print dialog.
       let invoicePdfRevision = 0;
@@ -1354,6 +1422,20 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
                 (index > 0 && childBounds.top < children[index - 1].getBoundingClientRect().bottom - 1);
             })) throw new Error('明細が用紙内に収まりません。');
           }
+          // Keep the scanner bars as vector rectangles in the PDF, independent of screenshot resolution.
+          const barcodeBars = Array.from(doc.querySelectorAll('svg[data-print-barcode] rect'))
+            .filter(rect => doc.defaultView.getComputedStyle(rect).fill === 'rgb(0, 0, 0)')
+            .map(rect => {
+              const bounds = rect.getBoundingClientRect();
+              return { x:bounds.left, bottom:bounds.bottom, width:bounds.width, height:bounds.height };
+            });
+          // Reserve the same space without asking the bitmap renderer to reload SVG images.
+          doc.querySelectorAll('svg[data-print-barcode]').forEach(svg => {
+            const bounds = svg.getBoundingClientRect();
+            const placeholder = doc.createElement('span');
+            placeholder.style.cssText = `display:block;width:${bounds.width}px;height:${bounds.height}px;flex-shrink:0;`;
+            svg.replaceWith(placeholder);
+          });
           // About 3.6 megapixels: sufficient for small print, within iPad canvas limits.
           canvas = await html2canvas(doc.body, {
             scale:2, width:1123, height:794, windowWidth:1123, windowHeight:794,
@@ -1367,7 +1449,14 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
           const page = pdf.addPage([297 * 72 / 25.4, 210 * 72 / 25.4]);
           const png = await pdf.embedPng(canvas.toDataURL('image/png'));
           page.drawImage(png, { x:0, y:0, width:page.getWidth(), height:page.getHeight() });
-          pdf.setTitle('お見積書・明細書（A4横・A5縦2枚）');
+          barcodeBars.forEach(bar => page.drawRectangle({
+            x:bar.x * page.getWidth() / 1123,
+            y:page.getHeight() - bar.bottom * page.getHeight() / 794,
+            width:bar.width * page.getWidth() / 1123,
+            height:bar.height * page.getHeight() / 794,
+            color:PDFLib.rgb(0,0,0)
+          }));
+          pdf.setTitle('お会計用明細・明細書（A4横・A5縦2枚）');
           return new Blob([await pdf.save()], { type:'application/pdf' });
         } finally {
           if (canvas) { canvas.width = 0; canvas.height = 0; }
@@ -1427,7 +1516,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
 
       document.getElementById('invoicePdfShare').addEventListener('click', async () => {
         if (!invoicePdfFile) return;
-        try { await navigator.share({ files:[invoicePdfFile], title:'お見積書・明細書' }); }
+        try { await navigator.share({ files:[invoicePdfFile], title:'お会計用明細・明細書' }); }
         catch (error) {
           if (error.name !== 'AbortError') document.getElementById('invoicePdfStatus').textContent = '共有できませんでした。「PDFを開く」または「PDFを保存」をお使いください。';
         }
