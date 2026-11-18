@@ -60,6 +60,8 @@
       .option-grid > label:hover { background:#f5f8ff; border-color:#c0cfef; }
       .option-grid > label:has(input:checked) { background:var(--blue-soft); border-color:#b9ccfa; color:var(--blue-dark); }
       .option-grid > label > span, .option-grid > div > label { font-size:13px; line-height:1.65; font-weight:500; }
+      .option-grid .additional-order-option.is-disabled { opacity:.55; cursor:not-allowed; }
+      .additional-order-help { display:block; font-size:11px; line-height:1.4; }
       .option-grid > div { justify-content:space-between; }
       .estimate-panel #optScanCount { width:56px; height:32px; flex-shrink:0; padding:4px 7px; font-size:13px; border-radius:6px; }
       .estimate-panel #optScanCount::placeholder { font-size:11px; }
@@ -447,6 +449,10 @@
           <div class="options-panel mt-6 rounded-2xl border border-slate-200 bg-white/60 p-4">
             <div class="section-heading"><h2>オプション</h2></div>
             <div class="option-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <label class="additional-order-option is-disabled group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                <input id="optAdditionalOrder" type="checkbox" disabled aria-describedby="additionalOrderHelp" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                <span>追加注文<span id="additionalOrderHelp" class="additional-order-help">印刷仕上げのみ・1,000円引き</span></span>
+              </label>
                 <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
                   <input id="optOmakaseOrder" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                   <span class="text-[15px]">おまかせ注文サービス</span>
@@ -849,6 +855,20 @@ function getCardBarcode(type){
         }
       const ADDR_BARCODE = '07019500';
       const ADDR_COUPON_DISCOUNT = { data: 20, paper: 50 };
+      const ADDITIONAL_ORDER_DISCOUNT = 1000;
+      function syncAdditionalOrderControl() {
+        const finish = document.getElementById('finish').value;
+        const checkbox = document.getElementById('optAdditionalOrder');
+        checkbox.disabled = finish !== 'print';
+        if (checkbox.disabled) checkbox.checked = false;
+        checkbox.closest('label').classList.toggle('is-disabled', checkbox.disabled);
+        document.getElementById('additionalOrderHelp').textContent = finish === 'photo'
+          ? '写真キレイ仕上げは対象外'
+          : '印刷仕上げのみ・1,000円引き';
+      }
+      document.getElementById('finish').addEventListener('change', syncAdditionalOrderControl);
+      window.addEventListener('pageshow', syncAdditionalOrderControl);
+      syncAdditionalOrderControl();
       function getAddrLineMeta(state){
           const s = state || {};
           const dataQty = s.addrDataCount || 0;
@@ -919,6 +939,7 @@ function getCardBarcode(type){
            addrDataCount: toInt(document.getElementById('addrDataCount').value),
            addrPaperCount: toInt(document.getElementById('addrPaperCount').value),
            addrFixCount: toInt(document.getElementById('addrFixCount').value),
+          optAdditionalOrder: document.getElementById('finish').value === 'print' && document.getElementById('optAdditionalOrder').checked,
           optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
           optProof: document.getElementById('optProof').checked,
           optLogoCut: document.getElementById('optLogoCut').checked,
@@ -927,7 +948,7 @@ function getCardBarcode(type){
      }
 
       // --- 印刷代の計算 ---
-      function calcPrintPrice(code, finish, qtyRaw, isSuperEarly, isEarly) {
+      function calcPrintPrice(code, finish, qtyRaw, isSuperEarly, isEarly, isAdditionalOrder = false) {
         const grade = CODE_TO_GRADE[code];
         if (!grade || !finish) return 0;
         const base = BASE10_PRICE[grade][finish];
@@ -951,7 +972,9 @@ function getCardBarcode(type){
 
         // 割引（印刷代にのみ適用）。両方チェック時はよりお得な係数(0.8)を優先。
         const factor = isSuperEarly ? 0.8 : (isEarly ? 0.9 : 1.0);
-        return Math.round(price * factor);
+        // 追加注文は、早割などを反映した印刷代から注文全体で1回だけ差し引く。
+        const additionalDiscount = finish === 'print' && isAdditionalOrder ? ADDITIONAL_ORDER_DISCOUNT : 0;
+        return Math.max(0, Math.round(price * factor) - additionalDiscount);
       }
 
       // --- はがき代の計算 ---
@@ -1060,7 +1083,7 @@ function getCardBarcode(type){
 function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         // アクティブボタンをハイライト
         setActiveDueButton(selectedIdx);
-        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early, state.optAdditionalOrder);
         const extraPrint = calcExtraPrint(state);
         const cardCost   = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
         const opt        = calcOptions(state, selectedIdx);
@@ -1083,7 +1106,9 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
               return (__useMarkForAddr && t.indexOf('宛名印刷') >= 0) ? ('ㇰ）' + t) : t;
             }catch(_){ return name; }
           };
-          items.push({ cat: '印刷', name: `${finLabel}`, code: (__pbc.main || '-'), unit: printPrice, qty: 1, sum: printPrice });
+          const additionalOrderLabel = state.finish === 'print' && state.optAdditionalOrder
+            ? `（追加注文${yen(ADDITIONAL_ORDER_DISCOUNT)}円引き）` : '';
+          items.push({ cat: '印刷', name: `${finLabel}${additionalOrderLabel}`, code: (__pbc.main || '-'), unit: printPrice, qty: 1, sum: printPrice });
         if (extraPrint.extraQty > 0){
           // 200枚超過分は追加コードで計上する
           items.push({ cat: '印刷（200枚以降）', name: `${finLabel} / 追加コード`, code: __pbc.extraCode || '-', unit: extraPrint.unit, qty: extraPrint.extraQty, sum: extraPrint.extraSum });
@@ -1256,7 +1281,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
 
       // 納期選択後は内訳にもおまかせ注文の割引を反映する。
       function renderBreakdown(state, selectedIdx) {
-        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early, state.optAdditionalOrder);
         const extraPrint = calcExtraPrint(state);
         const cardCost = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
         const opt = calcOptions(state, selectedIdx);
@@ -1264,7 +1289,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         const pendingDue = state.optOmakaseOrder && !getDueLabel(state.finish, selectedIdx);
         document.getElementById('breakdown').innerHTML = `
           <div class="flex flex-wrap items-center gap-3">
-            <span class="pill">印刷代: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
+            <span class="pill">印刷代${state.finish === 'print' && state.optAdditionalOrder ? '（追加注文1,000円引き）' : ''}: <b>¥${yen(printPrice + extraPrint.extraSum)}</b></span>
             <span class="pill">はがき代: <b>¥${yen(cardCost)}</b></span>
             <span class="pill">オプション${pendingDue ? '（納期選択前）' : ''}: <b>¥${yen(opt.optionsTotal)}</b></span>
             <span class="pill">クーポン: <b>−¥${yen(state.coupon)}</b></span>
@@ -1536,6 +1561,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
 
       // --- 計算ボタン ---
       document.getElementById('btnCalc').addEventListener('click', () => {
+        syncAdditionalOrderControl();
         resetInvoicePdf();
         document.body.classList.remove('invoice-ready');
         const err = document.getElementById('error');
@@ -1558,7 +1584,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         }
 
         // 計算
-        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early);
+        const printPrice = calcPrintPrice(state.artwork, state.finish, state.orderQty, state.superEarly, state.early, state.optAdditionalOrder);
         const extraPrint = calcExtraPrint(state);
         const cardCost = calcCardCost(state.cardType, state.orderQty, state.bringInQty);
         const opt = calcOptions(state);
@@ -1694,6 +1720,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         addrPaperCount: document.getElementById('addrPaperCount').value,
         addrFixCount: document.getElementById('addrFixCount').value,
         optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
+        optAdditionalOrder: document.getElementById('finish').value === 'print' && document.getElementById('optAdditionalOrder').checked,
         
         optProof: document.getElementById('optProof').checked,
         optLogoCut: document.getElementById('optLogoCut').checked,
