@@ -63,8 +63,7 @@
       .option-grid .additional-order-option.is-disabled { opacity:.55; cursor:not-allowed; }
       .additional-order-help { display:block; font-size:11px; line-height:1.4; }
       .option-grid > div { justify-content:space-between; }
-      .estimate-panel #optScanCount { width:56px; height:32px; flex-shrink:0; padding:4px 7px; font-size:13px; border-radius:6px; }
-      .estimate-panel #optScanCount::placeholder { font-size:11px; }
+      .estimate-panel #optScanCount { width:80px; height:44px; flex-shrink:0; padding:4px 28px 4px 8px; font-size:14px; border-radius:6px; }
       label:has(#optCommentOnly) { display:none !important; }
       .calculate-action { margin-top:18px; }
       #btnCalc { min-width:190px; min-height:46px; justify-content:space-between; gap:24px; padding:11px 18px; border:1px solid var(--blue); border-radius:9px; background:var(--blue); color:#fff; font-size:14px; font-weight:600; box-shadow:0 3px 7px #3261d920; }
@@ -449,10 +448,6 @@
           <div class="options-panel mt-6 rounded-2xl border border-slate-200 bg-white/60 p-4">
             <div class="section-heading"><h2>オプション</h2></div>
             <div class="option-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              <label class="additional-order-option is-disabled group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
-                <input id="optAdditionalOrder" type="checkbox" disabled aria-describedby="additionalOrderHelp" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
-                <span>追加注文<span id="additionalOrderHelp" class="additional-order-help">印刷仕上げのみ・1,000円引き</span></span>
-              </label>
                 <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
                   <input id="optOmakaseOrder" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                   <span class="text-[15px]">おまかせ注文サービス</span>
@@ -471,8 +466,34 @@
                 </label>
               <div class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
                 <label for="optScanCount" class="text-[15px]">スキャンサービス</label>
-                <input id="optScanCount" inputmode="numeric" placeholder="枚数" class="w-24 rounded-lg border border-slate-300 bg-white px-2 py-1 outline-none focus:border-slate-400" />
+                <select id="optScanCount" class="rounded-lg border border-slate-300 bg-white px-2 py-1 outline-none focus:border-slate-400">
+                  <option value="0">0枚</option>
+                  <option value="1">1枚</option>
+                  <option value="2">2枚</option>
+                  <option value="3">3枚</option>
+                  <option value="4">4枚</option>
+                  <option value="5">5枚</option>
+                  <option value="6">6枚</option>
+                  <option value="7">7枚</option>
+                  <option value="8">8枚</option>
+                  <option value="9">9枚</option>
+                  <option value="10">10枚</option>
+                  <option value="11">11枚</option>
+                  <option value="12">12枚</option>
+                  <option value="13">13枚</option>
+                  <option value="14">14枚</option>
+                  <option value="15">15枚</option>
+                  <option value="16">16枚</option>
+                  <option value="17">17枚</option>
+                  <option value="18">18枚</option>
+                  <option value="19">19枚</option>
+                  <option value="20">20枚</option>
+                </select>
               </div>
+              <label class="additional-order-option is-disabled group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                <input id="optAdditionalOrder" type="checkbox" disabled aria-describedby="additionalOrderHelp" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                <span>追加注文<span id="additionalOrderHelp" class="additional-order-help">印刷仕上げのみ・1,000円引き</span></span>
+              </label>
             </div>
 
             <!-- 計算ボタン -->
@@ -711,7 +732,7 @@ SOFTWARE.
     <script>
       // --- 入力サニタイズ（半角数字のみ） ---
       const numOnly = (el) => el && el.addEventListener('input', () => el.value = (el.value || '').replace(/[^0-9]/g, ''));
-      ['orderQty','bringInQty','addrDataCount','addrPaperCount','addrFixCount','optScanCount'].forEach(id => numOnly(document.getElementById(id)));
+      ['orderQty','bringInQty','addrDataCount','addrPaperCount','addrFixCount'].forEach(id => numOnly(document.getElementById(id)));
 
       // --- はがき単価 ---
       const CARD_UNIT_PRICE = {
