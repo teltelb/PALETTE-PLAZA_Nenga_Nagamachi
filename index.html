@@ -173,12 +173,12 @@
       .invoice-pdf-actions a, .invoice-pdf-actions button { padding:8px 12px; border:1px solid #b9c9e8; border-radius:8px; color:var(--blue-dark); background:#fff; font-size:12px; cursor:pointer; }
       #printSheet { display:none; }
       .invoice-print-help { margin:-4px 0 14px; color:var(--muted); font-size:11px; line-height:1.7; }
-      @page { size:A4 landscape; margin:8mm; }
+      @page { size:A4 landscape; margin:5mm 8mm; }
       @media print {
         html, body { background:#fff !important; }
         body.invoice-ready { min-height:0; margin:0; color:#111; }
         body.invoice-ready > :not(#printSheet) { display:none !important; }
-        .invoice-ready #printSheet { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:minmax(0,1fr); position:relative; width:100%; height:193mm; margin:0; padding:0; color:#111; }
+        .invoice-ready #printSheet { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:minmax(0,1fr); position:relative; width:100%; height:199mm; margin:0; padding:0; color:#111; }
         #printSheet::after { content:""; position:absolute; left:50%; top:0; bottom:0; border-left:.2mm dashed #888; }
         .print-cut-label { position:absolute; z-index:1; left:50%; top:50%; transform:translate(-50%,-50%); padding:2mm 0; background:#fff; color:#666; writing-mode:vertical-rl; font-size:6pt; letter-spacing:.15em; }
         .print-half { display:flex; flex-direction:column; min-width:0; min-height:0; height:100%; padding:0 5mm; break-inside:avoid; page-break-inside:avoid; }
@@ -1183,8 +1183,7 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         if (state.optProof)        items.push({ cat: 'オプション', name: '校正サービス',     code: '68211400',   unit: UNIT.proof,      qty: 1, sum: UNIT.proof });
         if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
         if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
-        // 専用のバーコードが未指定のため、既存商品のコードは流用しない。
-        if (state.optAddrConversion) items.push({ cat: 'オプション', name: '宛名データ変換料金', code: '-', unit: UNIT.addrConversion, qty: 1, sum: UNIT.addrConversion });
+        if (state.optAddrConversion) items.push({ cat: 'オプション', name: '宛名データ変換料金', code: '68218201', unit: UNIT.addrConversion, qty: 1, sum: UNIT.addrConversion });
 
         if (state.coupon>0) {
           const couponName = state.couponLabel || 'DMクーポン';
@@ -1479,7 +1478,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
               : rule.cssText
           ).join('\n') + '\n.print-cut-label { display:none; } body.invoice-ready > :not(#printSheet).html2canvas-container { display:block !important; }';
           doc.head.appendChild(style);
-          doc.body.style.cssText = 'box-sizing:border-box;width:297mm;height:210mm;min-height:0;margin:0;padding:8mm;background:#fff;';
+          doc.body.style.cssText = 'box-sizing:border-box;width:297mm;height:210mm;min-height:0;margin:0;padding:5mm 8mm;background:#fff;';
           doc.body.appendChild(doc.importNode(snapshot, true));
           await doc.fonts.ready;
           const sheetBounds = doc.getElementById('printSheet').getBoundingClientRect();
