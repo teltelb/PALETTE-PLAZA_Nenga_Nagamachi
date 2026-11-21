@@ -240,6 +240,12 @@
         .print-dense [data-document="checkout"] .print-half-summary th,
         .print-dense [data-document="checkout"] .print-half-summary td { padding:.25mm 0; font-size:7pt; line-height:1.2; }
         .print-dense [data-document="checkout"] .print-grand-total td { font-size:12pt; }
+        /* Make room for a fifteenth item without reducing barcode size or row spacing. */
+        .print-crowded .print-half-header { padding-bottom:0; }
+        .print-crowded .print-delivery { margin-top:.75mm; padding:.5mm 2mm; }
+        .print-crowded .print-half-details { gap:.2mm 3mm; margin:.4mm 0; }
+        .print-crowded [data-document="checkout"] .print-half-summary { margin-top:.5mm; padding:.35mm 1.5mm; }
+        .print-crowded .print-payment-note { margin-top:.5mm; }
         .print-notices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3mm; margin-top:auto; padding-top:2mm; }
         .print-notice { min-width:0; border-top:.3mm solid #444; padding-top:1.3mm; }
         .print-notice h3 { margin-bottom:1mm; font-size:9pt; font-weight:700; }
@@ -490,6 +496,10 @@
                   <option value="20">20枚</option>
                 </select>
               </div>
+              <label class="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
+                <input id="optAddrConversion" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
+                <span class="text-[15px]">宛名データ変換料金</span>
+              </label>
               <label class="additional-order-option is-disabled group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:bg-slate-100">
                 <input id="optAdditionalOrder" type="checkbox" disabled aria-describedby="additionalOrderHelp" class="h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-0" />
                 <span>追加注文<span id="additionalOrderHelp" class="additional-order-help">印刷仕上げのみ・1,000円引き</span></span>
@@ -843,6 +853,7 @@ function getCardBarcode(type){
         addrData: 80,   // 通常単価：1枚80円（クーポン割引は別途）
         addrPaper: 200, // 通常単価：1枚200円（クーポン割引は別途）
         addrFix: 50,
+        addrConversion: 1500,
         scan: 600,
         omakase: 1500,
         proof: 1200,
@@ -964,6 +975,7 @@ function getCardBarcode(type){
           optOmakaseOrder: document.getElementById('optOmakaseOrder').checked,
           optProof: document.getElementById('optProof').checked,
           optLogoCut: document.getElementById('optLogoCut').checked,
+          optAddrConversion: document.getElementById('optAddrConversion').checked,
          optScanCount: toInt(document.getElementById('optScanCount').value),
        };
      }
@@ -1016,7 +1028,8 @@ function getCardBarcode(type){
           const checks =
             omakase +
             (state.optProof ? UNIT.proof : 0) +
-            (state.optLogoCut ? UNIT.logoCut : 0);
+            (state.optLogoCut ? UNIT.logoCut : 0) +
+            (state.optAddrConversion ? UNIT.addrConversion : 0);
 
           const scans = state.optScanCount * UNIT.scan;
 
@@ -1170,6 +1183,8 @@ function renderInvoice(selectedIdx, state, dueAdds, dueBarcode) {
         if (state.optProof)        items.push({ cat: 'オプション', name: '校正サービス',     code: '68211400',   unit: UNIT.proof,      qty: 1, sum: UNIT.proof });
         if (state.optLogoCut)      items.push({ cat: 'オプション', name: 'ロゴ切り抜き',     code: '68211509', unit: UNIT.logoCut,    qty: 1, sum: UNIT.logoCut });
         if (state.optScanCount>0)  items.push({ cat: 'オプション', name: 'スキャンサービス', code: '68211301',    unit: UNIT.scan,       qty: state.optScanCount, sum: UNIT.scan * state.optScanCount });
+        // 専用のバーコードが未指定のため、既存商品のコードは流用しない。
+        if (state.optAddrConversion) items.push({ cat: 'オプション', name: '宛名データ変換料金', code: '-', unit: UNIT.addrConversion, qty: 1, sum: UNIT.addrConversion });
 
         if (state.coupon>0) {
           const couponName = state.couponLabel || 'DMクーポン';
@@ -1342,6 +1357,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         const money = amount => `${amount < 0 ? '−' : ''}¥${yen(Math.abs(amount))}`;
         sheet.replaceChildren();
         sheet.classList.toggle('print-dense', items.length > 8);
+        sheet.classList.toggle('print-crowded', items.length > 14);
         ['お会計用明細', '明細書'].forEach((title, index) => {
           const half = template.content.firstElementChild.cloneNode(true);
           half.dataset.document = index === 0 ? 'checkout' : 'statement';
@@ -1745,6 +1761,7 @@ document.getElementById('sumExclCard').textContent = `¥${yen(items.filter(it =>
         
         optProof: document.getElementById('optProof').checked,
         optLogoCut: document.getElementById('optLogoCut').checked,
+        optAddrConversion: document.getElementById('optAddrConversion').checked,
         optScanCount: document.getElementById('optScanCount').value,
       });
     
